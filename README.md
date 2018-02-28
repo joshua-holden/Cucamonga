@@ -10,8 +10,8 @@ platform that offers a peer-to-peer physical storage marketplace.
 
 Last Name       | First Name      | GitHub User Name     | Scrum Role
 --------------- | --------------- | -------------------- | ---------------
-Cruz            | Turner          | TBD                  | Developer
-Woods           | Spencer         | TBD                  | Developer
+Cruz            | Turner          | TCruz97              | Developer
+Woods           | Spencer         | SpencerSensus        | Developer
 Holden          | Joshua          | TBD                  | Scrum Master
 Hinman          | Jorah           | jorahsh              | Product Owner
 
