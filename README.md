@@ -19,10 +19,10 @@ Hinman          | Jorah           | jorahsh              | Product Owner
 
 Sprint | Estimated Velocity | Actual Velocity
 ------ | ------------------ | ---------------
-TBD1   | TBD                | TBD
-TBD2   | TBD                | TBD
-TBD3   | TBD                | TBD
-TBD4   | TBD                | TBD
+1      | TBD                | TBD
+2      | TBD                | TBD
+3      | TBD                | TBD
+4      | TBD                | TBD
 
 ### Link to Linter Reports
 http://cs.boisestate.edu/~bdit/GitHubAutoGrader/CS471S18ScrumLinterReports/CS471-S18-HCBTW_1Qv5g3OUThOWT8ljulDCLRYoTo1B19ZBsXSrkp4A/ScrumLinterReport_CS471-S18-HCBTW_Sprint0_20180228100035.html
