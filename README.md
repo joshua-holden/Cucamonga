@@ -11,9 +11,9 @@ platform that offers a peer-to-peer physical storage marketplace.
 Last Name       | First Name      | GitHub User Name     | Scrum Role
 --------------- | --------------- | -------------------- | ---------------
 Cruz            | Turner          | TCruz97              | Developer
-Woods           | Spencer         | SpencerSensus        | Developer
-Holden          | Joshua          | joshua-holden        | Scrum Master
 Hinman          | Jorah           | jorahsh              | Product Owner
+Holden          | Joshua          | joshua-holden        | Scrum Master
+Woods           | Spencer         | SpencerSensus        | Developer
 
 ## Team Velocity:
 
@@ -25,4 +25,4 @@ Sprint | Estimated Velocity | Actual Velocity
 4      | TBD                | TBD
 
 ### Link to Linter Reports
-http://cs.boisestate.edu/~bdit/GitHubAutoGrader/CS471S18ScrumLinterReports/CS471-S18-HCBTW_1Qv5g3OUThOWT8ljulDCLRYoTo1B19ZBsXSrkp4A/ScrumLinterReport_CS471-S18-HCBTW_Sprint0_20180228100035.html
+http://cs.boisestate.edu/~bdit/GitHubAutoGrader/CS471S18ScrumLinterReports/CS471-S18-HCBTW_1Qv5g3OUThOWT8ljulDCLRYoTo1B19ZBsXSrkp4A/
