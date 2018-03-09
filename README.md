@@ -15,6 +15,7 @@ Hinman          | Jorah           | jorahsh              | Product Owner
 Holden          | Joshua          | joshua-holden        | Scrum Master
 Woods           | Spencer         | SpencerSensus        | Developer
 
+
 ## Team Velocity:
 
 Sprint | Estimated Velocity | Actual Velocity
