@@ -13,7 +13,7 @@ Last Name       | First Name      | GitHub User Name     | Scrum Role
 Cruz            | Turner          | TCruz97              | Developer
 Hinman          | Jorah           | jorahsh              | Product Owner
 Holden          | Joshua          | joshua-holden        | Scrum Master
-Woods           | Spencer         | SpencerSensus        | Developer
+Woods           | Spencer         | spencersensus        | Developer
 
 
 ## Team Velocity:
