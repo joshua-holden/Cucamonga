@@ -27,3 +27,6 @@ Sprint | Estimated Velocity | Actual Velocity
 
 ### Link to Linter Reports
 http://cs.boisestate.edu/~bdit/GitHubAutoGrader/CS471S18ScrumLinterReports/CS471-S18-HCBTW_1Qv5g3OUThOWT8ljulDCLRYoTo1B19ZBsXSrkp4A/
+
+### Link to Ionic 3 youtube tutorials
+https://www.youtube.com/channel/UCJUmE61LxhbhudzUugHL2wQ
