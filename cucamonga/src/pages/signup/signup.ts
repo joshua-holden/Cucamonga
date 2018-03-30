@@ -17,6 +17,7 @@ import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 export class SignupPage {
 
   private signup : FormGroup;
+  private submitAttempt;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formbuilder: FormBuilder) {
   	this.signup = this.formbuilder.group({
