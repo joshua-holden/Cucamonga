@@ -20,13 +20,8 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,  public formbuilder: FormBuilder) {
     this.login = this.formbuilder.group({
-      username:['',Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      firstname: ['', Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      lastname: ['', Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      birthday:['',Validators.required],
   		email: ['', Validators.required],
   		password: ['', Validators.required],
-      passwordconfirm: ['', Validators.required],
   })
 }
 
