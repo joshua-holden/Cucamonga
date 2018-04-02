@@ -1,11 +1,25 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Landing Page
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content>
+  <div class="leftHalf" id="left">
+    <h1 class="leftText">I Have Space</h1>
+  </div>
+  <div class="rightHalf">
+      <h1 class="rightText">I Need Space</h1>
+    
+  </div>
+    <button class = "signUp" ion-button full (click)="openSignup()">Create Account</button>
+    <button class = "login" ion-button full (click)="openLogin()">Login</button>
+  <footer class="foot">
 
-<ion-content padding>
-  <button ion-button full (click)="openSignup()">Create Account</button>
+  </footer>
 </ion-content>
+<script>
+    Document.getElementById("left").onclick = function() {
+      location.href="havePage.html"
+    }   
+    Document.getElementById("right").onclick = function() {
+      location.href="needPage.html"
+    }  
+    
+    
+  </script>
+

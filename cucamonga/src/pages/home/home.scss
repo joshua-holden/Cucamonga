@@ -1,3 +1,40 @@
 page-home {
 
 }
+.leftHalf, .rightHalf{
+    width: 50%;
+    height: 100%;
+}
+.leftHalf{
+    float: left;
+    color:darkorange;
+    
+}
+.leftText,.rightText{
+    text-align: center;
+    margin-top: 40%;
+    font-size: 6em;
+}
+.rightHalf{
+    float: right;
+    color:white;
+    background-color: darkorange;
+}
+.signUp, .login{
+    width:25%;
+    position:absolute;
+    margin-left:40%;
+    background-color: black;
+    border-radius: 4px;
+}
+.signUp a:hover, .login a:hover{
+    opacity: 0.8;
+}
+.signUp{
+    margin-top:33%;
+}
+.login{
+    margin-top: 37%;
+    margin-bottom: 3%;
+}
+

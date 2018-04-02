@@ -19,15 +19,31 @@ export class SignupPage {
   private signup : FormGroup;
   private submitAttempt;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formbuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formbuilder: FormBuilder) {
   	this.signup = this.formbuilder.group({
-  		firstname: ['', Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-  		lastname: ['', Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      username:['',Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      firstname: ['', Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      lastname: ['', Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+      birthday:['',Validators.required],
   		email: ['', Validators.required],
   		password: ['', Validators.required],
-  		passwordconfirm: ['', Validators.required],
-  	})
+      passwordconfirm: ['', Validators.required],
+    }, {validator: this.matchingPasswords('password', 'passwordconfirm')}); 
+
   }
+    matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
+        // TODO maybe use this https://github.com/yuyang041060120/ng2-validation#notequalto-1
+        return (group: FormGroup): {[key: string]: any} => {
+          let password = group.controls[passwordKey];
+          let passwordconfirm = group.controls[confirmPasswordKey];
+    
+          if (password.value !== passwordconfirm.value) {
+            return {
+              mismatchedPasswords: true
+            };
+          }
+        }
+      }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');

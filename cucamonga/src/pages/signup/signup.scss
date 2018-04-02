@@ -1,3 +1,24 @@
-page-signup {
+page-signup{
 
+}
+.page{
+    color: darkorange;
+}
+.signupForm{
+    border-style: solid 10px black;
+    width:50%;
+    height:100%;
+    margin-left: 40%;
+}
+.submitButton{
+    width:30%;
+    margin-left:35%;
+    margin-top: 3%;
+    background-color: darkorange;
+    border-radius: 4px;
+}
+.pageTitle{
+    text-align: center;
+    color: darkorange;
+    font-size: 6em;
 }
