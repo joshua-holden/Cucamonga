@@ -19,8 +19,6 @@
 	<form [formGroup]="signup">
 		<ion-list inset>
 			<div class ="signupForm">
-	
-				<ion-input type="text" class="input" placeholder="Username" formControlName="username"></ion-input>
 				
 				<ion-input type="text" class="input" placeholder="First Name" formControlName="firstname"></ion-input>
 				<ion-item *ngIf="!signup.controls.firstname.valid && submitAttempt">
