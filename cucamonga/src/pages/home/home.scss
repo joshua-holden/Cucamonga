@@ -12,7 +12,6 @@ page-home {
 .leftHalf{
     float: left;
     color:darkorange;
-    
 }
 .leftText,.rightText{
     text-align: center;
@@ -24,22 +23,17 @@ page-home {
     color:white;
     background-color: darkorange;
 }
-.signUp, .login{
-    width:25%;
+.login{
+    width:100%;
     position:absolute;
-    margin-left:40%;
     background-color: black;
     border-radius: 4px;
-
+    z-index: 100;
+    bottom: 0;
+    left: 0;
 }
-.signUp a:hover, .login a:hover{
-    opacity: 0.8;
+.loginText{
+    font-size: 3em;
+    text-align: center;
+    color:white;
 }
-.signUp{
-    margin-top:33%;
-}
-.login{
-    margin-top: 37%;
-    margin-bottom: 3%;
-}
-

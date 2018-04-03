@@ -1,54 +1,63 @@
 <!--
   Sign up page.
   @authors
+  	-Turner Cruz
   	-Jorah Hinman
 	-Joshua Holden
+	-Spencer Woods
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar color="orange">
+    <ion-title>Create Account</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content>
-
-			<h1 class="pageTitle">Create Account</h1>
-	<form [formGroup]="signup">
-		<ion-list inset>
-			<div class ="signupForm">
-				
-				<ion-input type="text" class="input" placeholder="First Name" formControlName="firstname"></ion-input>
-				<ion-item *ngIf="!signup.controls.firstname.valid && submitAttempt">
-					Please enter a valid first name.
-				</ion-item>
-				
-				<ion-input type="text" class="input" placeholder="Last Name" formControlName="lastname"></ion-input>
-				<ion-item *ngIf="!signup.controls.lastname.valid && submitAttempt">
-					Please enter a valid last name.
-				</ion-item>
-				<ion-input type="date" class="input" placeholder="Birthday" formControlName="birthday"></ion-input>
-				
-				<ion-input type="email" class="input" placeholder="Email" formControlName="email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
-				<ion-item *ngIf="!signup.controls.email.valid && submitAttempt">
-					Please Enter A valid email.
-				</ion-item>
-				
-				<ion-input type="password" class="input" placeholder="Password" formControlName="password"></ion-input>
-				<ion-input type="password" placeholder="Confirm Password" formControlName="passwordconfirm"></ion-input>
-					<!-- <ion-item *ngIf="signup.controls.password.valid != signup.controls.passwordconfirm.valid && submitAttempt">
-						Passwords must match.
-					</ion-item> -->
-					<ion-item *ngIf="signup.controls.passwordconfirm.touched && signup.hasError('mismatchedPasswords') && signup.controls.password.valid">
-							<ion-label no-margin stacked>Passwords do not match</ion-label>
-					</ion-item>
-			</div>
-		</ion-list>
-
-
-		<button class="submitButton" ion-button full type="submit" (click)="submitForm()">Submit</button>
-
-	</form>
+    <form [formGroup]="signup">
+	<ion-list>
+	    <div class ="signupForm">
+		<ion-item>
+		    <ion-label floating>First Name:</ion-label>
+		    <ion-input type="text" class="input" formControlName="firstname"></ion-input>
+		</ion-item>
+		<ion-item color="orange" *ngIf="!signup.controls.firstname.valid && submitAttempt">
+		    Please enter a valid first name.
+		</ion-item>
+		<ion-item>
+		    <ion-label floating>Last Name:</ion-label>
+		    <ion-input type="text" class="input" formControlName="lastname"></ion-input>
+		</ion-item>
+		<ion-item color="orange" *ngIf="!signup.controls.lastname.valid && submitAttempt">
+		    Please enter a valid last name.
+		</ion-item>
+		<ion-item>
+		    <ion-label floating>Brithday:</ion-label>
+		    <ion-datetime class="input" formControlName="birthday" #bdate></ion-datetime>
+		</ion-item>
+		<ion-item color="orange" *ngIf="!signup.controls.birthday.valid && submitAttempt">
+		    Please enter in a valid birth date.
+		</ion-item>
+		<ion-item>
+		    <ion-label floating>Email:</ion-label>
+		    <ion-input type="email" class="input" formControlName="email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
+		</ion-item>
+		<ion-item color="orange" *ngIf="!signup.controls.email.valid && submitAttempt">
+		    Please Enter A valid email.
+		</ion-item>
+		<ion-item>
+		    <ion-label floating>Password:</ion-label>
+		    <ion-input type="password" class="input" formControlName="password"></ion-input>
+		</ion-item>
+		<ion-item>
+		    <ion-label floating>Confirm Password:</ion-label>
+		    <ion-input type="password" formControlName="passwordconfirm"></ion-input>
+		</ion-item>
+		<ion-item color="orange" *ngIf="signup.controls.passwordconfirm.touched && signup.hasError('mismatchedPasswords') && signup.controls.password.valid">
+		    Passwords do not match
+		</ion-item>
+	    </div>
+	</ion-list>
+	<button class="submitButton" ion-button full type="submit" (click)="submitForm()">Submit</button>
+    </form>
 </ion-content>
