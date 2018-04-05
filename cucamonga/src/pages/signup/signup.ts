@@ -52,9 +52,9 @@ export class SignupPage {
   
 /* Some validation functionality*/
 submitForm() {
-    let age = moment().diff(this.bdate.value, 'year');
+    let age = moment().diff(this.bdate.value, 'year', true);
 
-    if(age > 0 && age < 18){
+    if(age != 0 && age < 18){
         let alert = this.alrtCtrl.create({
 	    title: "I'm sorry...",
 	    subTitle: 'birth date was not at least 18 years ago',
