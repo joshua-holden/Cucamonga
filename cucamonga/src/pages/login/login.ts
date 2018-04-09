@@ -23,7 +23,11 @@ export class LoginPage {
   		email: ['', Validators.required],
   		password: ['', Validators.required],
   })
-}
+  }
+
+  submitForm(){
+  	this.navCtrl.pop();
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
