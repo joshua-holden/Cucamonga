@@ -29,11 +29,4 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-
-submitForm() {
-  
-  this.submitAttempt = true;
-  console.log(this.login.value);
 }
-}
-

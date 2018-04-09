@@ -1,0 +1,63 @@
+<!--
+  Sign up page.
+  @authors
+  	-Turner Cruz
+  	-Jorah Hinman
+	-Joshua Holden
+	-Spencer Woods
+-->
+<ion-header>
+  <ion-navbar color="orange">
+    <ion-title>Create Account</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <form [formGroup]="signup">
+	<ion-list>
+	    <div class ="signupForm">
+		<ion-item>
+		    <ion-label floating>First Name:</ion-label>
+		    <ion-input type="text" class="input" formControlName="firstname"></ion-input>
+		</ion-item>
+		<ion-item color="orange" *ngIf="!signup.controls.firstname.valid && submitAttempt">
+		    Please enter a valid first name.
+		</ion-item>
+		<ion-item>
+		    <ion-label floating>Last Name:</ion-label>
+		    <ion-input type="text" class="input" formControlName="lastname"></ion-input>
+		</ion-item>
+		<ion-item color="orange" *ngIf="!signup.controls.lastname.valid && submitAttempt">
+		    Please enter a valid last name.
+		</ion-item>
+		<ion-item>
+		    <ion-label floating>Brithday:</ion-label>
+		    <ion-datetime class="input" formControlName="birthday" #bdate></ion-datetime>
+		</ion-item>
+		<ion-item color="orange" *ngIf="!signup.controls.birthday.valid && submitAttempt">
+		    Please enter in a valid birth date.
+		</ion-item>
+		<ion-item>
+		    <ion-label floating>Email:</ion-label>
+		    <ion-input type="email" class="input" formControlName="email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
+		</ion-item>
+		<ion-item color="orange" *ngIf="!signup.controls.email.valid && submitAttempt">
+		    Please Enter A valid email.
+		</ion-item>
+		<ion-item>
+		    <ion-label floating>Password:</ion-label>
+		    <ion-input type="password" class="input" formControlName="password"></ion-input>
+		</ion-item>
+		<ion-item>
+		    <ion-label floating>Confirm Password:</ion-label>
+		    <ion-input type="password" formControlName="passwordconfirm"></ion-input>
+		</ion-item>
+		<ion-item color="orange" *ngIf="signup.controls.passwordconfirm.touched && signup.hasError('mismatchedPasswords') && signup.controls.password.valid">
+		    Passwords do not match
+		</ion-item>
+	    </div>
+	</ion-list>
+	<button class="submitButton" ion-button full type="submit" (click)="submitForm()">Submit</button>
+    </form>
+</ion-content>
