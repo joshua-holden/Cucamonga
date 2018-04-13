@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {BrowsetabPage} from '../browsetab/browsetab';
 
 /**
  * Generated class for the LoginPage page.
@@ -26,7 +27,7 @@ export class LoginPage {
   }
 
   submitForm(){
-  	this.navCtrl.pop();
+  	this.navCtrl.push(BrowsetabPage);
   }
 
   ionViewDidLoad() {
