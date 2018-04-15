@@ -24,9 +24,10 @@
             Please Enter A valid email.
             </ion-item>
 	  </ion-item>
-          
-          <ion-input type="password" class="input" placeholder="Password" formControlName="password"></ion-input>
-               
+	  <ion-item>
+	    <ion-label floating>password</ion-label>
+            <ion-input type="password" class="input" formControlName="password"></ion-input>
+	  </ion-item>   
         </div>
       </ion-list>  
       <button class="submitButton" ion-button full type="submit" (click)="submitForm()">Submit</button>
