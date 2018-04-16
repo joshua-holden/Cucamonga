@@ -21,7 +21,7 @@ Woods           | Spencer         | spencersensus        | Developer
 Sprint | Estimated Velocity | Actual Velocity
 ------ | ------------------ | ---------------
 1      | 10                 | 13
-2      | TBD                | TBD
+2      | 24                 | TBD
 3      | TBD                | TBD
 4      | TBD                | TBD
 
