@@ -20,10 +20,10 @@
 	  <ion-item>
 	    <ion-label floating>email</ion-label>
             <ion-input type="email" class="input" formControlName="email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
-            <ion-item *ngIf="!login.controls.email.valid && submitAttempt">
-            Please Enter A valid email.
-            </ion-item>
 	  </ion-item>
+          <ion-item *ngIf="!login.controls.email.valid && submitAttempt">
+            Please enter a valid email
+            </ion-item>
 	  <ion-item>
 	    <ion-label floating>password</ion-label>
             <ion-input type="password" class="input" formControlName="password"></ion-input>

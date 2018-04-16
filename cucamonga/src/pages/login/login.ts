@@ -27,7 +27,8 @@ export class LoginPage {
   }
 
   submitForm(){
-  	this.navCtrl.push(BrowsetabPage);
+  //	this.navCtrl.push(BrowsetabPage);
+  	this.submitAttempt = true;
   }
 
   ionViewDidLoad() {
