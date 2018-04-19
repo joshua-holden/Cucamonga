@@ -26,10 +26,10 @@ export class LoginPage {
   })
   }
 
-  submitForm(){
-  //	this.navCtrl.push(BrowsetabPage);
-  	this.submitAttempt = true;
-  }
+  // submitForm(){
+  // //	this.navCtrl.push(BrowsetabPage);
+  // 	this.submitAttempt = true;
+  // }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');

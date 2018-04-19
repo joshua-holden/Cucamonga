@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
-import * as moment from 'moment';
-
+import moment from 'moment';
 /**
  * class for the SignupPage page.
  *
