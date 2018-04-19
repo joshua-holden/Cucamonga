@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {BrowsetabPage} from '../browsetab/browsetab';
 
 /**
  * Generated class for the LoginPage page.
@@ -23,7 +24,12 @@ export class LoginPage {
   		email: ['', Validators.required],
   		password: ['', Validators.required],
   })
-}
+  }
+
+  submitForm(){
+  //	this.navCtrl.push(BrowsetabPage);
+  	this.submitAttempt = true;
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
