@@ -1,8 +1,0 @@
-{
-  "name": "cucamonga",
-  "app_id": "0781372a",
-  "type": "ionic-angular",
-  "integrations": {
-    "cordova": {}
-  }
-}
