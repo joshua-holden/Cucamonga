@@ -29,7 +29,12 @@
 
 <ion-content padding>
     <ion-list>
-        <ion-item (click)="openListing()" *ngFor="let item of items">{{item}} </ion-item>
+        <ion-item (click)="openListing()" *ngFor="let item of items">
+		<ion-avatar item-start> 
+			<img src= "assets/imgs/test_profile_pic.jpeg">
+		</ion-avatar>	
+		{{item}} 
+	</ion-item>
 
     </ion-list>
 </ion-content>
