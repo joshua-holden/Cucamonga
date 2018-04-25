@@ -32,7 +32,7 @@ export class BrowsePage{
    setItems() { 
 
 	for (var i = 1; i <= 100; i++) { 
-		var temp = "test"+i;
+		var temp = "Listing "+i;
     	this.items.push(temp);
     }
    }
