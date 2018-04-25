@@ -7,31 +7,67 @@
 <ion-header>
 
     <ion-navbar color="orange">
-        <ion-title>Account</ion-title>
+        <ion-title>Your Account</ion-title>
     </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
+    <div class="userInfo">
+        <h2 id="user">John Doe</h2>
+        <img src="assets/imgs/avatar.png" id="profilePhoto">
 
-    <div class="info">
-        <!-- <div class="photo"> -->
-        <ion-avatar>
-            <img src="assets/imgs/avatar.png" class="profilePhoto">
-        </ion-avatar>
-        <!-- </div> -->
-        <!-- <div class="username"> -->
-        <h2 class="username">John Doe</h2>
-        <!-- </div> -->
-        <div class="ratings">
-            <ion-icon name="star" class="stars"></ion-icon>
-            <ion-icon name="star" class="stars"></ion-icon>
-            <ion-icon name="star" class="stars"></ion-icon>
-            <ion-icon name="star" class="stars"></ion-icon>
+        <div id="ratings">
+            <ion-icon name="star" class="star"></ion-icon>
+            <ion-icon name="star" class="star"></ion-icon>
+            <ion-icon name="star" class="star"></ion-icon>
+            <ion-icon name="star" class="star"></ion-icon>
+            <a href="#reviews">Write/Read...</a>
+
         </div>
+        <div id="badges">
+            <ion-icon name="lock" class="badge"></ion-icon>
+            <ion-icon name="paw" class="badge"></ion-icon>
+            <ion-icon name="thermometer" class="badge"></ion-icon>
+            <ion-icon name="checkmark-circle" class="badge"></ion-icon>
+        </div>
+        <h3 id="location">10101 s 1st St, Boise ID</h3>
+        <button id="edit">Edit Info</button>
 
     </div>
+    <div class="currentListing">
+        <h3 id="listing">Current Listing</h3>
+        <img src="/assets/imgs/example-space.jpg" id="examplePic">
+        <li id="attrib">
+            <ul class="listItem">100 sq. feet</ul>
+            <ul class="listItem">Temperature Controlled</ul>
+            <ul class="listItem">Secure</ul>
+        </li>
+        <div id="description">
+            <p id="paragraph">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium est vel feugiat fringilla. Nulla scelerisque, elit maximus imperdiet efficitur, mi massa sagittis mi, quis suscipit erat eros a risus. Mauris purus arcu, vulputate quis rhoncus ac,
+                lacinia ac velit. Nunc commodo sem odio, sed laoreet sapien molestie et. Suspendisse id augue in eros mollis vehicula. In vitae diam nec quam pharetra facilisis. Donec scelerisque risus nibh, ut luctus sapien tincidunt id. Praesent maximus
+                nulla sed nisi vestibulum rutrum. Pellentesque a placerat leo, quis efficitur ipsum. Mauris tristique leo ut orci accumsan, ut maximus dolor lacinia. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+                Proin placerat felis arcu, in mattis nunc euismod a. Nullam commodo condimentum est, ut placerat nibh placerat in. Vestibulum bibendum ornare mauris, at ultricies leo sagittis in. Vivamus volutpat quam elit, nec bibendum dolor sodales
+                ac.
 
+
+            </p>
+        </div>
+    </div>
+    <div class="previousListings">
+        <h3 id="previous">Previous Listings</h3>
+        <p id="paragraph2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium est vel feugiat fringilla. Nulla scelerisque, elit maximus imperdiet efficitur, mi massa sagittis mi, quis suscipit erat eros a risus. Mauris purus arcu, vulputate quis rhoncus ac,
+            lacinia ac velit. Nunc commodo sem odio, sed laoreet sapien molestie et. Suspendisse id augue in eros mollis vehicula. In vitae diam nec quam pharetra facilisis. Donec scelerisque risus nibh, ut luctus sapien tincidunt id. Praesent maximus
+            nulla sed nisi vestibulum rutrum. Pellentesque a placerat leo, quis efficitur ipsum. Mauris tristique leo ut orci accumsan, ut maximus dolor lacinia. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin
+            placerat felis arcu, in mattis nunc euismod a. Nullam commodo condimentum est, ut placerat nibh placerat in. Vestibulum bibendum ornare mauris, at ultricies leo sagittis in. Vivamus volutpat quam elit, nec bibendum dolor sodales ac.
+        </p>
+
+
+
+
+    </div>
 
 </ion-content>

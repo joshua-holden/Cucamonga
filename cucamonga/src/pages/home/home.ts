@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import {LoginPage} from '../login/login';
+import{AccountPage} from '../account/account';
 import {BrowsetabPage} from '../browsetab/browsetab';
 
 @Component({
@@ -19,6 +20,9 @@ export class HomePage {
   }
   openLogin() {
   	this.navCtrl.push(LoginPage);
+  }
+  openAccount(){
+    this.navCtrl.push(AccountPage);
   }
 
   openDashboard() {
