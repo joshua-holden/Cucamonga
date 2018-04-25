@@ -1,3 +1,7 @@
+img {
+    width: 100%;
+}
+
 .userInfo {
     // border-bottom: 5px solid darkorange;
     display: inline-block;
@@ -22,10 +26,14 @@
 
 .currentListing {
     margin-top: 0px;
-    border-top: darkorange 5px solid;
 }
 
-#ratings,
+#ratings {
+    margin: 0px;
+    padding: 0px;
+    padding-left: 42px;
+}
+
 #badges {
     margin-left: 46%;
 }
@@ -40,7 +48,6 @@
     width: 10%;
     height: 8%;
     position: absolute;
-    background-color: darkorange;
     border-radius: 4px;
 }
 
@@ -87,5 +94,9 @@
 
 .previousListings {
     height: 200px;
-    border-top: darkorange 5px solid;
 }
+
+// #calendarView {
+//     width: 50px;
+//     height: 50px;
+// }

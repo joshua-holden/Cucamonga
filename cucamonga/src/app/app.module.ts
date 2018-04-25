@@ -14,6 +14,9 @@ import { PostSpacePage } from '../pages/post-space/post-space';
 import { MySpacesPage } from '../pages/my-spaces/my-spaces';
 import { MessagesPage } from '../pages/messages/messages';
 import { AccountPage } from '../pages/account/account';
+import { ListingPage } from '../pages/listing/listing';
+import { NgCalendarModule  } from 'ionic2-calendar';
+// import { EventModalPage } from '../pages/event-modal/event-modal';
 
 
 @NgModule({
@@ -27,9 +30,12 @@ import { AccountPage } from '../pages/account/account';
     PostSpacePage,
     MySpacesPage,
     MessagesPage,
-    AccountPage
+    AccountPage, 
+    ListingPage
+    
   ],
   imports: [
+    NgCalendarModule,
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -44,7 +50,8 @@ import { AccountPage } from '../pages/account/account';
     PostSpacePage,
     MySpacesPage,
     MessagesPage,
-    AccountPage
+    AccountPage,
+    ListingPage,
   ],
   providers: [
     StatusBar,

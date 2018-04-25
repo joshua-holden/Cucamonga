@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ListingPage } from '../listing/listing'
 
 /**
  * Generated class for the BrowsePage page.
@@ -50,4 +51,8 @@ export class BrowsePage{
   ionViewDidLoad() {
   	console.log('ionViewDidLoad BrowsePage');
   }
+  openListing() {
+  	this.navCtrl.push(ListingPage);
+  }
+
 }
