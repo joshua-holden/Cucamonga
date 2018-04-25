@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .userInfo {
     // border-bottom: 5px solid darkorange;
     display: inline-block;
@@ -48,6 +49,29 @@
     width: 22px;
     margin-top: 80px;
     position: relative;
+=======
+﻿.avatar {
+  float: left;
+  width: 20% !important;
+  height: 20% !important;
+  max-width: 200px !important;
+  max-height: 200px !important;
+}
+.user-info {
+  vertical-align: top;
+  margin-bottom: 10%;
+  margin-left: 20%;
+}
+.user-name {
+  font-style: normal;
+  font-size: 4em;
+  text-align: center;
+  float: left;
+}
+.user-eail {
+  float: left;
+  text-align: center;
+>>>>>>> 0b7790d16440e714fba08df4591504a98e9f9aa4
 }
 
 .badge {
