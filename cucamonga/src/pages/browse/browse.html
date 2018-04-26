@@ -28,13 +28,13 @@
 
 
 <ion-content padding>
-    <ion-list>
-        <ion-item (click)="openListing()" *ngFor="let item of items">
+    <ion-list >
+        <ion-item *ngFor="let item of items" (click)="openListing(item)" >
           <ion-thumbnail item-start>
-            <img src="assets/imgs/garage.jpg">
+            <img src={{item.img}}>
           </ion-thumbnail>
-          <h2>{{item}}</h2>
-          <p>Description</p>
+          <h2>{{item.title}}</h2>
+          <p>{{item.description}}</p>
         </ion-item>
     </ion-list>
 </ion-content>

@@ -30,19 +30,27 @@ export class BrowsePage{
   }
 
    setItems() { 
-	   for (var i = 1; i <= 100; i++) { 
-		  var temp = "Listing "+i;
-    	this.items.push(temp);
+	   for (var i = 1; i <= 20; i++) {
+      var item = new function(){
+        this.id = "id" + i;
+        this.title = "Listing " + i;
+        this.description = "This is a description for listing " + i;
+        this.img = "assets/imgs/" + i + ".jpg";
+      }
+    	this.items.push(item);
     }
    }
 
    filterItems(ev: any) {
     let val = ev.target.value;
 
-    if (val && val.trim() !== '') {
+    if(val) {
       this.items = this.items.filter(function(item) {
-        return item.toLowerCase().includes(val.toLowerCase());
+        return item.title.toLowerCase().includes(val.toLowerCase());
       });
+    }else{
+      this.items = [];
+      return this.setItems();
     }
 
   }
@@ -50,8 +58,18 @@ export class BrowsePage{
   ionViewDidLoad() {
   	console.log('ionViewDidLoad BrowsePage');
   }
-  openListing() {
-  	this.navCtrl.push(ListingPage);
+
+  openListing(element) {
+    var a = element.title;
+    var b = element.description;
+    var c = element.img;
+    let data = {
+      title: a,
+      description: b,
+      img: c
+    };
+    console.log(data);
+  	this.navCtrl.push(ListingPage, data);
   }
 
 }
