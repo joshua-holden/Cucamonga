@@ -15,9 +15,9 @@
 <ion-content>
 
 
-    <div class="currentListing">
-        <h3 id="listing">Current Listing</h3>
-        <img src="assets/imgs/garage.jpg" id="examplePic">
+    <div class="currentListing" *ngFor="let item of list">
+        <h1 id="listing">{{item.title}}</h1>
+        <img src={{item.img}} id="examplePic">
         <li id="attrib">
             <ul id="ratings" class="listItem">
                 <ion-icon name="star" class="star"></ion-icon>

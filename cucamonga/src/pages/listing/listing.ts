@@ -16,6 +16,8 @@ import * as moment from 'moment';
   templateUrl: 'listing.html',
 })
 
+
+
 export class ListingPage {
   eventSource = [];
   viewTitle: string;
@@ -25,14 +27,29 @@ export class ListingPage {
     currentDate: new Date()
   };
 
-  constructor(public navCtrl: NavController,private modalCtrl: ModalController, private alertCtrl: AlertController) {
-    
-  
+
+  public list = [];
+
+  constructor(public navCtrl: NavController,private modalCtrl: ModalController, private alertCtrl: AlertController, public navParams: NavParams) {  }
+
+  getData(){
+    let title = this.navParams.get('title');
+    let img = this.navParams.get('img');
+    var item = new function(){
+        this.title = title;
+        this.img = img;
+      }
+    this.list.push(item);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListingPage');
+    console.log(this.navParams.get('title'));
+    console.log(this.navParams.get('description'));
+    console.log(this.navParams.get('img'));
+    this.getData();
   }
+
 
   addEvent() {
     let modal = this.modalCtrl.create('EventModalPage', {selectedDay: this.selectedDay});
