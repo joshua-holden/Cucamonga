@@ -12,16 +12,16 @@
 
     <ion-grid>
         <ion-row>
-            <ion-col>
-                <ion-searchbar (ionInput)="filterItems($event)">
+            <ion-col col-10>
+              <ion-searchbar (ionInput)="filterItems($event)">
 
-                </ion-searchbar>
+              </ion-searchbar>
             </ion-col>
-            <!--<ion-col>
-  			<button ion-button icon-only>
-  				<ion-icon name="funnel"></ion-icon>
-  			</button>
-  		</ion-col>-->
+            <ion-col col-2>
+  			       <button ion-button icon-only class="filter">
+  				    <ion-icon name="funnel"></ion-icon>
+  			     </button>
+  		      </ion-col>
         </ion-row>
     </ion-grid>
 </ion-header>
