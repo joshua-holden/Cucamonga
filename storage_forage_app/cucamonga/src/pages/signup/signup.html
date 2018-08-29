@@ -1,0 +1,64 @@
+<!--
+  Sign up page.
+  @authors
+  	-Turner Cruz
+  	-Jorah Hinman
+	-Joshua Holden
+	-Spencer Woods
+-->
+<ion-header>
+  <ion-navbar color="orange">
+    <ion-title>Create Account</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <form [formGroup]="signup">
+	
+	    <div class ="signupForm">
+		<ion-item>
+		    <ion-label floating>First Name</ion-label>
+		    <ion-input type="text" class="input" formControlName="firstname" [class.invalid]="!signup.controls.firstname.valid && submitAttempt"></ion-input>
+		</ion-item>
+		<ion-item  *ngIf="!signup.controls.firstname.valid && submitAttempt">
+		    <p>Please enter a valid first name.</p>
+		</ion-item>
+		<ion-item>
+		    <ion-label floating>Last Name</ion-label>
+		    <ion-input type="text" class="input" formControlName="lastname" [class.invalid]="!signup.controls.lastname.valid && submitAttempt"></ion-input>
+		</ion-item>
+		<ion-item *ngIf="!signup.controls.lastname.valid && submitAttempt">
+		    <p>Please enter a valid last name.</p>
+		</ion-item>
+		
+		<ion-item>
+		    <ion-label floating>Email</ion-label>
+		    <ion-input type="email" class="input" formControlName="email"></ion-input>
+		</ion-item>
+		<ion-item *ngIf="!signup.controls.email.valid && submitAttempt">
+		    <p>Please enter a valid email.</p>
+		</ion-item>
+		<ion-item>
+		    <ion-label floating>Password</ion-label>
+		    <ion-input type="password" class="input" formControlName="password"></ion-input>
+		</ion-item>
+		<ion-item>
+		    <ion-label floating>Confirm Password</ion-label>
+		    <ion-input type="password" formControlName="passwordconfirm"></ion-input>
+		</ion-item>
+		<ion-item *ngIf="signup.controls.passwordconfirm.touched && signup.hasError('mismatchedPasswords') && signup.controls.password.valid">
+		    <p>Passwords do not match.</p>
+		</ion-item>
+		<ion-item>
+		    <ion-label floating>Date of Birth</ion-label>
+		    <ion-datetime class="input" formControlName="birthday" #bdate></ion-datetime>
+		</ion-item>
+		<ion-item *ngIf="!signup.controls.birthday.valid && submitAttempt">
+		    <p>Please enter a valid date of birth.</p>
+		</ion-item>
+	    </div>
+	
+	<button class="submitButton" ion-button full type="submit" (click)="submitForm()">Submit</button>
+    </form>
+</ion-content>
