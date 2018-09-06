@@ -1,12 +1,44 @@
-<ion-content>
-    <div class="leftHalf" id="left" (click)="openSignup()">
-        <h1 class="leftText">I Have Space</h1>
-    </div>
-    <div class="rightHalf" id="right" (click)="openDashboard()">
-        <h1 class="rightText">I Need Space</h1>
+<body class="fade-in">
+<ion-header >
+	<ion-navbar color=orange>
+		<ion-title text-center>
+				<strong>Welcome to StorageForage</strong>
+		</ion-title>
+	</ion-navbar>
+</ion-header>
 
-    </div>
-    <div class="login" id="login" (click)="openLogin()">
-        <h1 class="loginText">Login</h1>
-    </div>
+<ion-content text-center padding-vertical>
+	<form [formGroup]="login">
+	<div class ="loginForm">
+	<ion-item>
+	    <ion-label floating>Email</ion-label>
+            <ion-input type="email" class="input" formControlName="email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
+	  </ion-item>
+          <ion-item *ngIf="!login.controls.email.valid && submitAttempt">
+            Please enter a valid email
+          </ion-item>
+	  <ion-item>
+	    <ion-label floating>Password</ion-label>
+            <ion-input type="password" class="input" formControlName="password"></ion-input>
+	  </ion-item> 
+	</div>
+	  </form>
 </ion-content>
+<ion-footer no-padding>
+	<ion-row>
+		<!-- <ion-col text-center> -->
+		    <button ion-button full outline clear style="color:black" (click)="openDashboard()">
+		        Log In
+		    </button>
+		<!-- </ion-col> -->
+		<!-- <div class="line"></div> -->
+
+		<!-- <ion-col text-center> -->
+		    <button ion-button full outline clear style="color:black" (click)="openSignup()">
+		        Create Account
+		    </button>
+		<!-- </ion-col> -->
+	</ion-row>
+
+</ion-footer>
+</body>
