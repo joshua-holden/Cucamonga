@@ -14,11 +14,12 @@
 
 
 <ion-content padding>
+  <div style="padding-right: 10px;">
   <ion-item>
     <ion-label floating>Title</ion-label>
     <ion-input type=text></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item style="margin-left: none;">
     <ion-label floating>Address</ion-label>
     <ion-input type=text></ion-input>
   </ion-item>
@@ -39,20 +40,29 @@
   </ion-item>
   <ion-item>
     <ion-label floating>Amenities</ion-label>
-    <ion-input type=text></ion-input>
-    <!--chage input type-->
-    <!--ion grid?-->
-  </ion-item>
-  <ion-item>
-    <ion-label floating>Images</ion-label>
-    <ion-input type=text></ion-input>
-    <!--chage input type-->
-  </ion-item>
+    <ion-select [(ngModel)]="amenities" multiple="true">
+    <ion-option>Locked</ion-option>
+    <ion-option>Security</ion-option>
+    <ion-option>Climate-Control</ion-option>
+    <ion-option>Drive Up</ion-option>
+    <ion-option>Business Facilities</ion-option>
+  </ion-select>
+</ion-item>
+
+ 
+    <button ion-button block  style="margin-top: 50px; margin-left: 10px" (click)="getPictures()">Upload Images</button>
+    <!-- <div *ngFor="let image of images">
+   <img src="{{image}}"/> 
+   </div>-->
+
   <ion-item>
     <ion-label floating>Description</ion-label>
-    <ion-input type= text></ion-input>
+    <ion-textarea></ion-textarea>
     <!--chage input type-->
   </ion-item>
+  <button ion-button block color="orange" style="margin-left: 10px; margin-top: 20px; color: white">Create</button>
+</div>
+</ion-content>
+
   <button ion-button block color="orange">Create</button>
 
-</ion-content>
