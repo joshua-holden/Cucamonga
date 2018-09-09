@@ -7,42 +7,66 @@
 <ion-header>
 
     <ion-navbar color="orange">
-        <ion-title>Listing</ion-title>
+        <ion-title><strong>Listing</strong></ion-title>
     </ion-navbar>
-
 </ion-header>
-
 <ion-content>
 
 
     <div class="currentListing" *ngFor="let item of list">
-        <h1 id="listing">{{item.title}}</h1>
-        <img src={{item.img}} id="examplePic">
-        <li id="attrib">
-            <ul id="ratings" class="listItem">
-                <ion-icon name="star" class="star"></ion-icon>
-                <ion-icon name="star" class="star"></ion-icon>
-                <ion-icon name="star" class="star"></ion-icon>
-                <ion-icon name="star" class="star"></ion-icon>
-            </ul>
-            <ul class="listItem">100 sq. feet</ul>
-            <ul class="listItem">Temperature Controlled</ul>
-            <ul class="listItem">Secure</ul>
-        </li>
-        <div id="description">
-            <p id="paragraph">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium est vel feugiat fringilla. Nulla scelerisque, elit maximus imperdiet efficitur, mi massa sagittis mi, quis suscipit erat eros a risus. Mauris purus arcu, vulputate quis rhoncus ac,
-                lacinia ac velit. Nunc commodo sem odio, sed laoreet sapien molestie et. Suspendisse id augue in eros mollis vehicula. In vitae diam nec quam pharetra facilisis. Donec scelerisque risus nibh, ut luctus sapien tincidunt id. Praesent maximus
-                nulla sed nisi vestibulum rutrum. Pellentesque a placerat leo, quis efficitur ipsum. Mauris tristique leo ut orci accumsan, ut maximus dolor lacinia. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                Proin placerat felis arcu, in mattis nunc euismod a. Nullam commodo condimentum est, ut placerat nibh placerat in. Vestibulum bibendum ornare mauris, at ultricies leo sagittis in. Vivamus volutpat quam elit, nec bibendum dolor sodales
-                ac.
 
+    <ion-grid>
+        <ion-row>
+            <ion-col class="space">
+                <img src={{item.img}} id="examplePic">
+            </ion-col>
+        </ion-row>
+    </ion-grid>    
+        <div class="listcontent">
+    <ion-grid>    
+        <ion-row>
+            <ion-col col-6 text-left class="title">
+                <p style="margin-top: 0px; margin-bottom: 0px;"><strong>{{item.title}}</strong></p>
+            </ion-col>
+            <ion-col col-6 text-center class="profilepic">
+                <img src="https://www.w3schools.com/howto/img_avatar.png" style="border-radius: 50%; max-width: 80px">
+                <p>Firstname Lastname</p>
+            </ion-col>
+        </ion-row>
+        <ion-row><p style="color: #828282">Downtown Boise</p></ion-row>
+    </ion-grid>
+    <hr>
+        <ion-row>
+            <ion-col text-left>
+                100 sq. ft
+            </ion-col>
+            <ion-col text-left>
+                Climate Control
+            </ion-col>
+            <ion-col text-left>
+                Indoor
+            </ion-col>
+            <ion-col text-left>
+                    Shelving
+            </ion-col>
+            <ion-col text-left>
+                Secure
+            </ion-col>
+        </ion-row>
+        <hr>
+        <ion-row>
+            <ion-col text-left>
 
-            </p>
-        </div>
-    </div>
+                <p id="paragraph">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium est vel feugiat fringilla. Nulla scelerisque, elit maximus imperdiet efficitur, mi massa sagittis mi, quis suscipit erat eros a risus. Mauris purus arcu, vulputate quis rhoncus ac,
+                </p>
+            </ion-col>
+        </ion-row>
+</div>
+</div>
 
-
+<ion-row>
+            <ion-col>
     <div id="calendarView">
         <ion-buttons end>
             <button ion-button icon-only (click)="addEvent()">
@@ -52,5 +76,10 @@
         <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" step="30" class="calendar">
         </calendar>
     </div>
+</ion-col>
+</ion-row>
+
 
 </ion-content>
+
+

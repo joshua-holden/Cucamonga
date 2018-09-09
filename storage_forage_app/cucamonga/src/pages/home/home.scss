@@ -21,8 +21,9 @@
 
 /*
 .loginForm {
-    max-height: 100%;
-    max-width: 100%;
+max-height: 100%;
+    max-width: 80%;
+    margin: 0 auto;
     margin-top: 30vh;
     margin-bottom:30vh;
     padding-right: 30%;
@@ -33,6 +34,8 @@
 @media only screen and (min-height: 320px) and (max-height: 479px){
     .loginForm {
     max-height: 100%;
+    max-width: 70%;
+    margin: 0 auto;
     margin-top: 3vh;
     margin-bottom:3vh;
 
@@ -43,8 +46,9 @@
 @media only screen and (min-height: 480px) and (max-height: 767px){
     .loginForm {
     max-height: 100%;
+    max-width: 70%;
+    margin: 0 auto;
     margin-top: 25vh;
-    margin-bottom:30vh;
 
 }
 }
@@ -53,8 +57,10 @@
 @media only screen and (min-height: 768px) and (max-height: 991px){
     .loginForm {
     max-height: 100%;
+    max-width: 70%;
+    margin: 0 auto;
     margin-top: 30vh;
-    margin-bottom:30vh;
+
 
 }
 }
@@ -62,8 +68,10 @@
 @media only screen and (min-height: 992px) and (max-height: 1999px){ 
     .loginForm {
     max-height: 100%;
+    max-width: 70%;
+    margin: 0 auto;
     margin-top: 35vh;
-    margin-bottom:30vh;
+
     margin-left:10%;
 
 
@@ -71,10 +79,9 @@
 
 }
 
-ion-col {
-    font-color: black;
+.buttonhome {
+    color: black !important;
 }
-
 
 .line {
     background-color: grey;

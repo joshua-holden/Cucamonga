@@ -33,7 +33,7 @@ export class BrowsePage{
 	   for (var i = 1; i <= 20; i++) {
       var item = new function(){
         this.id = "id" + i;
-        this.title = "Listing " + i;
+        this.title = "This is listing title " + i + ", and it will be about this long...";
         this.description = "This is a description for listing " + i;
         this.img = "assets/imgs/" + i + ".jpg";
       }

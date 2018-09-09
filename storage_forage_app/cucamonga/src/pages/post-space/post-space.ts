@@ -19,13 +19,17 @@ export class PostSpacePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker) {
   }
 
-/*
-this.imagePicker.getPictures(options).then((results) => {
-  for (var i = 0; i < results.length; i++) {
-      console.log('Image URI: ' + results[i]);
-  }
-}, (err) => { });
-*/
+public images = [];
+
+getPictures(){
+this.imagePicker.getPictures({
+    }).then( results =>{
+      console.log(results);
+      for(let i=0; i < results.length;i++){
+        this.images.push(results[i]);
+      };
+    });
+}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostSpacePage');

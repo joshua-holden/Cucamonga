@@ -13,9 +13,9 @@
 </ion-header>
 
 
-<ion-content >
+<ion-content text-center padding>
     <form [formGroup]="login">
-      <ion-list inset>
+
         <div class ="loginForm">
 	  <ion-item>
 	    <ion-label floating>email</ion-label>
@@ -28,8 +28,21 @@
 	    <ion-label floating>password</ion-label>
             <ion-input type="password" class="input" formControlName="password"></ion-input>
 	  </ion-item>   
-        </div>
-      </ion-list>  
-      <button class="submitButton" ion-button full type="submit" (click)="submitForm()">Submit</button>
+        
+      <ion-row>
+    <!-- <ion-col text-center> -->
+        <button ion-button full outline clear style="color:black" (click)="openDashboard()">
+            Log In
+        </button>
+    <!-- </ion-col> -->
+    <!-- <div class="line"></div> -->
+
+    <!-- <ion-col text-center> -->
+        <button ion-button full outline clear style="color:black" (click)="openSignup()">
+            Create Account
+        </button>
+    <!-- </ion-col> -->
+  </ion-row>
+    </div>
     </form>
 </ion-content>

@@ -49,11 +49,12 @@
   </ion-select>
 </ion-item>
 
- 
-    <button ion-button block  style="margin-top: 50px; margin-left: 10px" (click)="getPictures()">Upload Images</button>
-    <!-- <div *ngFor="let image of images">
-   <img src="{{image}}"/> 
-   </div>-->
+  <ion-row style="margin-top: 50px; margin-left: 10px">
+    <ion-col *ngFor="let image of images">
+   <img src="{{image}}"/>
+   </ion-col> 
+  </ion-row>
+    <button ion-button block  style="margin-left: 10px" (click)="getPictures()">Upload Images</button>
 
   <ion-item>
     <ion-label floating>Description</ion-label>

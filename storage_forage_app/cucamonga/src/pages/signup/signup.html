@@ -58,7 +58,15 @@
 		    <p>Please enter a valid date of birth.</p>
 		</ion-item>
 	    </div>
-	
-	<button class="submitButton" ion-button full type="submit" (click)="submitForm()">Submit</button>
+	<ion-footer no-padding>
+	<ion-row>
+
+		    <button ion-button full outline clear style="color:black" (click)="openSignup()">
+		        Submit
+		    </button>
+		<!-- </ion-col> -->
+	</ion-row>
+</ion-footer>
+
     </form>
 </ion-content>
