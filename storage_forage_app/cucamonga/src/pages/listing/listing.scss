@@ -11,6 +11,15 @@ body {
     margin: 0 auto;
 }
 
+.city {
+    color: #828282;
+}
+
+.listtitle {
+    margin-top: 0px; 
+    margin-bottom: 0px;
+}
+
 #attrib {
     color: black;
     list-style: none;
@@ -35,7 +44,7 @@ body {
 .title {
     color: #484848;
     font-size: 30px;
-
+    font-family: Roboto,Helvetica Neue,sans-serif !important;
 
     margin: 0 auto;
     margin-top: 0px;

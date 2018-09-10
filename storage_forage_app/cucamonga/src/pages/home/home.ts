@@ -25,7 +25,7 @@ export class HomePage {
   }
 
 httpGet(){
-this.http.get('http://ionic.io', {}, {})
+this.http.get('https://swapi.co/api/', {}, {})
   .then(data => {
 
     console.log(data.status);
