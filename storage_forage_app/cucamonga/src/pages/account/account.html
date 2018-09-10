@@ -13,61 +13,60 @@
 </ion-header>
 
 
-<ion-content>
-    <div class="userInfo">
-        <h2 id="user">John Doe</h2>
-        <img src="assets/imgs/avatar.png" id="profilePhoto">
+<ion-content >
+    <ion-grid class="ionGrid">
+        <ion-row>
+            <ion-col col-sm style="border: 1px solid #828282; margin-top: 20px;">
+                <h2>John Doe</h2>
+                <img src="assets/imgs/avatar.png" style="border-radius: 50%; padding: 10px">
+                <a href=""><p>View Profile</p></a>
+                <a href=""><a>Edit Profile</a></a>
+            </ion-col>
+            <ion-col col text-left class="hidemobile">
+                <div style="background-color: #eff0f1; width: 100%; border-bottom: 1px solid black; padding: 5px">
+                <h3 style="margin: 0px">Notifications</h3>
+                </div>
 
-        <div id="ratings">
-            <ion-icon name="star" class="star"></ion-icon>
-            <ion-icon name="star" class="star"></ion-icon>
-            <ion-icon name="star" class="star"></ion-icon>
-            <ion-icon name="star" class="star"></ion-icon>
-            <a href="#reviews">Write/Read...</a>
-
-        </div>
-        <div id="badges">
-            <ion-icon name="lock" class="badge"></ion-icon>
-            <ion-icon name="paw" class="badge"></ion-icon>
-            <ion-icon name="thermometer" class="badge"></ion-icon>
-            <ion-icon name="checkmark-circle" class="badge"></ion-icon>
-        </div>
-        <h3 id="location">10101 s 1st St, Boise ID</h3>
-        <button id="edit">Edit Info</button>
-
-    </div>
-    <div class="currentListing">
-        <h3 id="listing">Current Listing</h3>
-        <img src="/assets/imgs/example-space.jpg" id="examplePic">
-        <li id="attrib">
-            <ul class="listItem">100 sq. feet</ul>
-            <ul class="listItem">Temperature Controlled</ul>
-            <ul class="listItem">Secure</ul>
-        </li>
-        <div id="description">
-            <p id="paragraph">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium est vel feugiat fringilla. Nulla scelerisque, elit maximus imperdiet efficitur, mi massa sagittis mi, quis suscipit erat eros a risus. Mauris purus arcu, vulputate quis rhoncus ac,
-                lacinia ac velit. Nunc commodo sem odio, sed laoreet sapien molestie et. Suspendisse id augue in eros mollis vehicula. In vitae diam nec quam pharetra facilisis. Donec scelerisque risus nibh, ut luctus sapien tincidunt id. Praesent maximus
-                nulla sed nisi vestibulum rutrum. Pellentesque a placerat leo, quis efficitur ipsum. Mauris tristique leo ut orci accumsan, ut maximus dolor lacinia. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                Proin placerat felis arcu, in mattis nunc euismod a. Nullam commodo condimentum est, ut placerat nibh placerat in. Vestibulum bibendum ornare mauris, at ultricies leo sagittis in. Vivamus volutpat quam elit, nec bibendum dolor sodales
-                ac.
-
-
-            </p>
-        </div>
-    </div>
-    <div class="previousListings">
-        <h3 id="previous">Previous Listings</h3>
-        <p id="paragraph2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pretium est vel feugiat fringilla. Nulla scelerisque, elit maximus imperdiet efficitur, mi massa sagittis mi, quis suscipit erat eros a risus. Mauris purus arcu, vulputate quis rhoncus ac,
-            lacinia ac velit. Nunc commodo sem odio, sed laoreet sapien molestie et. Suspendisse id augue in eros mollis vehicula. In vitae diam nec quam pharetra facilisis. Donec scelerisque risus nibh, ut luctus sapien tincidunt id. Praesent maximus
-            nulla sed nisi vestibulum rutrum. Pellentesque a placerat leo, quis efficitur ipsum. Mauris tristique leo ut orci accumsan, ut maximus dolor lacinia. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin
-            placerat felis arcu, in mattis nunc euismod a. Nullam commodo condimentum est, ut placerat nibh placerat in. Vestibulum bibendum ornare mauris, at ultricies leo sagittis in. Vivamus volutpat quam elit, nec bibendum dolor sodales ac.
-        </p>
-
-
-
-
-    </div>
+                <ion-item>Notification 1</ion-item>
+                <ion-item>Notification 2</ion-item>
+                <ion-item>Notification 3</ion-item>
+                <ion-item>Notification 4</ion-item>
+                <ion-item>Notification 5</ion-item>
+            
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="hidebrowser" col text-left>
+                <div style="background-color: #eff0f1; width: 100%; border-bottom: 1px solid black; padding: 5px">
+                <h3 style="margin: 0px">Notifications</h3>
+                </div>
+                
+                <ion-item>Notification 1</ion-item>
+                <ion-item>Notification 2</ion-item>
+                <ion-item>Notification 3</ion-item>
+                <ion-item>Notification 4</ion-item>
+            
+            </ion-col>
+        </ion-row>    
+        <ion-row style="border: 1px solid #828282; margin-bottom: 20px; margin-top: 20px">
+                <div style="background-color: #eff0f1; width: 100%; border-bottom: 1px solid black; padding: 5px">
+                <h3 style="margin: 0px">My Listings</h3>
+                </div>  
+            <ion-col text-left>
+                <img src="/assets/imgs/example-space.jpg" style="max-height: 280px; max-width: 100%">
+                <p style="color: #828282">Boise</p>
+                <p><strong>Empty Extra Bedroom</strong></p>
+                <p>$60 per month</p>
+                <img src="assets/imgs/star_rating.png" style="max-width: 100px">
+            </ion-col>
+            <ion-col text-left>
+                <img src="/assets/imgs/19.jpg" style="max-height: 280px; max-width: 100%">
+                <p style="color: #828282">Boise</p>
+                <p><strong>Large Attic</strong></p>
+                <p>$40 per month</p>
+                <img src="assets/imgs/star_rating.png" style="max-width: 100px">
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
 </ion-content>
