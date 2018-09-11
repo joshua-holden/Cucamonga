@@ -1,23 +1,20 @@
 package com.storageforage;
 
 import javax.ws.rs.GET;
-
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
 
 @Path("")
 public class StorageForageApp {
-	
-	public StorageForageApp() {
-		StorageForageAppComponent comp = DaggerStorageForageAppComponent.create();
-		comp.getPostingResource();
-		comp.getAccountResource();
-	}
-	
-	@GET
-	@Produces("text/plain")
-	public String getHelloWorld() {
-		return "Hello world!";
-	}
 
+    public StorageForageApp() {
+//        comp = DaggerStorageForageAppComponent.builder()
+//                .storageForageAppModule(new StorageForageAppModule(this))
+//                .build();
+//        comp.getInstance();
+    }
+    
+    @GET
+    public String get() {
+        return "hello world!";
+    }
 }

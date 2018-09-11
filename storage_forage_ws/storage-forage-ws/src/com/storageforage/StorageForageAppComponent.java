@@ -1,16 +1,23 @@
 package com.storageforage;
 
+import java.util.Set;
+
+import javax.inject.Named;
 import javax.inject.Singleton;
 
-import com.storageforage.resources.AccountResource;
-import com.storageforage.resources.PostingResource;
+import com.storageforage.resources.ResourceModule;
 
 import dagger.Component;
 
 @Singleton
-@Component
+@Component( modules = { 
+    StorageForageAppModule.class, 
+    ResourceModule.class 
+})
 public interface StorageForageAppComponent {
 	
-	AccountResource getAccountResource();	
-	PostingResource getPostingResource();
+	public void inject(StorageForageApp app);
+	
+	@Named("instance")
+	public Set<Object> getInstance();
 }

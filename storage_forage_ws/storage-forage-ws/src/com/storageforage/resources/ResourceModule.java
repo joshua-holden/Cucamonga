@@ -5,17 +5,18 @@ import javax.inject.Named;
 import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.IntoSet;
+import javax.inject.Singleton;
 
 @Module
-public abstract class ResourceModule {
+public interface ResourceModule {
 
 	@Binds
 	@IntoSet
 	@Named("instance")
-	public abstract Object accountResource(AccountResource accountResrource);
+	public Object bindAccountResource(AccountResource accountResrource);
 	
 	@Binds
 	@IntoSet
 	@Named("instance")
-	public abstract Object postingResource(PostingResource postingResrource);
+	public Object bindPostingResource(PostingResource postingResrource);
 }
