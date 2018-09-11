@@ -1,5 +1,8 @@
 package com.storageforage.resources;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.GET;
@@ -14,6 +17,8 @@ public class StatusResource {
 	
 	@GET
 	public String getMessage() {
-		return "Hello world!";
+	   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+	   LocalDateTime now = LocalDateTime.now();   
+		return "Hello world!\nthe current date and time is: " + dtf.format(now);
 	}
 }
