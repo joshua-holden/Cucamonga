@@ -1,20 +1,42 @@
 package com.storageforage;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import java.util.Map;
 
-@Path("")
-public class StorageForageApp {
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.GET;
+import com.sun.jersey.api.core.ResourceConfig;
+
+@ApplicationPath("/")
+public class StorageForageApp extends ResourceConfig{
+	
+	StorageForageAppComponent comp;
 
     public StorageForageApp() {
-//        comp = DaggerStorageForageAppComponent.builder()
-//                .storageForageAppModule(new StorageForageAppModule(this))
-//                .build();
-//        comp.getInstance();
+        comp = DaggerStorageForageAppComponent.create();
+        comp.getInstance();
     }
-    
-    @GET
-    public String get() {
-        return "hello world!";
-    }
+
+	@Override
+	public Map<String, Boolean> getFeatures() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean getFeature(String featureName) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Map<String, Object> getProperties() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object getProperty(String propertyName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

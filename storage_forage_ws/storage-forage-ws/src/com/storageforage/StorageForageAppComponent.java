@@ -10,13 +10,10 @@ import com.storageforage.resources.ResourceModule;
 import dagger.Component;
 
 @Singleton
-@Component( modules = { 
-    StorageForageAppModule.class, 
+@Component( modules = {  
     ResourceModule.class 
 })
 public interface StorageForageAppComponent {
-	
-	public void inject(StorageForageApp app);
 	
 	@Named("instance")
 	public Set<Object> getInstance();

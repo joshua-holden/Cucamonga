@@ -4,18 +4,16 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
 
 @Singleton
-@Path("postings")
-public class PostingResource {
+@Path("")
+public class StatusResource {
 
 	@Inject
-	public PostingResource() {}
+	public StatusResource() {}
 	
 	@GET
-	@Produces("text/plain")
 	public String getMessage() {
-		return "Postings!";
+		return "Hello world!";
 	}
 }

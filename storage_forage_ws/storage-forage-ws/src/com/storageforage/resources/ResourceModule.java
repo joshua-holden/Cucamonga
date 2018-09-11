@@ -5,7 +5,6 @@ import javax.inject.Named;
 import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.IntoSet;
-import javax.inject.Singleton;
 
 @Module
 public interface ResourceModule {
@@ -19,4 +18,9 @@ public interface ResourceModule {
 	@IntoSet
 	@Named("instance")
 	public Object bindPostingResource(PostingResource postingResrource);
+	
+	@Binds
+	@IntoSet
+	@Named("instance")
+	public Object bindStatusResource(StatusResource statusResource);
 }
