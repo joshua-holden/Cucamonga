@@ -20,7 +20,7 @@ Sprint | Estimated Velocity | Actual Velocity
 ------ | ------------------ | ---------------
 1      | 10                 | 13
 2      | 24                 | 24
-3      | 11                 | 11
+3      | 9                  | 11
 4      | TBD                | TBD
 
 ### Link to Linter Reports
