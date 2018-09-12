@@ -31,7 +31,7 @@
     max-height: 100%;
     max-width: 80%;
     margin: 0 auto;
-    margin-top: 20vh;
+    margin-top: 10vh;
 
 
     }
@@ -49,9 +49,24 @@
     }
 }
 
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .signupForm {
+    max-height: 100%;
+    max-width: 50%;
+    margin: 0 auto;
+    margin-top: 10vh;
+
+
+    }
+
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1999px){ 
     .signupForm {
-
+        max-height: 100%;
+    max-width: 40%;
+    margin: 0 auto;
+    margin-top: 10vh;
     }
 }
 

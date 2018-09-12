@@ -29,14 +29,39 @@
 
 
 <ion-content padding>
-    <ion-list >
-        <ion-item class="fade-in" *ngFor="let item of items" (click)="openListing(item)" >
-          <ion-thumbnail item-start>
-            <img src={{item.img}}>
-          </ion-thumbnail>
+    <!-- <ion-list> -->
+      <ion-grid>
+<ion-row text-center>
+  <ion-col *ngFor="let item of items">
+      <ion-card style="min-width: 300px; max-width: 375px" class="fade-in"  (click)="openListing(item)">
+  <img style="max-height: 200px" src={{item.img}}/>
+  <ion-card-content text-left>
+    <ion-card-title>
+      {{item.title}}
+      </ion-card-title>
+      <p><strong>Empty Extra Bedroom</strong></p>
+                <p>$60 per month</p>
+                <img src="assets/imgs/star_rating.png" style="max-width: 100px;">
+  </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+    </ion-grid>
+
+        <!-- <ion-item class="fade-in" *ngFor="let item of items" (click)="openListing(item)">
+          <ion-row>
+            <ion-col>
+              <ion-thumbnail>
+                <img src={{item.img}}>
+              </ion-thumbnail>
+            </ion-col>
+            <ion-col text-left>
           <h2>{{item.title}}</h2>
           <p>{{item.description}}</p>
-        </ion-item>
-    </ion-list>
+        </ion-col>
+        </ion-row>
+        </ion-item> -->
+    <!-- </ion-list> -->
 </ion-content>
 </body>

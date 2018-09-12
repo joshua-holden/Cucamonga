@@ -15,25 +15,25 @@
 
     <div class="currentListing" *ngFor="let item of list">
 
-    <ion-grid>
+    <ion-grid class="listingphoto">
         <ion-row>
-            <ion-col class="space">
+            <ion-col class="listingphoto">
                 <img src={{item.img}} id="examplePic">
             </ion-col>
         </ion-row>
     </ion-grid>    
         <div class="listcontent">
     <ion-grid>    
-        <ion-row>
-            <ion-col col-6 text-left class="title">
-                <p class="listtitle"><strong>{{item.title}}</strong></p>
+        <ion-row style="margin-top: 10px">
+            <ion-col col-6 text-left class="title" id="mobtit">
+                <p class="listtitle" id="mobtit"><strong>{{item.title}}</strong></p>
+                <p class="city">Downtown Boise</p>
             </ion-col>
             <ion-col col-6 text-center class="profilepic">
                 <img src="https://www.w3schools.com/howto/img_avatar.png" style="border-radius: 50%; max-width: 80px">
                 <p>Firstname Lastname</p>
             </ion-col>
         </ion-row>
-        <ion-row><p class="city">Downtown Boise</p></ion-row>
     </ion-grid>
     <hr>
         <ion-row>
@@ -62,12 +62,9 @@
                 </p>
             </ion-col>
         </ion-row>
-</div>
-</div>
-
-<ion-row>
+        <ion-row>
             <ion-col>
-    <div id="calendarView">
+    <div id="calendarView" style="max-width: 700px">
         <ion-buttons end>
             <button ion-button icon-only (click)="addEvent()">
               <ion-icon name="add"></ion-icon>
@@ -78,6 +75,10 @@
     </div>
 </ion-col>
 </ion-row>
+</div>
+</div>
+
+
 
 
 </ion-content>

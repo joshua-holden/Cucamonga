@@ -13,11 +13,13 @@ body {
 
 .city {
     color: #828282;
+    font-size: 20px
 }
 
 .listtitle {
     margin-top: 0px; 
     margin-bottom: 0px;
+        font-size: 30px;
 }
 
 #attrib {
@@ -37,7 +39,8 @@ body {
 }
 
 #paragraph {
-    margin-bottom: 0px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     padding-bottom: 0px;
 }
 
@@ -50,6 +53,33 @@ body {
     margin-top: 0px;
     margin-bottom: 0px;
     padding-bottom: 0px;
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px){
+    #mobtit {
+    font-size: 25px;
+
+
+}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    #mobtit {
+    font-size: 25px;
+}
+}
+
+
+
+
+
+
+
+.listingphoto {
+    
+    padding: 0px;
+    margin: 0px;
+
 }
 
 #description {
