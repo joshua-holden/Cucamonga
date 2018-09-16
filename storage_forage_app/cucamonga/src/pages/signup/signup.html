@@ -1,21 +1,11 @@
-<!--
-  Sign up page.
-  @authors
-  	-Turner Cruz
-  	-Jorah Hinman
-	-Joshua Holden
-	-Spencer Woods
--->
-<ion-header>
+﻿<ion-header>
   <ion-navbar color="orange">
     <ion-title>Create Account</ion-title>
   </ion-navbar>
 </ion-header>
 
-
 <ion-content>
-    <form [formGroup]="signup">
-	
+    <form [formGroup]="signup">	
 	    <div class ="signupForm">
 		<ion-item>
 		    <ion-label floating>First Name</ion-label>
@@ -54,19 +44,20 @@
 		    <ion-label floating>Date of Birth</ion-label>
 		    <ion-datetime class="input" formControlName="birthday" #bdate></ion-datetime>
 		</ion-item>
-		<ion-item *ngIf="!signup.controls.birthday.valid && submitAttempt">
-		    <p>Please enter a valid date of birth.</p>
-		</ion-item>
+          <ion-item *ngIf="!signup.controls.birthday.touched && submitAttempt">
+            <p>Please enter a valid date of birth.</p>
+          </ion-item>
+          <ion-item *ngIf="signup.controls.birthday.touched && signup.hasError('validateAge')">
+            <p>You must be 18 years old to use this app.</p>
+          </ion-item>
 	    </div>
 	<ion-footer no-padding>
-	<ion-row>
-
-		    <button ion-button full outline clear style="color:black; margin: 0px" (click)="openSignup()">
-		        Submit
-		    </button>
-		<!-- </ion-col> -->
-	</ion-row>
-</ion-footer>
-
-    </form>
+	  <ion-row>
+		      <button ion-button full outline clear style="color:black; margin: 0px" (click)="openSignup()">
+		          Submit
+		      </button>
+		  <!-- </ion-col> -->
+	  </ion-row>
+    </ion-footer>
+  </form>
 </ion-content>

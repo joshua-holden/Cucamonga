@@ -1,11 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+﻿import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import moment from 'moment';
-/**
- * class for the SignupPage page.
- *
- */
 
 @IonicPage()
 @Component({
@@ -30,37 +26,42 @@ export class SignupPage {
     }, {validator: this.matchingPasswords('password', 'passwordconfirm')}); 
 
   }
-    matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
-        // TODO maybe use this https://github.com/yuyang041060120/ng2-validation#notequalto-1
-        return (group: FormGroup): {[key: string]: any} => {
-          let password = group.controls[passwordKey];
-          let passwordconfirm = group.controls[confirmPasswordKey];
+  matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
+      
+      return (group: FormGroup): {[key: string]: any} => {
+        let password = group.controls[passwordKey];
+        let passwordconfirm = group.controls[confirmPasswordKey];
     
-          if (password.value !== passwordconfirm.value) {
-            return {
-              mismatchedPasswords: true
-            };
-          }
+        if (password.value !== passwordconfirm.value) {
+          return {
+            mismatchedPasswords: true
+          };
         }
       }
+  }
+
+  validateAge(birthday: string) {
+      return (group: FormGroup): { [key: string]: any } => {
+          let bdate = group.controls[birthday];
+          let age = moment().diff(bdate.value, 'year', true);
+          if (age != 0 && age < 18) {
+              return {
+                  validateAge: true
+              };
+          }
+      }
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
   }
   
-/* Some validation functionality*/
-submitForm() {
-    let age = moment().diff(this.bdate.value, 'year', true);
-
-    if(age != 0 && age < 18){
-        let alert = this.alrtCtrl.create({
-	    title: "I'm sorry...",
-	    subTitle: 'birth date was not at least 18 years ago',
-	    buttons: ['OK']
-	    });
-	    alert.present();
-	}
-  	this.submitAttempt = true;
-  	console.log(this.signup.value);
+  submitForm() {
+    this.submitAttempt = true;
+    if (this.signup.valid) {
+        //create account
+        console.log('created valid account!');
+        console.log(this.signup.value);
+    }
   }
 }
