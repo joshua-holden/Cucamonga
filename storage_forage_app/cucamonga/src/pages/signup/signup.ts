@@ -1,6 +1,7 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { AngularFireAuth } from '@angular/fire/auth';
 import moment from 'moment';
 
 @IonicPage()
@@ -15,13 +16,17 @@ export class SignupPage {
 
   @ViewChild('bdate') bdate;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formbuilder: FormBuilder, public alrtCtrl: AlertController) {
+  constructor(private fireAuth: AngularFireAuth,
+      public navCtrl: NavController,
+      public navParams: NavParams,
+      public formbuilder: FormBuilder,
+      public alrtCtrl: AlertController) {
   	this.signup = this.formbuilder.group({
       firstname: ['', Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       lastname: ['', Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       birthday: ['', Validators.required],
-  		email: ['', Validators.compose([Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
-  		password: ['', Validators.required],
+  	  email: ['', Validators.compose([Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
+  	  password: ['', Validators.required],
       passwordconfirm: ['', Validators.required],
     }, {validator: this.matchingPasswords('password', 'passwordconfirm')}); 
 
@@ -59,9 +64,7 @@ export class SignupPage {
   submitForm() {
     this.submitAttempt = true;
     if (this.signup.valid) {
-        //create account
-        console.log('created valid account!');
-        console.log(this.signup.value);
+        this.fireAuth.auth.createUserWithEmailAndPassword(this.signup.value.email, this.signup.value.password);
     }
   }
 }
