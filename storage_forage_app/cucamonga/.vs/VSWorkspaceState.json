@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\providers",
+    "\\src\\providers\\account",
+    "\\src\\providers\\posting"
+  ],
+  "SelectedNode": "\\src\\providers\\account\\account.ts",
+  "PreviewInSolutionExplorer": false
+}

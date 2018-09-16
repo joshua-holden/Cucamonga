@@ -24,6 +24,8 @@ import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 import { HTTP } from '@ionic-native/http';
+import { AccountProvider } from '../providers/account/account';
+import { PostingProvider } from '../providers/posting/posting';
 
 // import { EventModalPage } from '../pages/event-modal/event-modal';
 
@@ -71,7 +73,10 @@ import { HTTP } from '@ionic-native/http';
     Camera,
     FilePath,
     HTTP,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AccountProvider,
+    AccountProvider,
+    PostingProvider
   ]
 })
 export class AppModule {}
