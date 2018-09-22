@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf="submitAttempt">{{failedSubmitMessage}}</div>
     <form [formGroup]="signup">	
 	    <div class ="signupForm">
 		<ion-item>

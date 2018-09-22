@@ -12,7 +12,6 @@ import { Camera } from '@ionic-native/camera';
 import { HTTP } from '@ionic-native/http';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
 import { BrowsetabPage } from '../pages/browsetab/browsetab';
@@ -30,8 +29,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AccountProvider } from '../providers/account/account';
 import { PostingProvider } from '../providers/posting/posting';
 
-// import { EventModalPage } from '../pages/event-modal/event-modal';
-
 const firebaseAuth = {
     apiKey: "AIzaSyAXZpabh_R6gPhUexA50tn_t9AED79Rn4Y",
     authDomain: "storage-forage-app.firebaseapp.com",
@@ -44,7 +41,6 @@ const firebaseAuth = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     SignupPage,
     LoginPage,
     BrowsetabPage,
@@ -65,7 +61,6 @@ const firebaseAuth = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     SignupPage,
     LoginPage,
     BrowsetabPage,
@@ -86,7 +81,6 @@ const firebaseAuth = {
     FilePath,
     HTTP,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AccountProvider,
     AccountProvider,
     PostingProvider,
   ]

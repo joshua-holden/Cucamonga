@@ -2,10 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
-    "\\src\\providers\\account",
-    "\\src\\providers\\posting"
+    "\\src\\pages",
+    "\\src\\pages\\signup"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\src\\pages\\signup\\signup.html",
   "PreviewInSolutionExplorer": false
 }

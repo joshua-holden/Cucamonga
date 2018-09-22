@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import * as moment from 'moment';
  
@@ -25,5 +25,4 @@ export class EventModalPage {
   save() {
     this.viewCtrl.dismiss(this.event);
   }
- 
 }

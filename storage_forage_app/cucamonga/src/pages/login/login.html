@@ -1,48 +1,39 @@
-﻿<!--
-  Generated template for the LoginPage page.
+﻿<body class="fade-in">
+  <ion-header>
+    <ion-navbar color=orange>
+      <ion-title text-center>
+        <strong>StorageForage</strong>
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar color="orange">
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content text-center padding>
+  <ion-content text-center padding-vertical>
+    <div *ngIf="submitAttempt">{{failedLoginMessage}}</div>
     <form [formGroup]="login">
-
-        <div class ="loginForm">
-	  <ion-item>
-	    <ion-label floating>email</ion-label>
-            <ion-input type="email" class="input" formControlName="email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
-	  </ion-item>
-          <ion-item *ngIf="!login.controls.email.valid && submitAttempt">
-            Please enter a valid email
-          </ion-item>
-	  <ion-item>
-	    <ion-label floating>password</ion-label>
-            <ion-input type="password" class="input" formControlName="password"></ion-input>
-	  </ion-item>   
-        
-      <ion-row>
-    <!-- <ion-col text-center> -->
-        <button ion-button full outline clear style="color:black" (click)="openDashboard()">
-            Log In
-        </button>
-    <!-- </ion-col> -->
-    <!-- <div class="line"></div> -->
-
-    <!-- <ion-col text-center> -->
-        <button ion-button full outline clear style="color:black" (click)="openSignup()">
-            Create Account
-        </button>
-    <!-- </ion-col> -->
-  </ion-row>
-    </div>
+      <div class="loginForm">
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="email" class="input" formControlName="email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!login.controls.email.valid && submitAttempt">
+          Please enter a valid email
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" class="input" formControlName="password"></ion-input>
+        </ion-item>
+      </div>
     </form>
-</ion-content>
+  </ion-content>
+  <ion-footer no-padding class="footbuttons">
+    <ion-row>
+      <button ion-button full outline clear class="buttonhome" (click)="openDashboard()">
+        Log In
+      </button>
+      <div style="background-color: #e9e9e9; width: 100%; height: 1px"></div>
+      <button ion-button full outline clear class="buttonhome" (click)="openSignup()">
+        Create Account
+      </button>
+    </ion-row>
+  </ion-footer>
+</body>

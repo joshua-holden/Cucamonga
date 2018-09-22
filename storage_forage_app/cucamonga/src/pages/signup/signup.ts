@@ -1,6 +1,7 @@
 ﻿import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { BrowsetabPage } from '../browsetab/browsetab';
 import { AngularFireAuth } from '@angular/fire/auth';
 import moment from 'moment';
 
@@ -12,7 +13,8 @@ import moment from 'moment';
 export class SignupPage {
 
   private signup : FormGroup;
-  private submitAttempt;
+  private submitAttempt: boolean = false;
+  private failedSubmitMessage: string;
 
   @ViewChild('bdate') bdate;
 
@@ -51,7 +53,7 @@ export class SignupPage {
           let age = moment().diff(bdate.value, 'year', true);
           if (age != 0 && age < 18) {
               return {
-                  validateAge: true
+                  validateAge: true,
               };
           }
       }
@@ -62,9 +64,19 @@ export class SignupPage {
   }
   
   submitForm() {
-    this.submitAttempt = true;
-    if (this.signup.valid) {
-        this.fireAuth.auth.createUserWithEmailAndPassword(this.signup.value.email, this.signup.value.password);
-    }
+      if (this.signup.valid) {
+          this.fireAuth.auth.createUserWithEmailAndPassword(this.signup.value.email, this.signup.value.password)
+              .then(data => {
+                  this.navCtrl.push(BrowsetabPage);
+              })
+              .catch(err => {
+                  this.submitAttempt = true;
+                  this.failedSubmitMessage = `${err.code.toUpperCase()}: ${err.message}`;
+              });
+
+      }
+      else {
+
+      }
   }
 }

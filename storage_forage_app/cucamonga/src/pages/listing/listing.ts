@@ -1,22 +1,13 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController , ModalController } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
 import * as moment from 'moment';
-
-/**
- * Generated class for the ListingPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
   selector: 'page-listing',
   templateUrl: 'listing.html',
 })
-
-
 
 export class ListingPage {
   eventSource = [];
@@ -26,7 +17,6 @@ export class ListingPage {
     mode: 'month',
     currentDate: new Date()
   };
-
 
   public list = [];
 
@@ -49,7 +39,6 @@ export class ListingPage {
     console.log(this.navParams.get('img'));
     this.getData();
   }
-
 
   addEvent() {
     let modal = this.modalCtrl.create('EventModalPage', {selectedDay: this.selectedDay});
