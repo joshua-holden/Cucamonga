@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { BrowsetabPage } from '../browsetab/browsetab';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Account } from '../../classes';
+import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
 import moment from 'moment';
 
 @IonicPage()
@@ -19,6 +21,7 @@ export class SignupPage {
   @ViewChild('bdate') bdate;
 
   constructor(private fireAuth: AngularFireAuth,
+      public dbProvider: AngularfireDbProvider,
       public navCtrl: NavController,
       public navParams: NavParams,
       public formbuilder: FormBuilder,
@@ -33,8 +36,7 @@ export class SignupPage {
     }, {validator: this.matchingPasswords('password', 'passwordconfirm')}); 
 
   }
-  matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
-      
+  matchingPasswords(passwordKey: string, confirmPasswordKey: string) {     
       return (group: FormGroup): {[key: string]: any} => {
         let password = group.controls[passwordKey];
         let passwordconfirm = group.controls[confirmPasswordKey];
@@ -67,16 +69,26 @@ export class SignupPage {
       if (this.signup.valid) {
           this.fireAuth.auth.createUserWithEmailAndPassword(this.signup.value.email, this.signup.value.password)
               .then(data => {
+                  this.fireAuth.auth.signInWithEmailAndPassword(this.signup.value.email, this.signup.value.password)
+                  let account: Account = {
+                      userID: data.user.uid,
+                      firstName: this.signup.value.firstname,
+                      lastName: this.signup.value.lastname,
+                      email: this.signup.value.email,
+                      birthDate: this.signup.value.birthday,
+                      //googleData: data,
+                  };
+                  this.dbProvider.addAccount(account);
                   this.navCtrl.push(BrowsetabPage);
               })
               .catch(err => {
+                  console.log(err);
                   this.submitAttempt = true;
                   this.failedSubmitMessage = `${err.code.toUpperCase()}: ${err.message}`;
               });
-
       }
       else {
-
+          this.submitAttempt = true;
       }
   }
 }

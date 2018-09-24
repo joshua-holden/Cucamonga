@@ -25,9 +25,9 @@ import { ListingPage } from '../pages/listing/listing';
 import { NgCalendarModule } from 'ionic2-calendar';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database'
 
-import { AccountProvider } from '../providers/account/account';
-import { PostingProvider } from '../providers/posting/posting';
+import { AngularfireDbProvider } from '../providers/angularfiredb-service/angularfiredb-service';
 
 const firebaseAuth = {
     apiKey: "AIzaSyAXZpabh_R6gPhUexA50tn_t9AED79Rn4Y",
@@ -57,6 +57,7 @@ const firebaseAuth = {
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseAuth),
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -81,8 +82,7 @@ const firebaseAuth = {
     FilePath,
     HTTP,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AccountProvider,
-    PostingProvider,
+    AngularfireDbProvider,
   ]
 })
 export class AppModule {}

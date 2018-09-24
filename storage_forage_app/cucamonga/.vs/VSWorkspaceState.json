@@ -2,9 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\pages",
-    "\\src\\pages\\signup"
+    "\\src\\providers",
+    "\\src\\providers\\angularfiredb-service",
+    "\\src\\providers\\firestore-service"
   ],
-  "SelectedNode": "\\src\\pages\\signup\\signup.html",
+  "SelectedNode": "\\src\\providers\\firestore-service\\firestore-service.ts",
   "PreviewInSolutionExplorer": false
 }
