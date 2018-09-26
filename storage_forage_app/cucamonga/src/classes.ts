@@ -13,5 +13,4 @@ export interface Account {
     lastName: string;
     email: string;
     birthDate: string;
-    googleData?: any;
 }
