@@ -1,4 +1,6 @@
 ﻿export interface Posting {
+    /*postID: string;
+    userID: string;*/
     title: string;
     address: string;
     size: string;

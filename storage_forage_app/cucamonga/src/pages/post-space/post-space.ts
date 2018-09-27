@@ -1,6 +1,10 @@
 ﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Posting } from '../../classes';
 
 @IonicPage()
 @Component({
@@ -9,10 +13,20 @@ import { ImagePicker } from '@ionic-native/image-picker';
 })
 export class PostSpacePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker) {
+private posting : FormGroup;
+public images = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker, public formbuilder: FormBuilder, public dbProvider: AngularfireDbProvider, public fireAuth: AngularFireAuth) {
+  this.posting = this.formbuilder.group({
+      title: ['', Validators.required], 
+      address: ['', Validators.required],
+      price: ['', Validators.required],
+      size: [''],
+      amenities: [''],
+      description: ['']
+    })
   }
 
-public images = [];
 
 getPictures(){
 this.imagePicker.getPictures({
@@ -23,6 +37,20 @@ this.imagePicker.getPictures({
       };
     });
 }
+
+createPost(){
+  let post: Posting = {
+    title: this.posting.value.title,
+    address: this.posting.value.address,
+    price: this.posting.value.price,
+    size: this.posting.value.size,
+    amenities: this.posting.value.amenities,
+    description: this.posting.value.description
+  };
+  this.dbProvider.addPost(post);
+
+}
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostSpacePage');

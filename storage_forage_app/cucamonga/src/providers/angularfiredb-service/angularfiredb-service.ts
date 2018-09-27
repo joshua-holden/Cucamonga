@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { Account } from '../../classes';
+import { Posting } from '../../classes';
 import { Observable } from "rxjs";
 
 @Injectable()
@@ -14,7 +15,7 @@ export class AngularfireDbProvider {
         return this.afdb.list('/accounts/');
     }
 
-    public getAccount(id: any): Observable<AngularFireObject<Account>> {
+    public getAccount(id: any): Observable<{}> {
         console.log(this.afdb.object(`/accounts/${id}`).valueChanges());
         return this.afdb.object(`/accounts/${id}`).valueChanges();
     }
@@ -26,4 +27,9 @@ export class AngularfireDbProvider {
     public removeAccount(id: any) {
         this.afdb.object('/accounts/${id}/').remove()
   }
+
+    public addPost(post) {
+        var key = this.afdb.list(`/posts/`).push().key;
+        this.afdb.object(`/posts/` + key).set(post);
+    }
 }
