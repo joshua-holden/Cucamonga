@@ -1,6 +1,8 @@
 ﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ListingPage } from '../listing/listing'
+import { PopoverController } from 'ionic-angular';
+import { PopoverPage } from '../popover/popover';
+import { ListingPage } from '../listing/listing';
 
 @IonicPage()
 @Component({
@@ -11,12 +13,10 @@ export class BrowsePage{
 
   public items = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+      public popoverCtrl: PopoverController,
+      public navParams: NavParams) {
   }
-
- /* https://github.com/ionic-team/ionic/tree/v3/demos/src/searchbar */
-
-
 
   ngOnInit() {
     this.setItems();
@@ -48,10 +48,6 @@ export class BrowsePage{
 
   }
 
-  ionViewDidLoad() {
-  	console.log('ionViewDidLoad BrowsePage');
-  }
-
   openListing(element) {
     var a = element.title;
     var b = element.description;
@@ -63,6 +59,13 @@ export class BrowsePage{
     };
     console.log(data);
   	this.navCtrl.push(ListingPage, data);
+  }
+
+  presentPopover(myEvent) {
+      let popover = this.popoverCtrl.create(PopoverPage);
+      popover.present({
+          ev: myEvent
+      });
   }
 
 }

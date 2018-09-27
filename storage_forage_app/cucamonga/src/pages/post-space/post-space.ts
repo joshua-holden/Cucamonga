@@ -1,5 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PopoverController } from 'ionic-angular';
+import { PopoverPage } from '../popover/popover';
 import { ImagePicker } from '@ionic-native/image-picker';
 
 @IonicPage()
@@ -9,7 +11,10 @@ import { ImagePicker } from '@ionic-native/image-picker';
 })
 export class PostSpacePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker) {
+    constructor(public navCtrl: NavController,
+        public popoverCtrl: PopoverController,
+        public navParams: NavParams,
+        public imagePicker: ImagePicker) {
   }
 
 public images = [];
@@ -24,8 +29,11 @@ this.imagePicker.getPictures({
     });
 }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PostSpacePage');
-  }
+presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create(PopoverPage);
+    popover.present({
+        ev: myEvent
+    });
+}
 
 }

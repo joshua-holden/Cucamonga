@@ -76,6 +76,8 @@ export class SignupPage {
                       lastName: this.signup.value.lastname,
                       email: this.signup.value.email,
                       birthDate: this.signup.value.birthday,
+                      postOffered: [],
+                      postAccepteed: [],
                   };
                   this.dbProvider.addAccount(account);
                   this.navCtrl.push(BrowsetabPage);

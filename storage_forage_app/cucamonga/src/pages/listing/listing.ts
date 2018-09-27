@@ -1,5 +1,5 @@
 ﻿import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController , ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
 import * as moment from 'moment';
 
@@ -20,7 +20,10 @@ export class ListingPage {
 
   public list = [];
 
-  constructor(public navCtrl: NavController,private modalCtrl: ModalController, private alertCtrl: AlertController, public navParams: NavParams) {  }
+  constructor(public navCtrl: NavController,
+      private modalCtrl: ModalController,
+      private alertCtrl: AlertController,
+      public navParams: NavParams) { }
 
   getData(){
     let title = this.navParams.get('title');

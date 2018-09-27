@@ -14,8 +14,7 @@ export class AngularfireDbProvider {
         return this.afdb.list('/accounts/');
     }
 
-    public getAccount(id: any): Observable<AngularFireObject<Account>> {
-        console.log(this.afdb.object(`/accounts/${id}`).valueChanges());
+    public getAccount(id: any): Observable<{}> {
         return this.afdb.object(`/accounts/${id}`).valueChanges();
     }
 

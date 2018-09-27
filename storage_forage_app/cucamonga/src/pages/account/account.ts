@@ -1,5 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PopoverController } from 'ionic-angular';
+import { PopoverPage } from '../popover/popover';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireObject } from '@angular/fire/database';
 import { Account } from '../../classes';
@@ -17,16 +19,19 @@ export class AccountPage {
     private account: Observable<AngularFireObject<Account>>;
 
     constructor(public navCtrl: NavController,
+        public popoverCtrl: PopoverController,
         public afa: AngularFireAuth,
         public afdb: AngularfireDbProvider,
         public navParams: NavParams) {
         this.afa.authState.subscribe(auth => {
-            this.account = afdb.getAccount(auth.uid);
+            if(auth != null) this.account = afdb.getAccount(auth.uid);
         });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AccountPage');
+  presentPopover(myEvent) {
+      let popover = this.popoverCtrl.create(PopoverPage);
+      popover.present({
+          ev: myEvent
+      });
   }
-
 }

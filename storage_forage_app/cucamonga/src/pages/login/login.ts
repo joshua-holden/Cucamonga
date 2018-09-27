@@ -40,9 +40,5 @@ export class LoginPage {
               this.failedLoginMessage = `${err.code.toUpperCase()}: ${err.message}`;
           });
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
 }
 
