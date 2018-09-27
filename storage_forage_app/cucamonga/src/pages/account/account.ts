@@ -4,6 +4,7 @@ import { PopoverController } from 'ionic-angular';
 import { PopoverPage } from '../popover/popover';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireObject } from '@angular/fire/database';
+import { AngularFireList } from '@angular/fire/database';
 import { Account } from '../../classes';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
 import { Observable } from "rxjs";
@@ -17,6 +18,7 @@ export class AccountPage {
 
     private userId: any;
     private account: Observable<{}>;
+    private posts: AngularFireList<any>;
 
     constructor(public navCtrl: NavController,
         public popoverCtrl: PopoverController,
@@ -26,6 +28,10 @@ export class AccountPage {
         this.afa.authState.subscribe(auth => {
             if(auth != null) this.account = afdb.getAccount(auth.uid);
         });
+
+        /*this.posts = this.fdb.list('/posts/', ref =>ref.orderByChild('userID').equalTo(account.uid));
+        console.log(posts);*/
+
   }
 
   presentPopover(myEvent) {

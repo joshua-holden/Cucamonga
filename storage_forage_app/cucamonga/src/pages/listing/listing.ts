@@ -27,10 +27,10 @@ export class ListingPage {
 
   getData(){
     let title = this.navParams.get('title');
-    let img = this.navParams.get('img');
+    let price = this.navParams.get('price');
     var item = new function(){
         this.title = title;
-        this.img = img;
+        this.price = price;
       }
     this.list.push(item);
   }
