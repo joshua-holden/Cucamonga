@@ -16,7 +16,7 @@ import { Observable } from "rxjs";
 export class AccountPage {
 
     private userId: any;
-    private account: Observable<AngularFireObject<Account>>;
+    private account: Observable<{}>;
 
     constructor(public navCtrl: NavController,
         public popoverCtrl: PopoverController,
