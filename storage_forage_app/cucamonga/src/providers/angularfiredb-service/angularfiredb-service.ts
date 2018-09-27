@@ -16,10 +16,7 @@ export class AngularfireDbProvider {
     }
 
     public getAccount(id: any): Observable<{}> {
-<<<<<<< HEAD
         console.log(this.afdb.object(`/accounts/${id}`).valueChanges());
-=======
->>>>>>> 2de33a595b5fb296cc33b42369b828e61424490b
         return this.afdb.object(`/accounts/${id}`).valueChanges();
     }
 
@@ -32,7 +29,7 @@ export class AngularfireDbProvider {
   }
 
     public addPost(post) {
-        var key = this.afdb.list(`/posts/`).push().key;
+        var key = this.afdb.list(`/posts/`).push(post).key;
         this.afdb.object(`/posts/` + key).set(post);
     }
 }

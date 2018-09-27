@@ -13,13 +13,14 @@ import { Posting } from '../../classes';
   selector: 'page-post-space',
   templateUrl: 'post-space.html',
 })
+
 export class PostSpacePage {
 
-<<<<<<< HEAD
+
 private posting : FormGroup;
 public images = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker, public formbuilder: FormBuilder, public dbProvider: AngularfireDbProvider, public fireAuth: AngularFireAuth) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker, public formbuilder: FormBuilder, public dbProvider: AngularfireDbProvider, public fireAuth: AngularFireAuth, public popoverCtrl: PopoverController) {
   this.posting = this.formbuilder.group({
       title: ['', Validators.required], 
       address: ['', Validators.required],
@@ -28,14 +29,7 @@ public images = [];
       amenities: [''],
       description: ['']
     })
-=======
-    constructor(public navCtrl: NavController,
-        public popoverCtrl: PopoverController,
-        public navParams: NavParams,
-        public imagePicker: ImagePicker) {
->>>>>>> 2de33a595b5fb296cc33b42369b828e61424490b
-  }
-
+}
 
 getPictures(){
 this.imagePicker.getPictures({
@@ -47,7 +41,7 @@ this.imagePicker.getPictures({
     });
 }
 
-<<<<<<< HEAD
+
 createPost(){
   let post: Posting = {
     title: this.posting.value.title,
@@ -65,13 +59,13 @@ createPost(){
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostSpacePage');
   }
-=======
+
 presentPopover(myEvent) {
     let popover = this.popoverCtrl.create(PopoverPage);
     popover.present({
         ev: myEvent
     });
 }
->>>>>>> 2de33a595b5fb296cc33b42369b828e61424490b
+
 
 }
