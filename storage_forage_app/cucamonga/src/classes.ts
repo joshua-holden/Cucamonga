@@ -15,4 +15,6 @@ export interface Account {
     lastName: string;
     email: string;
     birthDate: string;
+    postOffered: Posting[];
+    postAccepteed: Posting[];
 }

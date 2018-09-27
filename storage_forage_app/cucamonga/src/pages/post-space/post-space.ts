@@ -1,5 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PopoverController } from 'ionic-angular';
+import { PopoverPage } from '../popover/popover';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
@@ -13,6 +15,7 @@ import { Posting } from '../../classes';
 })
 export class PostSpacePage {
 
+<<<<<<< HEAD
 private posting : FormGroup;
 public images = [];
 
@@ -25,6 +28,12 @@ public images = [];
       amenities: [''],
       description: ['']
     })
+=======
+    constructor(public navCtrl: NavController,
+        public popoverCtrl: PopoverController,
+        public navParams: NavParams,
+        public imagePicker: ImagePicker) {
+>>>>>>> 2de33a595b5fb296cc33b42369b828e61424490b
   }
 
 
@@ -38,6 +47,7 @@ this.imagePicker.getPictures({
     });
 }
 
+<<<<<<< HEAD
 createPost(){
   let post: Posting = {
     title: this.posting.value.title,
@@ -55,5 +65,13 @@ createPost(){
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostSpacePage');
   }
+=======
+presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create(PopoverPage);
+    popover.present({
+        ev: myEvent
+    });
+}
+>>>>>>> 2de33a595b5fb296cc33b42369b828e61424490b
 
 }

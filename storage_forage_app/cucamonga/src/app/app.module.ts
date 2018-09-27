@@ -21,6 +21,7 @@ import { MySpacesPage } from '../pages/my-spaces/my-spaces';
 import { MessagesPage } from '../pages/messages/messages';
 import { AccountPage } from '../pages/account/account';
 import { ListingPage } from '../pages/listing/listing';
+import { PopoverPage } from '../pages/popover/popover';
 
 import { NgCalendarModule } from 'ionic2-calendar';
 import { AngularFireModule } from '@angular/fire';
@@ -49,7 +50,8 @@ const firebaseAuth = {
     MySpacesPage,
     MessagesPage,
     AccountPage, 
-    ListingPage,  
+    ListingPage,
+    PopoverPage,
   ],
   imports: [
     NgCalendarModule,
@@ -71,6 +73,7 @@ const firebaseAuth = {
     MessagesPage,
     AccountPage,
     ListingPage,
+    PopoverPage,
   ],
   providers: [
     StatusBar,
