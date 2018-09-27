@@ -6,7 +6,12 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { Posting } from '../../classes';
+import { Account } from '../../classes';
+import { Observable } from "rxjs";
+import { ToastController } from 'ionic-angular';
+import { AccountPage } from '../account/account';
 
 @IonicPage()
 @Component({
@@ -19,8 +24,10 @@ export class PostSpacePage {
 
 private posting : FormGroup;
 public images = [];
+public userID: any;
+private account: Observable<{}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker, public formbuilder: FormBuilder, public dbProvider: AngularfireDbProvider, public fireAuth: AngularFireAuth, public popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker, public formbuilder: FormBuilder, public afa: AngularFireAuth, public popoverCtrl: PopoverController, public afdb: AngularfireDbProvider, private toastCtrl: ToastController) {
   this.posting = this.formbuilder.group({
       title: ['', Validators.required], 
       address: ['', Validators.required],
@@ -28,8 +35,18 @@ public images = [];
       size: [''],
       amenities: [''],
       description: ['']
-    })
+    });
+    
 }
+
+presentToast() {
+  let toast = this.toastCtrl.create({
+    message: 'Post Created',
+    duration: 3000,
+    position: 'top'
+  });
+  toast.present();
+  }
 
 getPictures(){
 this.imagePicker.getPictures({
@@ -43,6 +60,10 @@ this.imagePicker.getPictures({
 
 
 createPost(){
+this.afa.authState.subscribe(auth => {
+            if(auth != null) this.account = this.afdb.getAccount(auth.uid);
+        });
+
   let post: Posting = {
     title: this.posting.value.title,
     address: this.posting.value.address,
@@ -51,8 +72,9 @@ createPost(){
     amenities: this.posting.value.amenities,
     description: this.posting.value.description
   };
-  this.dbProvider.addPost(post);
-
+  this.afdb.addPost(post);
+  this.presentToast();
+  this.navCtrl.setRoot(AccountPage);
 }
 
 
