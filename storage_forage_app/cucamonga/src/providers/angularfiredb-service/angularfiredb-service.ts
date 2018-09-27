@@ -32,4 +32,6 @@ export class AngularfireDbProvider {
         var key = this.afdb.list(`/posts/`).push(post).key;
         this.afdb.object(`/posts/` + key).set(post);
     }
+
+    
 }

@@ -60,11 +60,9 @@ this.imagePicker.getPictures({
 
 
 createPost(){
-this.afa.authState.subscribe(auth => {
-            if(auth != null) this.account = this.afdb.getAccount(auth.uid);
-        });
-
+  let account = this.afa.auth.currentUser;
   let post: Posting = {
+    userID: account.uid,
     title: this.posting.value.title,
     address: this.posting.value.address,
     price: this.posting.value.price,
