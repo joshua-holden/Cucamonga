@@ -33,10 +33,6 @@ export class AngularfireDbProvider {
         this.afdb.object(`/posts/` + key).set(post);
     }
 
-    public getAllPosts(): AngularFireList<{}> {
-        return this.afdb.list('/posts/');
-    }
-
     /*
     public getPosts(id: any): AngularFireList<{}> {
         return afdb.list('/posts/', ref => ref.orderByChild('userID').equalTo(${id}))

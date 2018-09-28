@@ -15,6 +15,7 @@ import { Observable } from "rxjs";
 export class BrowsePage{ 
   public items = [];
   public posts: Observable<{}[]>;
+  public amenities: Observable<{}[]>;
 
   constructor(public navCtrl: NavController,
       public popoverCtrl: PopoverController,
@@ -53,14 +54,18 @@ export class BrowsePage{
 
   }
 
-  openListing(element) {
-    var a = element.title;
-    var b = element.description;
-    var c = element.price;
+  openListing(post) {
+    var x = post.userID;
+    var a = post.title;
+    var b = post.description;
+    var c = post.price;
+    let amenities = post.amenities;
     let data = {
+      posterID: x,
       title: a,
       description: b,
-      price: c
+      price: c,
+      amenities: amenities
     };
     console.log(data);
   	this.navCtrl.push(ListingPage, data);

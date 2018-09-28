@@ -1,6 +1,12 @@
 ﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireObject } from '@angular/fire/database';
+import { AngularFireList } from '@angular/fire/database';
+import { Account } from '../../classes';
+import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
+import { Observable } from "rxjs";
 import * as moment from 'moment';
 
 @IonicPage()
@@ -18,21 +24,28 @@ export class ListingPage {
     currentDate: new Date()
   };
 
-  public list = [];
+  public posts = [];
+  private account: Observable<{}>;
 
   constructor(public navCtrl: NavController,
       private modalCtrl: ModalController,
       private alertCtrl: AlertController,
-      public navParams: NavParams) { }
+      public navParams: NavParams, private afdb: AngularfireDbProvider) { }
 
   getData(){
+    let posterID = this.navParams.get('posterID');
+    this.account = this.afdb.getAccount(posterID);
     let title = this.navParams.get('title');
     let price = this.navParams.get('price');
-    var item = new function(){
+    let description = this.navParams.get('description');
+    let amenities = this.navParams.get('amenities');
+    var post = new function(){
         this.title = title;
         this.price = price;
+        this.description = description;
+        this.amenities = amenities;
       }
-    this.list.push(item);
+    this.posts.push(post);
   }
 
   ionViewDidLoad() {
