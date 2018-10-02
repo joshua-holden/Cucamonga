@@ -20,25 +20,24 @@ export class BrowsePage{
   constructor(public navCtrl: NavController,
       public afdb: AngularfireDbProvider,
       public popoverCtrl: PopoverController,
-      public navParams: NavParams, public dbprovider: AngularfireDbProvider, public afdb: AngularFireDatabase) {
+      public navParams: NavParams) {
   }
 
   ngOnInit() {
-    this.setItems();
-    this.posts = this.afdb.list(`/posts`).valueChanges();
+      this.setItems();
+      this.posts = this.afdb.getAllPosts().valueChanges();
   }
 
-   setItems() { 
-      
-	   for (var i = 1; i <= 20; i++) {
-      var item = new function(){
-        this.id = "id" + i;
-        this.title = "This is listing title " + i;
-        this.description = "This is a description for listing " + i;
-        this.img = "assets/imgs/" + i + ".jpg";
-      }
+   setItems() {     
+     for (var i = 1; i <= 20; i++) {
+        var item = new function(){
+          this.id = "id" + i;
+          this.title = "This is listing title " + i;
+          this.description = "This is a description for listing " + i;
+          this.img = "assets/imgs/" + i + ".jpg";
+        }
     	this.items.push(item);
-    }
+     }
    }
 
    filterItems(ev: any) {
