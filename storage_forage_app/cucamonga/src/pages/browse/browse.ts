@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
 import { PopoverPage } from '../popover/popover';
 import { ListingPage } from '../listing/listing';
+import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
 
 @IonicPage()
 @Component({
@@ -11,9 +12,10 @@ import { ListingPage } from '../listing/listing';
 })
 export class BrowsePage{ 
 
-  public items = [];
+  public postings = [];
 
   constructor(public navCtrl: NavController,
+      public afdb: AngularfireDbProvider,
       public popoverCtrl: PopoverController,
       public navParams: NavParams) {
   }
