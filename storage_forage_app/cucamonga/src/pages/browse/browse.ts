@@ -4,6 +4,8 @@ import { PopoverController } from 'ionic-angular';
 import { PopoverPage } from '../popover/popover';
 import { ListingPage } from '../listing/listing';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
+import { Observable } from "rxjs";
 
 @IonicPage()
 @Component({
@@ -11,20 +13,23 @@ import { AngularfireDbProvider } from '../../providers/angularfiredb-service/ang
   templateUrl: 'browse.html',
 })
 export class BrowsePage{ 
-
-  public postings = [];
+  public items = [];
+  public posts: Observable<{}[]>;
+  public amenities: Observable<{}[]>;
 
   constructor(public navCtrl: NavController,
       public afdb: AngularfireDbProvider,
       public popoverCtrl: PopoverController,
-      public navParams: NavParams) {
+      public navParams: NavParams, public dbprovider: AngularfireDbProvider, public afdb: AngularFireDatabase) {
   }
 
   ngOnInit() {
     this.setItems();
+    this.posts = this.afdb.list(`/posts`).valueChanges();
   }
 
    setItems() { 
+      
 	   for (var i = 1; i <= 20; i++) {
       var item = new function(){
         this.id = "id" + i;
@@ -50,14 +55,18 @@ export class BrowsePage{
 
   }
 
-  openListing(element) {
-    var a = element.title;
-    var b = element.description;
-    var c = element.img;
+  openListing(post) {
+    var x = post.userID;
+    var a = post.title;
+    var b = post.description;
+    var c = post.price;
+    let amenities = post.amenities;
     let data = {
+      posterID: x,
       title: a,
       description: b,
-      img: c
+      price: c,
+      amenities: amenities
     };
     console.log(data);
   	this.navCtrl.push(ListingPage, data);

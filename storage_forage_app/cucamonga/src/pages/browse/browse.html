@@ -25,15 +25,15 @@
     <!-- <ion-list> -->
       <ion-grid>
 <ion-row text-center>
-  <ion-col *ngFor="let item of items">
-      <ion-card style="min-width: 300px; max-width: 375px" class="fade-in"  (click)="openListing(item)">
-  <img style="max-height: 200px" src={{item.img}}/>
+  <ion-col *ngFor="let post of posts | async">
+      <ion-card style="min-width: 300px; max-width: 375px" class="fade-in"  (click)="openListing(post)">
+  <img style="max-height: 200px" src=""/>
   <ion-card-content text-left>
     <ion-card-title>
-      {{item.title}}
+      {{post.title}}
       </ion-card-title>
       <p><strong>Empty Extra Bedroom</strong></p>
-                <p>$60 per month</p>
+                <p>{{post.price}}</p>
                 <img src="assets/imgs/star_rating.png" style="max-width: 100px;">
   </ion-card-content>
       </ion-card>
