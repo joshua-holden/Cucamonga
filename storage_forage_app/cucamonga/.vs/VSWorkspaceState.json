@@ -3,8 +3,9 @@
     "",
     "\\src",
     "\\src\\pages",
-    "\\src\\pages\\account"
+    "\\src\\pages\\browse",
+    "\\src\\pages\\post-space"
   ],
-  "SelectedNode": "\\src\\pages\\account\\account.html",
+  "SelectedNode": "\\src\\pages\\browse\\browse.html",
   "PreviewInSolutionExplorer": false
 }
