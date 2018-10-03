@@ -1,29 +1,26 @@
 ﻿<ion-header>
-
-    <ion-navbar color="orange">
-        <ion-title>Your Account</ion-title>
-      <ion-buttons end>
-        <button ion-button icon-only (click)="presentPopover($event)">
-          <ion-icon name="menu"></ion-icon>
-        </button>
-      </ion-buttons>
-    </ion-navbar>
-
+  <ion-navbar color="orange">
+    <ion-title>Your Account</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
 </ion-header>
 
 <ion-content >
-    <ion-grid class="ionGrid">
-        <ion-row>
-            <ion-col text-center style="margin-top: 20px">
-                <h2>{{(account | async)?.firstName}} {{(account | async)?.lastName}}</h2>
-                <img src="assets/imgs/avatar.png" style="border-radius: 50%; padding: 10px; max-height: 300px">
-            </ion-col>
-
-            <ion-col text-center style="margin-top: 20px; padding-top: 50px">
-                <ion-card style="min-width: 340px; max-width: 100%">
-  <ion-card-header style="background-color: #FBDBC6">
-    Hi, {{(account | async)?.firstName}}
-  </ion-card-header>
+  <ion-grid class="ionGrid">
+    <ion-row>
+      <ion-col text-center style="margin-top: 20px">
+        <h2>{{(account | async)?.firstName}} {{(account | async)?.lastName}}</h2>
+        <img src="assets/imgs/avatar.png" style="border-radius: 50%; padding: 10px; max-height: 300px">
+      </ion-col>
+      <ion-col text-center style="margin-top: 20px; padding-top: 50px">
+        <ion-card style="min-width: 340px; max-width: 100%">
+          <ion-card-header style="background-color: #FBDBC6">
+            Hi, {{(account | async)?.firstName}}
+          </ion-card-header>
 
   <ion-list>
     <button ion-item>
@@ -73,41 +70,29 @@
             
             </ion-col>
         </ion-row>    
-        <ion-row style="border: 1px solid #eff0f1; margin-bottom: 20px; margin-top: 20px; text-align: left">
-                <div style="background-color: #FBDBC6; width: 100%; border-bottom: 1px solid #eff0f1; padding: 5px">
-                <h3 style="margin: 0px">My Listings</h3>
-                </div>  
-            <ion-col text-left>
-
-      <ion-card>
-  <img style="max-height: 200px" src="assets/imgs/1.jpg"/>
-  <ion-card-content>
-    <ion-card-title>
-      Title
-      </ion-card-title>
-      <p><strong>Empty Extra Bedroom</strong></p>
-                <p>$60 per month</p>
-                <img src="assets/imgs/star_rating.png" style="max-width: 100px">
-  </ion-card-content>
-      </ion-card>
-
+  <ion-row style="border: 1px solid #eff0f1; margin-bottom: 20px; margin-top: 20px; text-align: left">
+    <div style="background-color: #FBDBC6; width: 100%; border-bottom: 1px solid #eff0f1; padding: 5px">
+    <h3 style="margin: 0px">My Listings</h3>
+    </div>  
+    <ion-col text-left>
+      <ion-grid>
+        <ion-row text-center>
+          <ion-col *ngFor="let post of posts">
+            <ion-card style="min-width: 300px; max-width: 375px" class="fade-in" (click)="openListing(post)">
+              <img style="max-height: 200px" src="" />
+                <ion-card-content text-left>
+                  <ion-card-title>
+                    {{post.title}}
+                  </ion-card-title>
+                  <p><strong>Empty Extra Bedroom</strong></p>
+                  <p>{{post.price}}</p>
+                  <img src="assets/imgs/star_rating.png" style="max-width: 100px;">
+                </ion-card-content>
+              </ion-card>
             </ion-col>
-            <ion-col text-left>
-
-      <ion-card>
-  <img style="max-height: 200px" src="assets/imgs/2.jpg"/>
-  <ion-card-content>
-    <ion-card-title>
-      Title
-      </ion-card-title>
-      <p><strong>Empty Extra Bedroom</strong></p>
-                <p>$60 per month</p>
-                <img src="assets/imgs/star_rating.png" style="max-width: 100px">
-  </ion-card-content>
-      </ion-card>
-
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

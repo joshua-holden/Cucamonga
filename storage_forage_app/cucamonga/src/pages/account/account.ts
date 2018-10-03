@@ -5,7 +5,7 @@ import { PopoverPage } from '../popover/popover';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireObject } from '@angular/fire/database';
 import { AngularFireList } from '@angular/fire/database';
-import { Account } from '../../classes';
+import { Account, Posting } from '../../classes';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
 import { Observable } from "rxjs";
 
@@ -18,7 +18,7 @@ export class AccountPage {
 
     private userId: any;
     private account: Observable<{}>;
-    private posts: AngularFireList<any>;
+    private posts: Posting[] = [];
 
     constructor(public navCtrl: NavController,
         public popoverCtrl: PopoverController,
@@ -26,11 +26,11 @@ export class AccountPage {
         public afdb: AngularfireDbProvider,
         public navParams: NavParams) {
         this.afa.authState.subscribe(auth => {
-            if(auth != null) this.account = afdb.getAccount(auth.uid);
+            if (auth != null) this.account = afdb.getAccount(auth.uid);
+            this.afdb.getAllPosts().valueChanges().subscribe(posts => {
+                this.posts = posts.filter(post => post.userID === auth.uid);
+            });
         });
-
-        /*this.posts = this.fdb.list('/posts/', ref =>ref.orderByChild('userID').equalTo(account.uid));
-        console.log(posts);*/
 
   }
 

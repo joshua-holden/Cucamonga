@@ -2,10 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\app",
     "\\src\\pages",
-    "\\src\\pages\\browse",
-    "\\src\\pages\\post-space"
+    "\\src\\providers",
+    "\\src\\providers\\angularfiredb-service"
   ],
-  "SelectedNode": "\\src\\pages\\browse\\browse.html",
+  "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }
