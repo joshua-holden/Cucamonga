@@ -14,7 +14,8 @@
     <ion-row>
       <ion-col text-center style="margin-top: 20px">
         <h2>{{(account | async)?.firstName}} {{(account | async)?.lastName}}</h2>
-        <img src="assets/imgs/avatar.png" style="border-radius: 50%; padding: 10px; max-height: 300px">
+        <img *ngIf="!account" src="assets/imgs/avatar.png" style="border-radius: 50%; padding: 10px; max-height: 300px">
+        <img *ngIf="account" [src]="(account | async)?.profileImg" style="border-radius: 50%; padding: 10px; max-height: 300px">
       </ion-col>
       <ion-col text-center style="margin-top: 20px; padding-top: 50px">
         <ion-card style="min-width: 340px; max-width: 100%">

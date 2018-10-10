@@ -4,9 +4,12 @@
     "\\src",
     "\\src\\app",
     "\\src\\pages",
+    "\\src\\pages\\account",
+    "\\src\\pages\\signup",
     "\\src\\providers",
-    "\\src\\providers\\angularfiredb-service"
+    "\\src\\providers\\angularfiredb-service",
+    "\\src\\providers\\firestore-service"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\src\\providers\\firestore-service\\firestore-service.ts",
   "PreviewInSolutionExplorer": false
 }

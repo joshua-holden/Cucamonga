@@ -1,28 +1,24 @@
-﻿import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+﻿import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { Observable } from "rxjs";
 
 @Injectable()
-export class FirestoreServiceProvider {
+export class FirestoreProvider {
 
-  constructor(public http: HttpClient, public afs: AngularFirestore) {
-    console.log('Hello FirestoreServiceProvider Provider');
+    private photo: any;
+
+    constructor(public afs: AngularFireStorage, public afa: AngularFireAuth) {
   }
 
-  addPost(value){
-      return new Promise<any>((resolve, reject) => {
-        this.afs.collection('/posts').add({
-          title: value.title,
-          address: value.address,
-          price: value.price,
-        })
-        .then(
-          (res) => {
-            resolve(res)
-          },
-          err => reject(err)
-        )
-      })
+    addPicture(photo: string) {
+        this.afa.authState.subscribe(auth => {
+            this.afs.ref(`user-photos/${auth.uid}`).putString(photo);
+        });     
+    }
+
+    getAccountPhoto(id: any): Observable<any> {
+        return this.afs.ref(`user-photos/${id}`).getDownloadURL();
     }
 
 }

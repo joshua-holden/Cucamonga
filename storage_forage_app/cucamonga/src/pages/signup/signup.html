@@ -21,8 +21,7 @@
 		</ion-item>
 		<ion-item *ngIf="!signup.controls.lastname.valid && submitAttempt">
 		    <p>Please enter a valid last name.</p>
-		</ion-item>
-		
+		</ion-item>		
 		<ion-item>
 		    <ion-label floating>Email</ion-label>
 		    <ion-input type="email" class="input" formControlName="email"></ion-input>
@@ -52,13 +51,16 @@
             <p>You must be 18 years old to use this app.</p>
           </ion-item>
 	    </div>
-	<ion-footer no-padding>
-	  <ion-row>
-		      <button ion-button full outline clear style="color:black; margin: 0px" (click)="submitForm()">
-		          Submit
-		      </button>
-		  <!-- </ion-col> -->
-	  </ion-row>
-    </ion-footer>
+      <ion-row style="margin-top: 50px; text-align: center;">
+        <ion-col *ngIf="myPhoto">
+          <img style="max-width: 100px; max-height: 100px" src="{{myPhoto}}" />
+        </ion-col>
+      </ion-row>
+      <button ion-button full outline clear style="color:black; margin: 0px" (click)="getPictures()">Upload Images</button>
+      <ion-row>
+        <button ion-button full outline clear style="color:black; margin: 0px" (click)="submitForm()">
+          Submit
+        </button>
+      </ion-row>
   </form>
 </ion-content>

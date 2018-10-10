@@ -5,6 +5,8 @@ import { BrowsetabPage } from '../browsetab/browsetab';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Account } from '../../classes';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
+import { FirestoreProvider } from '../../providers/firestore-service/firestore-service';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import moment from 'moment';
 
 @IonicPage()
@@ -17,14 +19,17 @@ export class SignupPage {
   private signup : FormGroup;
   private submitAttempt: boolean = false;
   private failedSubmitMessage: string;
+  private myPhoto: string;
 
   @ViewChild('bdate') bdate;
 
   constructor(private fireAuth: AngularFireAuth,
       public dbProvider: AngularfireDbProvider,
+      public storeProvider: FirestoreProvider,
       public navCtrl: NavController,
       public navParams: NavParams,
       public formbuilder: FormBuilder,
+      private camera: Camera,
       public alrtCtrl: AlertController) {
   	this.signup = this.formbuilder.group({
       firstname: ['', Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -34,8 +39,8 @@ export class SignupPage {
   	  password: ['', Validators.required],
       passwordconfirm: ['', Validators.required],
     }, {validator: this.matchingPasswords('password', 'passwordconfirm')}); 
-
   }
+
   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {     
       return (group: FormGroup): {[key: string]: any} => {
         let password = group.controls[passwordKey];
@@ -69,15 +74,16 @@ export class SignupPage {
       if (this.signup.valid) {
           this.fireAuth.auth.createUserWithEmailAndPassword(this.signup.value.email, this.signup.value.password)
               .then(data => {
-                  this.fireAuth.auth.signInWithEmailAndPassword(this.signup.value.email, this.signup.value.password)
+                  this.fireAuth.auth.signInWithEmailAndPassword(this.signup.value.email, this.signup.value.password);
                   let account: Account = {
                       userID: data.user.uid,
                       firstName: this.signup.value.firstname,
                       lastName: this.signup.value.lastname,
                       email: this.signup.value.email,
                       birthDate: this.signup.value.birthday,
-                      postOffered: [],
-                      postAccepteed: [],
+                      profileImg: this.myPhoto,
+                      posts: [],
+                      requests: [],
                   };
                   this.dbProvider.addAccount(account);
                   this.navCtrl.push(BrowsetabPage);
@@ -91,5 +97,23 @@ export class SignupPage {
       else {
           this.submitAttempt = true;
       }
+  }
+
+  getPictures() {
+      const options: CameraOptions = {
+          quality: 70,
+          destinationType: this.camera.DestinationType.DATA_URL,
+          sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+          encodingType: this.camera.EncodingType.JPEG,
+          saveToPhotoAlbum: false,
+          allowEdit: true,
+          targetWidth: 300,
+          targetHeight: 300,
+      };
+      this.camera.getPicture(options).then(imgData => {
+          this.myPhoto = 'data:image/jpeg;base64,' + imgData;
+      }).catch(err => {
+          console.log(err);
+      });
   }
 }

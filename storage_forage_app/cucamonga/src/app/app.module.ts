@@ -26,9 +26,11 @@ import { PopoverPage } from '../pages/popover/popover';
 import { NgCalendarModule } from 'ionic2-calendar';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AngularfireDbProvider } from '../providers/angularfiredb-service/angularfiredb-service';
+import { FirestoreProvider } from '../providers/firestore-service/firestore-service';
 
 const firebaseAuth = {
     apiKey: "AIzaSyAXZpabh_R6gPhUexA50tn_t9AED79Rn4Y",
@@ -60,6 +62,7 @@ const firebaseAuth = {
     AngularFireModule.initializeApp(firebaseAuth),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -85,7 +88,8 @@ const firebaseAuth = {
     FilePath,
     HTTP,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AngularfireDbProvider,
+      AngularfireDbProvider,
+      FirestoreProvider,
   ]
 })
 export class AppModule {}

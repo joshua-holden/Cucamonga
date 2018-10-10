@@ -19,7 +19,7 @@ export class AngularfireDbProvider {
     }
 
     public addAccount(account: Account) {
-        this.afdb.object(`/accounts/${account.userID}/`).set(account);
+        this.afdb.object(`/accounts/${account.userID}/`).set(account).catch(err => console.log(err));
   }
 
     public removeAccount(id: any) {

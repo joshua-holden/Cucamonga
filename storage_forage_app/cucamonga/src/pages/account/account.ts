@@ -1,12 +1,15 @@
 ﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
+import { File } from '@ionic-native/file';
+import { HTTP } from '@ionic-native/http';
 import { PopoverPage } from '../popover/popover';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireObject } from '@angular/fire/database';
 import { AngularFireList } from '@angular/fire/database';
 import { Account, Posting } from '../../classes';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
+import { FirestoreProvider } from '../../providers/firestore-service/firestore-service';
 import { Observable } from "rxjs";
 
 @IonicPage()
@@ -22,8 +25,11 @@ export class AccountPage {
 
     constructor(public navCtrl: NavController,
         public popoverCtrl: PopoverController,
+        public file: File, 
+        public http: HTTP,
         public afa: AngularFireAuth,
         public afdb: AngularfireDbProvider,
+        public fsp: FirestoreProvider,
         public navParams: NavParams) {
         this.afa.authState.subscribe(auth => {
             if (auth != null) this.account = afdb.getAccount(auth.uid);
