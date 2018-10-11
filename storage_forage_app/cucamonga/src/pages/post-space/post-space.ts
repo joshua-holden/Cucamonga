@@ -70,7 +70,9 @@ createPost(){
     amenities: this.posting.value.amenities,
     description: this.posting.value.description
   };
-  this.afdb.addPost(post);
+  let key = this.afdb.addPost(post);
+  //post.postID = key;
+  //console.log(post.postID);
   this.presentToast();
   this.navCtrl.setRoot(AccountPage);
 }

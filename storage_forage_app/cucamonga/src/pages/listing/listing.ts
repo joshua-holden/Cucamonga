@@ -15,6 +15,8 @@ import * as moment from 'moment';
   templateUrl: 'listing.html',
 })
 
+
+
 export class ListingPage {
   eventSource = [];
   viewTitle: string;

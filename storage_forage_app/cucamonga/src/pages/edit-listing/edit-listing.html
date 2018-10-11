@@ -1,0 +1,66 @@
+<ion-header>
+
+  <ion-navbar color="orange">
+    <ion-title>Edit Listing</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="postForm" *ngFor="let post of posts">
+    <form [formGroup]="posting">
+  <ion-item>
+    <ion-label floating>Title</ion-label>
+    <ion-input type=text formControlName="title" value="{{post.title}}"></ion-input>
+  </ion-item>
+  <ion-item style="margin-left: none;">
+    <ion-label floating>Address</ion-label>
+    <ion-input type=text formControlName="address" value="{{post.address}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Size</ion-label>
+    <ion-select formControlName="size">
+      <ion-option value="closet">Closet</ion-option>
+      <ion-option value="room">Room</ion-option>
+      <ion-option value="garage">Garage</ion-option>
+      <ion-option value="shed">Shed</ion-option>
+      <ion-option value="barn">Barn</ion-option>
+      <ion-option value="field">Field</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Price</ion-label>
+    <ion-input type="number" formControlName="price" value="{{post.price}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Amenities</ion-label>
+    <ion-select multiple="true" formControlName="amenities">
+    <ion-option>Locked</ion-option>
+    <ion-option>Security</ion-option>
+    <ion-option>Climate-Control</ion-option>
+    <ion-option>Drive Up</ion-option>
+    <ion-option>Business Facilities</ion-option>
+  </ion-select>
+</ion-item>
+
+  <ion-row style="margin-top: 50px; margin-left: 10px">
+    <ion-col *ngFor="let image of images">
+   <img src="{{image}}"/>
+   </ion-col> 
+  </ion-row>
+    <button ion-button block  style="margin-left: 10px" (click)="getPictures()">Upload Images</button>
+  <ion-item>
+    <ion-label floating>Description</ion-label>
+    <ion-textarea formControlName="description" value="{{post.description}}"></ion-textarea>
+  </ion-item>
+  <button ion-button block color="orange" style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px; color: white" (click)=updatePost()>Update Listing</button>
+  <button ion-button block color="danger" style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px; color: white" (click)=deletePost()>Delete Listing</button>
+</form>
+</div>
+</ion-content>

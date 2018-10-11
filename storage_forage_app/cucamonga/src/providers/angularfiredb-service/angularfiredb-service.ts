@@ -29,9 +29,21 @@ export class AngularfireDbProvider {
     public addPost(post) {
         var key = this.afdb.list(`/posts/`).push(post).key;
         this.afdb.object(`/posts/` + key).set(post);
+        return key;
+    }
+
+    public deletePost(post: any) {
+        console.log(post.postID);
+        this.afdb.object(`/posts/${post.postID}/`).remove();
+    }
+
+    public updatePost(post) {
+        this.afdb.object(`/posts/` + post.$key).update(post);
     }
 
     public getAllPosts(): AngularFireList<Posting> {
         return this.afdb.list('/posts/');
     }
+
+
 }

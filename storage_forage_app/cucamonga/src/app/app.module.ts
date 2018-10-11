@@ -22,6 +22,7 @@ import { MessagesPage } from '../pages/messages/messages';
 import { AccountPage } from '../pages/account/account';
 import { ListingPage } from '../pages/listing/listing';
 import { PopoverPage } from '../pages/popover/popover';
+import { EditListingPage } from '../pages/edit-listing/edit-listing';
 
 import { NgCalendarModule } from 'ionic2-calendar';
 import { AngularFireModule } from '@angular/fire';
@@ -54,6 +55,7 @@ const firebaseAuth = {
     AccountPage, 
     ListingPage,
     PopoverPage,
+    EditListingPage
   ],
   imports: [
     NgCalendarModule,
@@ -77,6 +79,7 @@ const firebaseAuth = {
     AccountPage,
     ListingPage,
     PopoverPage,
+    EditListingPage
   ],
   providers: [
     StatusBar,

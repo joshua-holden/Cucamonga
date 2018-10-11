@@ -11,6 +11,7 @@ import { Account, Posting } from '../../classes';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
 import { FirestoreProvider } from '../../providers/firestore-service/firestore-service';
 import { Observable } from "rxjs";
+import { EditListingPage } from '../edit-listing/edit-listing';
 
 @IonicPage()
 @Component({
@@ -38,6 +39,27 @@ export class AccountPage {
             });
         });
 
+  }
+
+  openListing(post) {
+    var id = post.userID;
+    var title = post.title;
+    var address = post.address;
+    var description = post.description;
+    var price = post.price;
+    var size = post.size;
+    let amenities = post.amenities;
+    let data = {
+      posterID: id,
+      title: title,
+      address: address,
+      description: description,
+      price: price,
+      size:size,
+      amenities: amenities
+    };
+    console.log(data);
+    this.navCtrl.push(EditListingPage, data);
   }
 
   presentPopover(myEvent) {
