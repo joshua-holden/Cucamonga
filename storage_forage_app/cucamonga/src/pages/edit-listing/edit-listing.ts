@@ -10,6 +10,8 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ToastController } from 'ionic-angular';
 import { Posting } from '../../classes';
 import { AccountPage } from '../account/account';
+import { AlertController } from 'ionic-angular';
+import { ImagePicker } from '@ionic-native/image-picker';
 
 
 /**
@@ -29,8 +31,9 @@ export class EditListingPage {
   private posting : FormGroup;
   public posts = [];
   private account: Observable<{}>;
+  public images = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularfireDbProvider, public formbuilder: FormBuilder, private toastCtrl: ToastController, public afa: AngularFireAuth) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularfireDbProvider, public formbuilder: FormBuilder, private toastCtrl: ToastController, public afa: AngularFireAuth, public imagePicker: ImagePicker, public alertCtrl: AlertController) {
   this.posting = this.formbuilder.group({
       title: ['', Validators.required], 
       address: ['', Validators.required],
@@ -45,7 +48,26 @@ export class EditListingPage {
       this.getData();
   }
 
+getPictures() {
+  let options = {
+    maximumImagesCount: 5,
+    outputType: 1,
+  };
+  this.imagePicker.getPictures(options).then((results) => {
+    for (var i = 0; i < results.length; i++) {
+        this.images.push("data:image/jpeg;base64," + results[i]);
+    }
+  }, (err) => {this.presentAlert(); });
+}
 
+presentAlert() {
+  let alert = this.alertCtrl.create({
+    title: 'Sorry',
+    subTitle: 'Only works on mobile for now',
+    buttons: ['Dismiss']
+  });
+  alert.present();
+}
 
   getData(){
     let posterID = this.navParams.get('posterID');

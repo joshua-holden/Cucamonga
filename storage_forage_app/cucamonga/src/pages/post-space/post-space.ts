@@ -75,8 +75,8 @@ getPictures() {
 
 presentAlert() {
   let alert = this.alertCtrl.create({
-    title: 'ALERT',
-    subTitle: '10% of battery remaining',
+    title: 'Sorry',
+    subTitle: 'Only works on mobile for now',
     buttons: ['Dismiss']
   });
   alert.present();

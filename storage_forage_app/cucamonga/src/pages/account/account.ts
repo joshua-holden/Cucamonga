@@ -49,6 +49,7 @@ export class AccountPage {
     var price = post.price;
     var size = post.size;
     let amenities = post.amenities;
+    let images = post.images;
     let data = {
       posterID: id,
       title: title,
