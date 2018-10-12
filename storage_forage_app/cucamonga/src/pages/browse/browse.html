@@ -26,9 +26,11 @@
   <ion-row text-center>
     <ion-col *ngFor="let post of posts | async">
       <ion-card style="min-width: 300px; max-width: 375px" class="fade-in"  (click)="openListing(post)">
-        <div *ngFor="let image of post.images">
-        <img style="max-height: 200px" src={{image}}/>
-        </div>
+                <div *ngFor="let image of post.images; index as i" [attr.data-index]="i">
+                  <div *ngIf="i === 0">
+                <img style="min-width: 300px; max-height: 200px" src={{image}}/>
+              </div>
+            </div>
         <ion-card-content text-left>
           <ion-card-title>
             {{post.title}}

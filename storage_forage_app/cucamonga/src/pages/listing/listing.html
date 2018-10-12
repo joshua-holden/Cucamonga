@@ -11,8 +11,12 @@
 
     <ion-grid class="listingphoto">
         <ion-row> 
-            <ion-col class="listingphoto" *ngFor="let image of post.images">
+            <ion-col class="listingphoto">
+            <ion-slides>
+                <ion-slide *ngFor="let image of post.images">
                 <img src={{image}} id="examplePic">
+                </ion-slide>
+            </ion-slides>
             </ion-col>
         </ion-row>
     </ion-grid>    
