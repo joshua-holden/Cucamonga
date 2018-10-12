@@ -28,7 +28,7 @@
                 <p class="city">Downtown Boise</p>
             </ion-col>
             <ion-col col-6 text-center class="profilepic">
-                <img src="https://www.w3schools.com/howto/img_avatar.png" style="border-radius: 50%; max-width: 80px">
+                <img *ngIf="account" [src]="(account | async)?.profileImg" style="border-radius: 50%; max-width: 80px">
                 <p>{{(account | async)?.firstName}} {{(account | async)?.lastName}}</p>
             </ion-col>
         </ion-row>
