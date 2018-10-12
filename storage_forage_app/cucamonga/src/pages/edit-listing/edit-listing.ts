@@ -55,6 +55,7 @@ export class EditListingPage {
     let size = this.navParams.get('size');
     let price = this.navParams.get('price');
     let description = this.navParams.get('description');
+    let images = [];
     let amenities = this.navParams.get('amenities');
     var post = new function(){
         this.title = title;
@@ -76,6 +77,7 @@ export class EditListingPage {
     price: this.posting.value.price,
     size: this.posting.value.size,
     amenities: this.posting.value.amenities,
+    images: this.posting.value.amenities,
     description: this.posting.value.description
   };
   this.afdb.updatePost(post);

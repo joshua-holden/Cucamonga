@@ -10,9 +10,9 @@
     <div class="currentListing" *ngFor="let post of posts">
 
     <ion-grid class="listingphoto">
-        <ion-row>
-            <ion-col class="listingphoto">
-                <img src="" id="examplePic">
+        <ion-row> 
+            <ion-col class="listingphoto" *ngFor="let image of post.images">
+                <img src={{image}} id="examplePic">
             </ion-col>
         </ion-row>
     </ion-grid>    

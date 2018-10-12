@@ -10,6 +10,7 @@ import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 import { HTTP } from '@ionic-native/http';
+import { Base64 } from '@ionic-native/base64';
 
 import { MyApp } from './app.component';
 import { SignupPage } from '../pages/signup/signup';
@@ -85,6 +86,7 @@ const firebaseAuth = {
     StatusBar,
     SplashScreen,
     ImagePicker,
+    Base64,
     File,
     Transfer,
     Camera,

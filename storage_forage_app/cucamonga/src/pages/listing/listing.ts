@@ -41,11 +41,13 @@ export class ListingPage {
     let price = this.navParams.get('price');
     let description = this.navParams.get('description');
     let amenities = this.navParams.get('amenities');
+    let images = this.navParams.get('images');
     var post = new function(){
         this.title = title;
         this.price = price;
         this.description = description;
         this.amenities = amenities;
+        this.images = images;
       }
     this.posts.push(post);
   }

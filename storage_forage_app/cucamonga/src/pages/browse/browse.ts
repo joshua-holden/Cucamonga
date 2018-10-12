@@ -60,12 +60,14 @@ export class BrowsePage{
     var b = post.description;
     var c = post.price;
     let amenities = post.amenities;
+    let images = post.images;
     let data = {
       posterID: x,
       title: a,
       description: b,
       price: c,
-      amenities: amenities
+      amenities: amenities,
+      images: images
     };
     console.log(data);
   	this.navCtrl.push(ListingPage, data);
