@@ -2,14 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
     "\\src\\pages",
-    "\\src\\pages\\account",
-    "\\src\\pages\\signup",
-    "\\src\\providers",
-    "\\src\\providers\\angularfiredb-service",
-    "\\src\\providers\\firestore-service"
+    "\\src\\pages\\account-edit"
   ],
-  "SelectedNode": "\\src\\providers\\firestore-service\\firestore-service.ts",
+  "SelectedNode": "\\src\\pages\\account-edit\\account-edit.scss",
   "PreviewInSolutionExplorer": false
 }

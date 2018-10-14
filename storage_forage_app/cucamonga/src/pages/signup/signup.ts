@@ -31,14 +31,14 @@ export class SignupPage {
       public formbuilder: FormBuilder,
       private camera: Camera,
       public alrtCtrl: AlertController) {
-  	this.signup = this.formbuilder.group({
-      firstname: ['', Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      lastname: ['', Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      birthday: ['', Validators.required],
-  	  email: ['', Validators.compose([Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
-  	  password: ['', Validators.required],
-      passwordconfirm: ['', Validators.required],
-    }, {validator: this.matchingPasswords('password', 'passwordconfirm')}); 
+  	    this.signup = this.formbuilder.group({
+          firstname: ['', Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+          lastname: ['', Validators.compose([Validators.maxLength(32), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+          birthday: ['', Validators.required],
+  	      email: ['', Validators.compose([Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})'), Validators.required])],
+  	      password: ['', Validators.required],
+          passwordconfirm: ['', Validators.required],
+        }, {validator: this.matchingPasswords('password', 'passwordconfirm')}); 
   }
 
   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {     

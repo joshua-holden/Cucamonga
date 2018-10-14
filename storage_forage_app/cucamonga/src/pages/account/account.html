@@ -22,24 +22,19 @@
           <ion-card-header style="background-color: #FBDBC6">
             Hi, {{(account | async)?.firstName}}
           </ion-card-header>
-
   <ion-list>
     <button ion-item>
       View Profile
     </button>
-
-    <button ion-item>
+    <button ion-item (click)="editAccount()">
       Edit Profile
     </button>
-
     <button ion-item>
       Account Settings
     </button>
-
     <button ion-item>
       Log Out
     </button>
-
   </ion-list>
 </ion-card>
             </ion-col>
