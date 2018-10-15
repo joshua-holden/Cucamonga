@@ -6,6 +6,8 @@ import { ListingPage } from '../listing/listing';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { Observable } from "rxjs";
+import { ViewChild } from '@angular/core';
+import { Slides } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -13,6 +15,7 @@ import { Observable } from "rxjs";
   templateUrl: 'browse.html',
 })
 export class BrowsePage{ 
+@ViewChild(Slides) slides: Slides;
   public items = [];
   public posts: Observable<{}[]>;
   public amenities: Observable<{}[]>;
@@ -60,12 +63,14 @@ export class BrowsePage{
     var b = post.description;
     var c = post.price;
     let amenities = post.amenities;
+    let images = post.images;
     let data = {
       posterID: x,
       title: a,
       description: b,
       price: c,
-      amenities: amenities
+      amenities: amenities,
+      images: images
     };
     console.log(data);
   	this.navCtrl.push(ListingPage, data);

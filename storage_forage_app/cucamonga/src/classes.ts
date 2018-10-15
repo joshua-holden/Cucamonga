@@ -6,6 +6,7 @@
     size: string;
     price: number;
     amenities: string[];
+    images: string[];
     description: string;
 }
 

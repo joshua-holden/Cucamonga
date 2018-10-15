@@ -12,6 +12,8 @@ import { Account } from '../../classes';
 import { Observable } from "rxjs";
 import { ToastController } from 'ionic-angular';
 import { AccountPage } from '../account/account';
+import { Base64 } from '@ionic-native/base64';
+import { AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -27,7 +29,7 @@ public images = [];
 public userID: any;
 private account: Observable<{}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker, public formbuilder: FormBuilder, public afa: AngularFireAuth, public popoverCtrl: PopoverController, public afdb: AngularfireDbProvider, private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public imagePicker: ImagePicker, public formbuilder: FormBuilder, public afa: AngularFireAuth, public popoverCtrl: PopoverController, public afdb: AngularfireDbProvider, private toastCtrl: ToastController, private base64: Base64, private alertCtrl: AlertController) {
   this.posting = this.formbuilder.group({
       title: ['', Validators.required], 
       address: ['', Validators.required],
@@ -48,6 +50,7 @@ presentToast() {
   toast.present();
   }
 
+/*
 getPictures(){
 this.imagePicker.getPictures({
     }).then( results =>{
@@ -56,8 +59,28 @@ this.imagePicker.getPictures({
         this.images.push(results[i]);
       };
     });
+}*/
+
+getPictures() {
+  let options = {
+    maximumImagesCount: 5,
+    outputType: 1,
+  };
+  this.imagePicker.getPictures(options).then((results) => {
+    for (var i = 0; i < results.length; i++) {
+        this.images.push("data:image/jpeg;base64," + results[i]);
+    }
+  }, (err) => {this.presentAlert(); });
 }
 
+presentAlert() {
+  let alert = this.alertCtrl.create({
+    title: 'Sorry',
+    subTitle: 'Only works on mobile for now',
+    buttons: ['Dismiss']
+  });
+  alert.present();
+}
 
 createPost(){
   let account = this.afa.auth.currentUser;
@@ -68,9 +91,12 @@ createPost(){
     price: this.posting.value.price,
     size: this.posting.value.size,
     amenities: this.posting.value.amenities,
+    images: this.images,
     description: this.posting.value.description
   };
-  this.afdb.addPost(post);
+  let key = this.afdb.addPost(post);
+  //post.postID = key;
+  //console.log(post.postID);
   this.presentToast();
   this.navCtrl.setRoot(AccountPage);
 }

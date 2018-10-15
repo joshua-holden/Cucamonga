@@ -75,12 +75,16 @@
         <ion-row text-center>
           <ion-col *ngFor="let post of posts">
             <ion-card style="min-width: 300px; max-width: 375px" class="fade-in" (click)="openListing(post)">
-              <img style="max-height: 200px" src="" />
+              <div *ngFor="let image of post.images; index as i" [attr.data-index]="i">
+                  <div *ngIf="i === 0">
+                <img style="min-width: 300px; max-height: 200px" src={{image}}/>
+              </div>
+            </div>
                 <ion-card-content text-left>
                   <ion-card-title>
                     {{post.title}}
                   </ion-card-title>
-                  <p><strong>Empty Extra Bedroom</strong></p>
+                  <p><strong>{{post.size}}</strong></p>
                   <p>{{post.price}}</p>
                   <img src="assets/imgs/star_rating.png" style="max-width: 100px;">
                 </ion-card-content>

@@ -5,6 +5,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
 import { Observable } from "rxjs";
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Account } from '../../classes';
+import moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -13,10 +15,10 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class AccountEditPage {
 
-    private account: Observable<{}>;
+    private account: Account;
     private editAccount: FormGroup;
-    private photo: string;
     private selected: string;
+    private accountChanged: boolean = false;
 
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
@@ -33,7 +35,9 @@ export class AccountEditPage {
             passwordconfirm: ['', Validators.required],
         }, { validator: this.matchingPasswords('password', 'passwordconfirm') }); 
         this.afa.authState.subscribe(auth => {
-            if (auth != null) this.account = afdb.getAccount(auth.uid);
+            if (auth != null) afdb.getAccount(auth.uid).subscribe(acc => {
+                this.account = acc as Account;
+            });
         });
     }
 
@@ -45,6 +49,18 @@ export class AccountEditPage {
             if (password.value !== passwordconfirm.value) {
                 return {
                     mismatchedPasswords: true
+                };
+            }
+        }
+    }
+
+    validateAge(birthday: string) {
+        return (group: FormGroup): { [key: string]: any } => {
+            let bdate = group.controls[birthday];
+            let age = moment().diff(bdate.value, 'year', true);
+            if (age != 0 && age < 18) {
+                return {
+                    validateAge: true,
                 };
             }
         }
@@ -62,9 +78,58 @@ export class AccountEditPage {
             targetHeight: 300,
         };
         this.camera.getPicture(options).then(imgData => {
-            this.photo = 'data:image/jpeg;base64,' + imgData;
+            this.account.profileImg = 'data:image/jpeg;base64,' + imgData;
+            this.accountChanged = true;
         }).catch(err => {
             console.log(err);
         });
+    }
+
+    setFirstName() {
+        if (this.editAccount.value.firstname
+            && this.editAccount.value.lastname !== this.account.lastName
+            && this.editAccount.controls.firstname.valid)
+            this.account.firstName = this.editAccount.value.firstname;
+        this.selected = '';
+        this.accountChanged = true;
+    }
+
+    setLastName() {
+        if (this.editAccount.value.lastname
+            && this.editAccount.value.lastname !== this.account.lastName
+            && this.editAccount.controls.lastname.valid)
+          this.account.lastName = this.editAccount.value.lastname;
+        this.selected = '';
+        this.accountChanged = true;
+    }
+
+    setEmail() {
+        if (this.editAccount.value.email
+            && this.editAccount.value.email !== this.account.email
+            && this.editAccount.controls.email.valid)
+          this.account.email = this.editAccount.value.email;
+        this.selected = '';
+        this.accountChanged = true;
+    }
+
+    setBirthday() {
+        if (this.editAccount.controls.birthday.touched
+            && this.editAccount.value.birthday !== this.account.birthDate
+            && !this.editAccount.hasError('validateAge'))
+            this.account.birthDate = this.editAccount.value.birthday;
+        this.selected = '';
+        this.accountChanged = true;
+    }
+
+    setPassword() {
+        this.selected = '';
+    }
+
+    submitChanges() {
+        if (this.accountChanged)
+            this.afa.authState.subscribe(auth => {
+                this.afdb.updateAccount(auth.uid, this.account);
+            });
+        this.navCtrl.pop();
     }
 }

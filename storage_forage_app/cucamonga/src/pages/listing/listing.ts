@@ -8,6 +8,8 @@ import { Account } from '../../classes';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
 import { Observable } from "rxjs";
 import * as moment from 'moment';
+import { ViewChild } from '@angular/core';
+import { Slides } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -15,7 +17,10 @@ import * as moment from 'moment';
   templateUrl: 'listing.html',
 })
 
+
+
 export class ListingPage {
+@ViewChild(Slides) slides: Slides;
   eventSource = [];
   viewTitle: string;
   selectedDay = new Date();
@@ -39,11 +44,13 @@ export class ListingPage {
     let price = this.navParams.get('price');
     let description = this.navParams.get('description');
     let amenities = this.navParams.get('amenities');
+    let images = this.navParams.get('images');
     var post = new function(){
         this.title = title;
         this.price = price;
         this.description = description;
         this.amenities = amenities;
+        this.images = images;
       }
     this.posts.push(post);
   }

@@ -10,6 +10,7 @@ import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 import { HTTP } from '@ionic-native/http';
+import { Base64 } from '@ionic-native/base64';
 
 import { MyApp } from './app.component';
 import { SignupPage } from '../pages/signup/signup';
@@ -23,6 +24,7 @@ import { AccountPage } from '../pages/account/account';
 import { ListingPage } from '../pages/listing/listing';
 import { PopoverPage } from '../pages/popover/popover';
 import { AccountEditPage } from '../pages/account-edit/account-edit';
+import { EditListingPage } from '../pages/edit-listing/edit-listing';
 
 import { NgCalendarModule } from 'ionic2-calendar';
 import { AngularFireModule } from '@angular/fire';
@@ -56,6 +58,7 @@ const firebaseAuth = {
     ListingPage,
     PopoverPage,
     AccountEditPage,
+    EditListingPage,
   ],
   imports: [
     NgCalendarModule,
@@ -80,11 +83,13 @@ const firebaseAuth = {
     ListingPage,
     PopoverPage,
     AccountEditPage,
+    EditListingPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ImagePicker,
+    Base64,
     File,
     Transfer,
     Camera,

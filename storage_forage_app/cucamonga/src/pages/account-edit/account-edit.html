@@ -5,52 +5,60 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="editAccount">
+  <form [formGroup]="editAccount" *ngIf="account">
     <ion-row>
       <ion-label>First Name:</ion-label>
-    </ion-row>
-    <ion-row>
-        <ion-label *ngIf="selected !== 'firstName'">{{(account | async)?.firstName}}</ion-label>
-        <ion-input *ngIf="selected === 'firstName'"type="text" class="input" formControlName="firstname"></ion-input>
-        <button ion-button icon-only color="orange" (click)="selected = 'firstName'" >
-          <ion-icon name="create"></ion-icon>
-        </button>
+      <ion-label *ngIf="selected !== 'firstName'">{{account.firstName}}</ion-label>
+      <ion-label color="danger" *ngIf="editAccount.value.firstname && editAccount.controls.firstname.invalid">
+        *first name is invalid
+      </ion-label>
+      <ion-input *ngIf="selected === 'firstName'" type="text" class="input" formControlName="firstname"></ion-input>
+      <button *ngIf="selected !== 'firstName'" ion-button icon-only color="orange" (click)="selected = 'firstName'">
+        <ion-icon name="create"></ion-icon>
+      </button>
+      <button *ngIf="selected === 'firstName'" ion-button clear (click)="setFirstName()">Done</button>
     </ion-row>
     <ion-row>
       <ion-label>Last Name:</ion-label>
-    </ion-row>
-    <ion-row>
-      <ion-label *ngIf="selected !== 'lastName'">{{(account | async)?.lastName}}</ion-label>
-        <ion-input *ngIf="selected === 'lastName'" type="text" class="input" formControlName="lastname"></ion-input>
-      <button ion-button icon-only color="orange" (click)="selected = 'lastName'">
+      <ion-label *ngIf="selected !== 'lastName'">{{account.lastName}}</ion-label>
+      <ion-label color="danger" *ngIf="editAccount.value.lastname && editAccount.controls.lastname.invalid">
+        *last name is invalid
+      </ion-label>
+      <ion-input *ngIf="selected === 'lastName'" type="text" class="input" formControlName="lastname"></ion-input>
+      <button ion-button *ngIf="selected !== 'lastName'" icon-only color="orange" (click)="selected = 'lastName'">
         <ion-icon name="create"></ion-icon>
       </button>
-    </ion-row>
+      <button *ngIf="selected === 'lastName'" ion-button clear (click)="setLastName()">Done</button>
+</ion-row>
     <ion-row>
       <ion-label>Email:</ion-label>
-    </ion-row>
-    <ion-row>
-      <ion-label *ngIf="selected !== 'email'">{{(account | async)?.email}}</ion-label>
+      <ion-label *ngIf="selected !== 'email'">{{account.email}}</ion-label>
+      <ion-label color="danger" *ngIf="editAccount.value.email && editAccount.controls.email.invalid">
+        *email is invalid
+      </ion-label>
       <ion-input *ngIf="selected === 'email'" type="text" class="input" formControlName="email"></ion-input>
-      <button ion-button icon-only color="orange" (click)="selected = 'email'">
+      <button ion-button *ngIf="selected !== 'email'" icon-only color="orange" (click)="selected = 'email'">
         <ion-icon name="create"></ion-icon>
       </button>
+      <button *ngIf="selected === 'email'" ion-button clear (click)="setEmail()">Done</button>
     </ion-row>
     <ion-row>
       <ion-label>Date of Birth:</ion-label>
-    </ion-row>
-    <ion-row>
-      <ion-label *ngIf="selected !== 'birthday'">{{(account | async)?.birthDate}}</ion-label>
-      <ion-col>
-        <ion-datetime *ngIf="selected === 'birthday'" class="input" formControlName="birthday" #bdate></ion-datetime>
+      <ion-label *ngIf="selected !== 'birthday'">{{account.birthDate}}</ion-label>
+      <ion-label color="danger" *ngIf="editAccount.value.birthday && editAccount.hasError('validateAge')">
+        *must be at least 18 years old
+      </ion-label>
+      <ion-col *ngIf="selected === 'birthday'">
+        <ion-datetime class="input" formControlName="birthday" #bdate></ion-datetime>
       </ion-col>
-      <button ion-button icon-only color="orange" (click)="selected = 'birthday'">
+      <button ion-button *ngIf="selected !== 'birthday'" icon-only color="orange" (click)="selected = 'birthday'">
         <ion-icon name="create"></ion-icon>
       </button>
+      <button *ngIf="selected === 'birthday'" ion-button clear (click)="setBirthday()">Done</button>
     </ion-row>
     <ion-row>
       <ion-label>Password:</ion-label>
-      <button ion-button icon-only color="orange" (click)="selected = 'password'">
+      <button ion-button *ngIf="selected !== 'password'" icon-only color="orange" (click)="selected = 'password'">
         <ion-icon name="create"></ion-icon>
       </button>
     </ion-row>
@@ -61,15 +69,20 @@
     <ion-row *ngIf="selected === 'password'">
       <ion-label>Re-enter Password:</ion-label>
       <ion-input type="text" class="input" formControlName="passwordconfirm"></ion-input>
-        <ion-icon *ngIf="editAccount.hasError('mismatchedPasswords')"name="alert"></ion-icon>
-        <ion-icon *ngIf="!editAccount.hasError('mismatchedPasswords')" name="checkmark"></ion-icon>
+    </ion-row>
+    <ion-row *ngIf="selected === 'password'">
+      <ion-item>
+        <ion-icon color="danger" item-right *ngIf="!editAccount.value.password || editAccount.hasError('mismatchedPasswords')" name="alert"></ion-icon>
+        <ion-icon item-right *ngIf="editAccount.controls.passwordconfirm.touched && !editAccount.hasError('mismatchedPasswords')" name="checkmark"></ion-icon>
+        <button ion-button clear (click)="setPassword()" item-right>Done</button>
+      </ion-item>
     </ion-row>
     <ion-row style="margin-top: 50px; text-align: center;">
-      <ion-col *ngIf="photo">
-        <img style="max-width: 100px; max-height: 100px" src="{{myPhoto}}" />
+      <ion-col>
+        <img [src]="account.profileImg" style="border-radius: 50%; padding: 10px; max-height: 100px">
       </ion-col>
-    </ion-row>
       <button ion-button full outline clear style="color:black; margin: 0px" (click)="getPictures()">Change Profile Picture</button>
+    </ion-row>  
     <ion-row>
       <button ion-button full outline clear style="color:black; margin: 0px" (click)="submitChanges()">
           Save changes

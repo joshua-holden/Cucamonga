@@ -20,18 +20,34 @@ export class AngularfireDbProvider {
 
     public addAccount(account: Account) {
         this.afdb.object(`/accounts/${account.userID}/`).set(account).catch(err => console.log(err));
-  }
+    }
+
+    public updateAccount(id: any, account: Account) {
+        this.afdb.object(`/accounts/${id}/`).update(account);
+    }
 
     public removeAccount(id: any) {
-        this.afdb.object('/accounts/${id}/').remove()
-  }
+        this.afdb.object(`/accounts/${id}/`).remove()
+    }
 
     public addPost(post) {
         var key = this.afdb.list(`/posts/`).push(post).key;
         this.afdb.object(`/posts/` + key).set(post);
+        return key;
+    }
+
+    public deletePost(post: any) {
+        console.log(post.postID);
+        this.afdb.object(`/posts/${post.postID}/`).remove();
+    }
+
+    public updatePost(post) {
+        this.afdb.object(`/posts/` + post.$key).update(post);
     }
 
     public getAllPosts(): AngularFireList<Posting> {
         return this.afdb.list('/posts/');
     }
+
+
 }
