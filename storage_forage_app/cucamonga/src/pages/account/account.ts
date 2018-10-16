@@ -48,7 +48,7 @@ export class AccountPage {
     }
 
   openListing(post) {
-    var id = post.userID;
+    var postID = post.postID;
     var title = post.title;
     var address = post.address;
     var description = post.description;
@@ -57,13 +57,14 @@ export class AccountPage {
     let amenities = post.amenities;
     let images = post.images;
     let data = {
-      posterID: id,
+      postID: postID,
       title: title,
       address: address,
       description: description,
       price: price,
       size:size,
-      amenities: amenities
+      amenities: amenities,
+      images: images
     };
     console.log(data);
     this.navCtrl.push(EditListingPage, data);

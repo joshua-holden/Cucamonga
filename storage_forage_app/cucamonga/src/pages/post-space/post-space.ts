@@ -64,8 +64,9 @@ this.imagePicker.getPictures({
 getPictures() {
   let options = {
     maximumImagesCount: 5,
-    outputType: 1,
+    outputType: 1
   };
+  this.images = [];
   this.imagePicker.getPictures(options).then((results) => {
     for (var i = 0; i < results.length; i++) {
         this.images.push("data:image/jpeg;base64," + results[i]);
@@ -85,6 +86,7 @@ presentAlert() {
 createPost(){
   let account = this.afa.auth.currentUser;
   let post: Posting = {
+    postID: account.uid,
     userID: account.uid,
     title: this.posting.value.title,
     address: this.posting.value.address,
@@ -95,8 +97,11 @@ createPost(){
     description: this.posting.value.description
   };
   let key = this.afdb.addPost(post);
-  //post.postID = key;
-  //console.log(post.postID);
+  
+  console.log(post.postID);
+  post.postID = key;
+  this.afdb.updatePost(post);
+  console.log(post.postID);
   this.presentToast();
   this.navCtrl.setRoot(AccountPage);
 }

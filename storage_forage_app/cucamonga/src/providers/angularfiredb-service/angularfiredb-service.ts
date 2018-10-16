@@ -6,8 +6,6 @@ import { Observable } from "rxjs";
 @Injectable()
 export class AngularfireDbProvider {
 
-    postID = "";
-
     constructor(public afdb: AngularFireDatabase) {
 
     }
@@ -34,17 +32,17 @@ export class AngularfireDbProvider {
 
     public addPost(post) {
         var key = this.afdb.list(`/posts/`).push(post).key;
-        this.postID = key;
         this.afdb.object(`/posts/` + key).set(post);
+        return key;
     }
 
-    public deletePost(post: any) {
+    public deletePost(post) {
         console.log(post.postID);
-        this.afdb.object(`/posts/` + this.postID).remove();
+        this.afdb.object(`/posts/` + post.postID).remove();
     }
 
     public updatePost(post) {
-        this.afdb.object(`/posts/` + this.postID).update(post);
+        this.afdb.object(`/posts/` + post.postID).update(post);
     }
 
     public getAllPosts(): AngularFireList<Posting> {

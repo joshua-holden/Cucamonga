@@ -70,21 +70,22 @@ presentAlert() {
 }
 
   getData(){
-    let posterID = this.navParams.get('posterID');
-    this.account = this.afdb.getAccount(posterID);
+    let postID = this.navParams.get('postID');
     let title = this.navParams.get('title');
     let address = this.navParams.get('address');
     let size = this.navParams.get('size');
     let price = this.navParams.get('price');
     let description = this.navParams.get('description');
-    let images = [];
+    let images = this.navParams.get('images');
     let amenities = this.navParams.get('amenities');
     var post = new function(){
+    	this.postID = postID;
         this.title = title;
         this.price = price;
         this.address = address;
         this.size = size;
         this.description = description;
+        this.images = images;
         this.amenities = amenities;
       }
     this.posts.push(post);
@@ -92,14 +93,16 @@ presentAlert() {
 
   updatePost(){
   let account = this.afa.auth.currentUser;
+  let posta = this.posts[0];
   let post: Posting = {
+  	postID: posta.postID,
     userID: account.uid,
     title: this.posting.value.title,
     address: this.posting.value.address,
     price: this.posting.value.price,
     size: this.posting.value.size,
     amenities: this.posting.value.amenities,
-    images: this.posting.value.amenities,
+    images: this.images,
     description: this.posting.value.description
   };
   this.afdb.updatePost(post);
@@ -108,8 +111,8 @@ presentAlert() {
 }
 
 deletePost(){
-  let post = this.posting;
-  this.afdb.deletePost(post);
+  let posta = this.posts[0];
+  this.afdb.deletePost(posta);
   this.presentDeleteToast();
   this.navCtrl.setRoot(AccountPage);
 }

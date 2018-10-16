@@ -1,5 +1,5 @@
 ﻿export interface Posting {
-    /*postID: string;*/
+    postID: string;
     userID: any;
     title: string;
     address: string;
