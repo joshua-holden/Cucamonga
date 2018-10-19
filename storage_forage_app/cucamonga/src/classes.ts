@@ -20,3 +20,12 @@ export interface Account {
     posts: Posting[];
     requests: Posting[];
 }
+
+export interface Reservation {
+    postID: string;
+    userID: string;
+    reservationID: string;
+    startDate: string;
+    endDate: string;
+    totalPrice: number;
+}
