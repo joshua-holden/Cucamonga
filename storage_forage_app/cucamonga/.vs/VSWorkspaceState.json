@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\pages",
-    "\\src\\pages\\account-edit"
+    "\\src\\pages\\pricing-modal"
   ],
-  "SelectedNode": "\\src\\pages\\account-edit\\account-edit.scss",
+  "SelectedNode": "\\src\\classes.ts",
   "PreviewInSolutionExplorer": false
 }

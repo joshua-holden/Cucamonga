@@ -56,10 +56,6 @@ export class ListingPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListingPage');
-    console.log(this.navParams.get('title'));
-    console.log(this.navParams.get('description'));
-    console.log(this.navParams.get('img'));
     this.getData();
   }
 

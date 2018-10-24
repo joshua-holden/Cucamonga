@@ -29,3 +29,9 @@ export interface Reservation {
     endDate: string;
     totalPrice: number;
 }
+
+export interface Pricing {
+    dailyAmount?: number;
+    monthlyAmount: number;
+    isMonthOnly: boolean;
+}

@@ -25,6 +25,7 @@ import { ListingPage } from '../pages/listing/listing';
 import { PopoverPage } from '../pages/popover/popover';
 import { AccountEditPage } from '../pages/account-edit/account-edit';
 import { EditListingPage } from '../pages/edit-listing/edit-listing';
+import { PricingModal } from '../pages/pricing-modal/pricing-modal';
 
 import { NgCalendarModule } from 'ionic2-calendar';
 import { AngularFireModule } from '@angular/fire';
@@ -59,6 +60,7 @@ const firebaseAuth = {
     PopoverPage,
     AccountEditPage,
     EditListingPage,
+    PricingModal,
   ],
   imports: [
     NgCalendarModule,
@@ -84,6 +86,7 @@ const firebaseAuth = {
     PopoverPage,
     AccountEditPage,
     EditListingPage,
+    PricingModal,
   ],
   providers: [
     StatusBar,

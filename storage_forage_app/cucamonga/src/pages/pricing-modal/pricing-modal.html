@@ -1,0 +1,46 @@
+﻿<ion-header>
+  <ion-navbar color="orange">
+    <ion-title>Pricing</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label floating>Price</ion-label>
+        <ion-input type="number" [(ngModel)]="amount"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-row radio-group class="radio-row">
+        <ion-col>
+          <ion-label>
+            <ion-radio value="day" (ionSelect)="setDayOrMonth('day')" name="dayOrMonth" checked></ion-radio>
+            Daily
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <ion-radio value="month" (ionSelect)="setDayOrMonth('month')" name="dayOrMonth"></ion-radio>
+            Monthly
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <div class="margin-left">
+    <ion-row>
+      <ion-label>
+        Price is only per month
+        <ion-checkbox [(ngModel)]="isMonthOnly" class="check-box"></ion-checkbox>
+      </ion-label>
+    </ion-row>
+    <ion-row *ngIf="!isMonthOnly">
+      <ion-label *ngIf="amount">Price per day: ${{displayDayPrice()}}</ion-label>
+    </ion-row>
+    <ion-row>
+      <ion-label *ngIf="amount">Price per Month: ${{displayMonthPrice()}}</ion-label>
+    </ion-row>
+  </div>
+</ion-content>
