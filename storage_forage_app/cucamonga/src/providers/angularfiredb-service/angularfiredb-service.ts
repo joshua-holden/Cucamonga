@@ -49,5 +49,20 @@ export class AngularfireDbProvider {
         return this.afdb.list('/posts/');
     }
 
+    public addReservation(res) {
+        var key = this.afdb.list(`/reservations/`).push(res).key;
+        this.afdb.object(`/reservations/` + key).set(res);
+        return key;
+    }
+
+    public deleteReservation(res) {
+        console.log(res.reservationID);
+        this.afdb.object(`/reservations/` + res.reservationID).remove();
+    }
+
+    public updateReservation(res) {
+        this.afdb.object(`/reservations/` + res.reservationID).update(res);
+    }
+
 
 }
