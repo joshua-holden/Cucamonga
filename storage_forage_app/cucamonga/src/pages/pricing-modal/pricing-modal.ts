@@ -31,6 +31,10 @@ export class PricingModal {
     }
 
     dismiss() {
-        this.viewCtrl.dismiss();
+        this.viewCtrl.dismiss({
+            dailyAmount: this.displayDayPrice(),
+            monthlyAmount: this.displayMonthPrice(),
+            isMonthOnly: this.isMonthOnly
+        });
     }
 }

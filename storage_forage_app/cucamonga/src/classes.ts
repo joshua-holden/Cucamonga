@@ -4,7 +4,7 @@
     title: string;
     address: string;
     size: string;
-    price: number;
+    price: Pricing;
     amenities: string[];
     images: string[];
     description: string;
@@ -34,4 +34,11 @@ export interface Pricing {
     dailyAmount?: number;
     monthlyAmount: number;
     isMonthOnly: boolean;
+}
+
+export function getPriceString(pricing: Pricing) {
+    let priceString = "";
+    if (!pricing.isMonthOnly) priceString += (pricing.dailyAmount + "/day, ");
+    priceString += (pricing.monthlyAmount + "/month");
+    return priceString;
 }
