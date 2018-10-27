@@ -14,6 +14,7 @@ import { ToastController } from 'ionic-angular';
 import { AccountPage } from '../account/account';
 import { PricingModal } from '../pricing-modal/pricing-modal';
 import { AlertController } from 'ionic-angular';
+import { Pricing, getPriceString } from '../../classes';
 
 @IonicPage()
 @Component({
@@ -27,6 +28,8 @@ export class PostSpacePage {
   public images = [];
   public userID: any;
   private account: Observable<{}>;
+  private pricing: Pricing;
+  private priceString: string = this.pricing ? getPriceString(this.pricing) : "";
 
   constructor(public navCtrl: NavController,
       public navParams: NavParams,
@@ -86,7 +89,7 @@ export class PostSpacePage {
       userID: account.uid,
       title: this.posting.value.title,
       address: this.posting.value.address,
-      price: this.posting.value.price,
+      price: this.pricing,
       size: this.posting.value.size,
       amenities: this.posting.value.amenities,
       images: this.images,
@@ -108,10 +111,10 @@ export class PostSpacePage {
 
   priceModal() {
       let priceModal = this.modalCtrl.create(PricingModal);
-      priceModal.onDidDismiss(data => {
-          console.log(data);
+      priceModal.onDidDismiss(price => {
+          this.pricing = price;
+          this.priceString = getPriceString(price);
       });
       priceModal.present();
   }
-
 }
