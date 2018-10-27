@@ -8,6 +8,7 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angula
 import { Observable } from "rxjs";
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
+import { getPriceString } from '../../classes';
 
 @IonicPage()
 @Component({
@@ -25,6 +26,8 @@ export class BrowsePage{
       public popoverCtrl: PopoverController,
       public navParams: NavParams) {
   }
+
+  getPrice = getPriceString;
 
   ngOnInit() {
       this.setItems();

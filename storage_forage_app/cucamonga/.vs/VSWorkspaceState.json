@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\pages",
+    "\\src\\pages\\listing"
   ],
-  "SelectedNode": "\\src\\classes.ts",
+  "SelectedNode": "\\src\\pages\\listing\\listing.html",
   "PreviewInSolutionExplorer": false
 }

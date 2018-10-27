@@ -4,11 +4,9 @@
         <ion-title><strong>Listing</strong></ion-title>
     </ion-navbar>
 </ion-header>
+
 <ion-content>
-
-
-    <div class="currentListing" *ngFor="let post of posts">
-
+  <div class="currentListing" *ngFor="let post of posts">
     <ion-grid class="listingphoto">
         <ion-row> 
             <ion-col class="listingphoto">
@@ -25,7 +23,7 @@
         <ion-row style="margin-top: 10px">
             <ion-col col-6 text-left class="title" id="mobtit">
                 <p class="listtitle" id="mobtit"><strong>{{post.title}}</strong></p>
-                <p class="city">Downtown Boise</p>
+                <p class="city">{{post.address}}</p>
             </ion-col>
             <ion-col col-6 text-center class="profilepic">
                 <img *ngIf="account" [src]="(account | async)?.profileImg" style="border-radius: 50%; max-width: 80px">
@@ -42,7 +40,6 @@
         <hr>
         <ion-row>
             <ion-col text-left>
-
                 <p id="paragraph">
                     {{post.description}}
                 </p>
