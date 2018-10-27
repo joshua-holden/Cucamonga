@@ -36,6 +36,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularfireDbProvider } from '../providers/angularfiredb-service/angularfiredb-service';
 import { FirestoreProvider } from '../providers/firestore-service/firestore-service';
 
+/*
 const firebaseAuth = {
     apiKey: "AIzaSyAXZpabh_R6gPhUexA50tn_t9AED79Rn4Y",
     authDomain: "storage-forage-app.firebaseapp.com",
@@ -43,7 +44,18 @@ const firebaseAuth = {
     projectId: "storage-forage-app",
     storageBucket: "storage-forage-app.appspot.com",
     messagingSenderId: "563818531897"
+};*/
+
+
+const firebaseAuth = {
+    apiKey: "AIzaSyDZ-ZP4OOTaS02n4b2vNP5wJARnFqCGxsk",
+    authDomain: "cucamonga-a35c9.firebaseapp.com",
+    databaseURL: "https://cucamonga-a35c9.firebaseio.com",
+    projectId: "cucamonga-a35c9",
+    storageBucket: "cucamonga-a35c9.appspot.com",
+    messagingSenderId: "454666002927"
 };
+
 
 @NgModule({
   declarations: [
