@@ -62,7 +62,7 @@ export class AccountPage {
       address: address,
       description: description,
       price: price,
-      size:size,
+      size: size,
       amenities: amenities,
       images: images
     };

@@ -31,7 +31,7 @@ export class ListingPage {
   };
 
   public posts = [];
-  private account: Observable<{}>;
+  private postAccount: Observable<{}>;
   private reservations = [];
 
   constructor(public navCtrl: NavController,
@@ -42,7 +42,7 @@ export class ListingPage {
 
   getData(){
     let posterID = this.navParams.get('posterID');
-    //this.account = this.afa.auth.currentUser;
+    this.postAccount = this.afdb.getAccount(posterID);
     let title = this.navParams.get('title');
     let price = this.navParams.get('price');
     let description = this.navParams.get('description');
@@ -62,16 +62,17 @@ export class ListingPage {
     this.getData();
   }
 
-  createReservation(data) {
-    let account = this.afa.auth.currentUser;
-    let start = data.eventData.startTime.toString();
+  createReservation(start, end) {
+    //this.account = this.afa.auth.currentUser;
+    //let start = data.eventData.startTime.toString();
+    //let end = data.eventData.endTime.toString();
 
     let res : Reservation = {
       postID: this.navParams.get('posterID'),
-      userID: account.uid,
-      reservationID: account.uid,
-      startDate: data.eventData.startTime.toString(),
-      endDate: data.eventData.endTime.toString(),
+      userID: this.afa.auth.currentUser.uid,
+      reservationID: this.afa.auth.currentUser.uid,
+      startDate: start,
+      endDate: end,
       totalPrice: 0
     }
     let key = this.afdb.addReservation(res);
@@ -88,7 +89,9 @@ export class ListingPage {
  
         eventData.startTime = new Date(data.startTime);
         eventData.endTime = new Date(data.endTime);
-        this.createReservation(eventData);
+        let start = eventData.startTime.toString();
+        let end = eventData.endTime.toString();
+        this.createReservation(start, end);
         let events = this.eventSource;
         events.push(eventData);
         this.eventSource = [];

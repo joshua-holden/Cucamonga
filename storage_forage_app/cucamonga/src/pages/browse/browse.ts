@@ -62,6 +62,7 @@ export class BrowsePage{
 
   openListing(post) {
     var x = post.userID;
+    var postID = post.postID;
     var a = post.title;
     var b = post.description;
     var c = post.price;
@@ -69,6 +70,7 @@ export class BrowsePage{
     let images = post.images;
     let data = {
       posterID: x,
+      postID: postID,
       title: a,
       description: b,
       price: c,
