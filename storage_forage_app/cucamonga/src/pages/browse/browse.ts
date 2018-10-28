@@ -66,6 +66,7 @@ export class BrowsePage{
     var a = post.title;
     var b = post.description;
     var c = post.price;
+    var d = post.address;
     let amenities = post.amenities;
     let images = post.images;
     let data = {
@@ -74,11 +75,11 @@ export class BrowsePage{
       title: a,
       description: b,
       price: c,
+      address: d,
       amenities: amenities,
       images: images
     };
-    console.log(data);
-  	this.navCtrl.push(ListingPage, data);
+  	this.navCtrl.push(ListingPage, post);
   }
 
   presentPopover(myEvent) {

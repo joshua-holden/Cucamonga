@@ -132,4 +132,8 @@ export class AccountEditPage {
             });
         this.navCtrl.pop();
     }
+
+    deleteAccount() {
+        //show delete account modal
+    }
 }

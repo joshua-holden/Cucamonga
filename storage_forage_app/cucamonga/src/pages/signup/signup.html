@@ -52,17 +52,14 @@
           </ion-item>
 	    </div>
   </form>
+  <ion-row style="margin-top: 0px; text-align: center;">
+    <ion-col *ngIf="myPhoto">
+      <img style="max-width: 100px; max-height: 100px" src="{{myPhoto}}" />
+    </ion-col>
+    <button ion-button full outline clear style="color:black; margin: 0px" (click)="getPictures()">Upload Images</button>
+    <div style="background-color: #e9e9e9; width: 100%; height: 1px"></div>
+    <button ion-button full outline clear style="color:black; margin: 0px" (click)="submitForm()">
+      Submit
+    </button>
+  </ion-row>
 </ion-content>
-<ion-footer no-padding class="footbuttons">
-    <ion-row style="margin-top: 0px; text-align: center;">
-        <ion-col *ngIf="myPhoto">
-          <img style="max-width: 100px; max-height: 100px" src="{{myPhoto}}" />
-        </ion-col>
-      
-      <button ion-button full outline clear style="color:black; margin: 0px" (click)="getPictures()">Upload Images</button>
-      <div style="background-color: #e9e9e9; width: 100%; height: 1px"></div>
-        <button ion-button full outline clear style="color:black; margin: 0px" (click)="submitForm()">
-          Submit
-        </button>
-      </ion-row>
-  </ion-footer>

@@ -22,64 +22,53 @@
           <ion-card-header style="background-color: #FBDBC6">
             Hi, {{(account | async)?.firstName}}
           </ion-card-header>
-  <ion-list>
-    <button ion-item>
-      View Profile
-    </button>
-    <button ion-item (click)="editAccount()">
-      Edit Profile
-    </button>
-    <button ion-item>
-      Account Settings
-    </button>
-    <button ion-item>
-      Log Out
-    </button>
-  </ion-list>
-</ion-card>
-            </ion-col>
-            </ion-row>
-            <ion-row>
-            <ion-col col text-left class="hidemobile">
-                <div style="background-color: #FBDBC6; width: 100%; border-bottom: 1px solid #eff0f1; padding: 5px">
-                <h3 style="margin: 0px">Notifications</h3>
-                </div>
-
-                <ion-item>Notification 1</ion-item>
-                <ion-item>Notification 2</ion-item>
-                <ion-item>Notification 3</ion-item>
-                <ion-item>Notification 4</ion-item>
-                <ion-item>Notification 5</ion-item>
-            
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col class="hidebrowser" col text-left>
-                <div style="background-color: #FBDBC6; width: 100%; border-bottom: 1px solid #eff0f1; padding: 5px">
-                <h3 style="margin: 0px">Notifications</h3>
-                </div>
-                
-                <ion-item>Notification 1</ion-item>
-                <ion-item>Notification 2</ion-item>
-                <ion-item>Notification 3</ion-item>
-                <ion-item>Notification 4</ion-item>
-            
-            </ion-col>
-        </ion-row>    
-  <ion-row style="border: 1px solid #eff0f1; margin-bottom: 20px; margin-top: 20px; text-align: left">
-    <div style="background-color: #FBDBC6; width: 100%; border-bottom: 1px solid #eff0f1; padding: 5px">
-    <h3 style="margin: 0px">My Listings</h3>
-    </div>  
-    <ion-col text-left>
-      <ion-grid>
-        <ion-row text-center>
-          <ion-col *ngFor="let post of posts">
-            <ion-card style="min-width: 300px; max-width: 375px" class="fade-in" (click)="openListing(post)">
-              <div *ngFor="let image of post.images; index as i" [attr.data-index]="i">
+          <ion-list>
+            <button ion-item>
+              View Profile
+            </button>
+            <button ion-item (click)="editAccount()">
+              Edit Profile
+            </button>
+            <button ion-item>
+              Account Settings
+            </button>
+            <button ion-item>
+              Log Out
+            </button>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col text-left class="hidemobile">
+          <div style="background-color: #FBDBC6; width: 100%; border-bottom: 1px solid #eff0f1; padding: 5px">
+            <h3 style="margin: 0px">Reservations</h3>
+          </div>
+          <ion-item *ngFor="let res of reservations">{{res.startDate}}</ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="hidebrowser" col text-left>
+        <div style="background-color: #FBDBC6; width: 100%; border-bottom: 1px solid #eff0f1; padding: 5px">
+          <h3 style="margin: 0px">Reservations</h3>
+        </div>
+        <ion-item *ngFor="let res of reservations">{{res.startDate}}</ion-item>
+      </ion-col>
+    </ion-row>    
+    <ion-row style="border: 1px solid #eff0f1; margin-bottom: 20px; margin-top: 20px; text-align: left">
+      <div style="background-color: #FBDBC6; width: 100%; border-bottom: 1px solid #eff0f1; padding: 5px">
+      <h3 style="margin: 0px">My Listings</h3>
+      </div>  
+      <ion-col text-left>
+        <ion-grid>
+          <ion-row text-center>
+            <ion-col *ngFor="let post of posts">
+              <ion-card style="min-width: 300px; max-width: 375px" class="fade-in" (click)="openListing(post)">
+                <div *ngFor="let image of post.images; index as i" [attr.data-index]="i">
                   <div *ngIf="i === 0">
-                <img style="min-width: 300px; max-height: 200px" src={{image}}/>
-              </div>
-            </div>
+                    <img style="min-width: 300px; max-height: 200px" src={{image}}/>
+                  </div>
+                </div>
                 <ion-card-content text-left>
                   <ion-card-title>
                     {{post.title}}

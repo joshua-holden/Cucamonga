@@ -3,8 +3,9 @@
     "",
     "\\src",
     "\\src\\pages",
-    "\\src\\pages\\listing"
+    "\\src\\pages\\listing",
+    "\\src\\pages\\signup"
   ],
-  "SelectedNode": "\\src\\pages\\listing\\listing.html",
+  "SelectedNode": "\\src\\pages\\listing\\listing.ts",
   "PreviewInSolutionExplorer": false
 }

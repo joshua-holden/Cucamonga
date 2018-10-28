@@ -10,15 +10,13 @@ import { Observable } from "rxjs";
 import * as moment from 'moment';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
-import { Reservation } from '../../classes';
+import { Reservation, getPriceString } from '../../classes';
 
 @IonicPage()
 @Component({
   selector: 'page-listing',
   templateUrl: 'listing.html',
 })
-
-
 
 export class ListingPage {
 @ViewChild(Slides) slides: Slides;
@@ -37,19 +35,23 @@ export class ListingPage {
   constructor(public navCtrl: NavController,
       private modalCtrl: ModalController,
       private alertCtrl: AlertController,
-      public navParams: NavParams, private afdb: AngularfireDbProvider, public afa: AngularFireAuth
-      ) { }
+      public navParams: NavParams, private afdb: AngularfireDbProvider, public afa: AngularFireAuth) {
+  }
+
+  getPrice = getPriceString;
 
   getData(){
-    let posterID = this.navParams.get('posterID');
+    let posterID = this.navParams.get('userID');
     this.postAccount = this.afdb.getAccount(posterID);
     let title = this.navParams.get('title');
+    let address = this.navParams.get('address');
     let price = this.navParams.get('price');
     let description = this.navParams.get('description');
     let amenities = this.navParams.get('amenities');
     let images = this.navParams.get('images');
     var post = new function(){
         this.title = title;
+        this.address = address;
         this.price = price;
         this.description = description;
         this.amenities = amenities;

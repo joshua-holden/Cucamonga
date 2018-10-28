@@ -112,8 +112,10 @@ export class PostSpacePage {
   priceModal() {
       let priceModal = this.modalCtrl.create(PricingModal);
       priceModal.onDidDismiss(price => {
-          this.pricing = price;
-          this.priceString = getPriceString(price);
+          if (price) {
+              this.pricing = price;
+              this.priceString = getPriceString(price);
+          }
       });
       priceModal.present();
   }

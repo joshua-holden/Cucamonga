@@ -6,7 +6,7 @@ import { AccountEditPage } from '../account-edit/account-edit';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireObject } from '@angular/fire/database';
 import { AngularFireList } from '@angular/fire/database';
-import { Account, Posting } from '../../classes';
+import { Account, Posting, Reservation } from '../../classes';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
 import { Observable } from "rxjs";
 import { EditListingPage } from '../edit-listing/edit-listing';
@@ -20,6 +20,7 @@ export class AccountPage {
 
     private account: Observable<{}>;
     private posts: Posting[] = [];
+    private reservations: Reservation[] = [];
 
     constructor(public navCtrl: NavController,
         public popoverCtrl: PopoverController,
@@ -32,6 +33,9 @@ export class AccountPage {
                 this.afdb.getAllPosts().valueChanges().subscribe(posts => {
                     this.posts = posts.filter(post => post.userID === auth.uid);
                 });
+                this.afdb.getAllReservations().valueChanges().subscribe(reservations => {
+                    this.reservations = reservations.filter(reservation => reservation.userID === auth.uid);
+                })
             }
         });
     }

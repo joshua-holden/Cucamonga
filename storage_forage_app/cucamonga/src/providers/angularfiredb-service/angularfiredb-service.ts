@@ -1,6 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
-import { Account, Posting } from '../../classes';
+import { Account, Posting, Reservation } from '../../classes';
 import { Observable } from "rxjs";
 
 @Injectable()
@@ -47,6 +47,10 @@ export class AngularfireDbProvider {
 
     public getAllPosts(): AngularFireList<Posting> {
         return this.afdb.list('/posts/');
+    }
+
+    public getAllReservations(): AngularFireList<Reservation> {
+        return this.afdb.list('/reservations/');
     }
 
     public addReservation(res) {
