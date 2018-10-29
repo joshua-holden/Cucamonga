@@ -49,6 +49,15 @@ export class AngularfireDbProvider {
         return this.afdb.list('/posts/');
     }
 
+    public getPost(postId: any): Observable<{}> {
+        return this.afdb.object(`/posts/${postId}/`).valueChanges();
+    }
+
+    public getPostTitle(postId: any): Observable<{}> {
+        console.log(`/posts/${postId}/title/`);
+        return this.afdb.object(`/posts/${postId}/title/`).valueChanges();
+    }
+
     public getAllReservations(): AngularFireList<Reservation> {
         return this.afdb.list('/reservations/');
     }

@@ -61,24 +61,6 @@ export class BrowsePage{
   }
 
   openListing(post) {
-    var x = post.userID;
-    var postID = post.postID;
-    var a = post.title;
-    var b = post.description;
-    var c = post.price;
-    var d = post.address;
-    let amenities = post.amenities;
-    let images = post.images;
-    let data = {
-      posterID: x,
-      postID: postID,
-      title: a,
-      description: b,
-      price: c,
-      address: d,
-      amenities: amenities,
-      images: images
-    };
   	this.navCtrl.push(ListingPage, post);
   }
 

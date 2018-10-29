@@ -6,10 +6,11 @@ import { AccountEditPage } from '../account-edit/account-edit';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireObject } from '@angular/fire/database';
 import { AngularFireList } from '@angular/fire/database';
-import { Account, Posting, Reservation } from '../../classes';
+import { Account, Posting, Reservation, getPriceString } from '../../classes';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
 import { Observable } from "rxjs";
 import { EditListingPage } from '../edit-listing/edit-listing';
+import { ListingPage } from '../listing/listing';
 
 @IonicPage()
 @Component({
@@ -20,7 +21,7 @@ export class AccountPage {
 
     private account: Observable<{}>;
     private posts: Posting[] = [];
-    private reservations: Reservation[] = [];
+    private reservations = [];
 
     constructor(public navCtrl: NavController,
         public popoverCtrl: PopoverController,
@@ -34,11 +35,20 @@ export class AccountPage {
                     this.posts = posts.filter(post => post.userID === auth.uid);
                 });
                 this.afdb.getAllReservations().valueChanges().subscribe(reservations => {
-                    this.reservations = reservations.filter(reservation => reservation.userID === auth.uid);
+                    reservations.filter(reservation => reservation.userID === auth.uid)
+                        .forEach(reservation => {
+                          this.afdb.getPost(reservation.postID).subscribe(post => {
+                              this.reservations.push({ reservation: reservation, posting: post });
+                              console.log(this.reservations);
+                        });
+                    });
+                    
                 })
             }
         });
     }
+
+    priceString = getPriceString;
 
     presentPopover(myEvent) {
         let popover = this.popoverCtrl.create(PopoverPage);
@@ -51,27 +61,12 @@ export class AccountPage {
         this.navCtrl.push(AccountEditPage)
     }
 
-  openListing(post) {
-    var postID = post.postID;
-    var title = post.title;
-    var address = post.address;
-    var description = post.description;
-    var price = post.price;
-    var size = post.size;
-    let amenities = post.amenities;
-    let images = post.images;
-    let data = {
-      postID: postID,
-      title: title,
-      address: address,
-      description: description,
-      price: price,
-      size: size,
-      amenities: amenities,
-      images: images
-    };
-    console.log(data);
-    this.navCtrl.push(EditListingPage, data);
-  }
+    openEditPosting(post) {
+      this.navCtrl.push(EditListingPage, post);
+    }
+
+    openViewPosting(post) {
+      this.navCtrl.push(ListingPage, post);
+    }
 }
 

@@ -44,7 +44,11 @@
           <div style="background-color: #FBDBC6; width: 100%; border-bottom: 1px solid #eff0f1; padding: 5px">
             <h3 style="margin: 0px">Reservations</h3>
           </div>
-          <ion-item *ngFor="let res of reservations">{{res.startDate}}</ion-item>
+          <ion-item *ngFor="let res of reservations" (click)="openViewPosting(res.posting)">
+            <ion-col>{{res.posting.title}}</ion-col>
+            <ion-col>{{res.reservation.startDate}}</ion-col>
+            <ion-col>{{res.reservation.endDate}}</ion-col>
+          </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -63,7 +67,7 @@
         <ion-grid>
           <ion-row text-center>
             <ion-col *ngFor="let post of posts">
-              <ion-card style="min-width: 300px; max-width: 375px" class="fade-in" (click)="openListing(post)">
+              <ion-card style="min-width: 300px; max-width: 375px" class="fade-in" (click)="openEditPosting(post)">
                 <div *ngFor="let image of post.images; index as i" [attr.data-index]="i">
                   <div *ngIf="i === 0">
                     <img style="min-width: 300px; max-height: 200px" src={{image}}/>
@@ -74,7 +78,7 @@
                     {{post.title}}
                   </ion-card-title>
                   <p><strong>{{post.size}}</strong></p>
-                  <p>{{post.price}}</p>
+                  <p>{{priceString(post)}}</p>
                   <img src="assets/imgs/star_rating.png" style="max-width: 100px;">
                 </ion-card-content>
               </ion-card>

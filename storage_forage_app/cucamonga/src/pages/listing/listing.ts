@@ -70,7 +70,7 @@ export class ListingPage {
     //let end = data.eventData.endTime.toString();
 
     let res : Reservation = {
-      postID: this.navParams.get('posterID'),
+      postID: this.navParams.get('postID'),
       userID: this.afa.auth.currentUser.uid,
       reservationID: this.afa.auth.currentUser.uid,
       startDate: start,
