@@ -100,7 +100,7 @@ export class ListingPage {
         
         var mstart = moment(start);
         var mend = moment(end);
-        var days = mstart.diff(mend, 'days');
+        var days = mstart.diff(mend, 'days')-2;
 
         var mstarts = moment(start).format('MM/DD/YYYY');
         var mends = moment(end).format('MM/DD/YYYY');

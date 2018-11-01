@@ -15,6 +15,7 @@ import { AccountPage } from '../account/account';
 import { PricingModal } from '../pricing-modal/pricing-modal';
 import { AlertController } from 'ionic-angular';
 import { Pricing, getPriceString } from '../../classes';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @IonicPage()
 @Component({
