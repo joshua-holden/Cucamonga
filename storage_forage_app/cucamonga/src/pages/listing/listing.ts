@@ -79,10 +79,10 @@ export class ListingPage {
       endDate: end,
       totalPrice: tp
     }
-    this.presentConfirm(start, days, tp);
-    let key = this.afdb.addReservation(res);
+    this.presentConfirm(start, days, tp, res);
+    /*let key = this.afdb.addReservation(res);
     res.reservationID = key;
-    this.afdb.updateReservation(res);
+    this.afdb.updateReservation(res);*/
     
   }
 
@@ -92,19 +92,21 @@ export class ListingPage {
     modal.onDidDismiss(data => {
       if (data) {
         let eventData = data;
- 
+        
         eventData.startTime = new Date(data.startTime);
         eventData.endTime = new Date(data.endTime);
         let start = eventData.startTime.toString();
         let end = eventData.endTime.toString();
-        //var mstart = moment(start).format('MM/DD/YYYY');
-        //var mend = moment(end).format('MM/DD/YYYY');
+        
         var mstart = moment(start);
         var mend = moment(end);
         var days = mstart.diff(mend, 'days');
+
         var mstarts = moment(start).format('MM/DD/YYYY');
         var mends = moment(end).format('MM/DD/YYYY');
-
+        if(eventData.allMonth){
+          mends = moment(start).add(30, 'days').format('MM/DD/YYYY');
+        }
         this.createReservation(mstarts, mends, days);
         let events = this.eventSource;
         events.push(eventData);
@@ -134,7 +136,7 @@ export class ListingPage {
     alert.present();
   }
  
- presentConfirm(start, days, price) {
+ presentConfirm(start, days, price, res) {
   let mes = "do you want to reserve this listing for " + days + " days " + " starting on " + start + " for $" + price + "?";
   let alert = this.alertCtrl.create({
     title: 'Confirm purchase',
@@ -150,7 +152,9 @@ export class ListingPage {
       {
         text: 'Buy',
         handler: () => {
-          console.log('Buy clicked');
+          let key = this.afdb.addReservation(res);
+          res.reservationID = key;
+          this.afdb.updateReservation(res);
         }
       }
     ]

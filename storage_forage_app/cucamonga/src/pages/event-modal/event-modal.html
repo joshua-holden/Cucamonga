@@ -17,23 +17,20 @@
 
 <ion-content>
     <ion-list>
-        <ion-item>
-            <ion-input type="text" placeholder="Title" [(ngModel)]="event.title"></ion-input>
-        </ion-item>
 
         <ion-item>
             <ion-label>Start</ion-label>
-            <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
+            <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MMM D YYYY" [(ngModel)]="event.startTime" [min]="minDate" [max]="2020"></ion-datetime>
         </ion-item>
 
         <ion-item>
             <ion-label>End</ion-label>
-            <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
+            <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MMM D YYYY" [(ngModel)]="event.endTime" [min]="minDate" [max]="2020"></ion-datetime>
         </ion-item>
 
         <ion-item>
-            <ion-label>All Day?</ion-label>
-            <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
+            <ion-label>Reserve month?</ion-label>
+            <ion-checkbox [(ngModel)]="event.allMonth"></ion-checkbox>
         </ion-item>
     </ion-list>
 
