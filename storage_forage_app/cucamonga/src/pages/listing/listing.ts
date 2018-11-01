@@ -11,6 +11,7 @@ import * as moment from 'moment';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { Reservation, getPriceString } from '../../classes';
+import { AccountPage } from '../account/account';
 
 @IonicPage()
 @Component({
@@ -137,7 +138,7 @@ export class ListingPage {
   }
  
  presentConfirm(start, days, price, res) {
-  let mes = "do you want to reserve this listing for " + days + " days " + " starting on " + start + " for $" + price + "?";
+  let mes = "Do you want to reserve this listing for " + days + " days " + " starting on " + start + " for $" + price + "?";
   let alert = this.alertCtrl.create({
     title: 'Confirm purchase',
     message: mes,
@@ -150,11 +151,12 @@ export class ListingPage {
         }
       },
       {
-        text: 'Buy',
+        text: 'Reserve',
         handler: () => {
           let key = this.afdb.addReservation(res);
           res.reservationID = key;
           this.afdb.updateReservation(res);
+          this.navCtrl.setRoot(AccountPage);
         }
       }
     ]
