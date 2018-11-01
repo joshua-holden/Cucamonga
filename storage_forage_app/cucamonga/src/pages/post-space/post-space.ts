@@ -41,7 +41,7 @@ export class PostSpacePage {
       public modalCtrl: ModalController,
       public popoverCtrl: PopoverController,
       private toastCtrl: ToastController,
-      private alertCtrl: AlertController) {
+      private alertCtrl: AlertController, private camera: Camera) {
         this.posting = this.formbuilder.group({
             title: ['', Validators.required], 
             address: ['', Validators.required],
@@ -60,7 +60,7 @@ export class PostSpacePage {
     });
     toast.present();
   }
-
+/*
   getPictures() {
     let options = {
       maximumImagesCount: 5,
@@ -73,6 +73,29 @@ export class PostSpacePage {
       }
     }, (err) => {this.presentAlert(); });
   }
+*/
+
+  getPictures() {
+        const options: CameraOptions = {
+            quality: 70,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+            encodingType: this.camera.EncodingType.JPEG,
+            saveToPhotoAlbum: false,
+            allowEdit: true,
+            targetWidth: 300,
+            targetHeight: 300,
+        };
+        this.camera.getPicture(options).then((results) => {
+            for (var i = 0; i < results.length; i++) {
+              this.images.push("data:image/jpeg;base64," + results[i]);
+      }
+        }).catch(err => {
+            this.presentAlert();
+            console.log(err);
+        });
+    }
+
 
   presentAlert() {
     let alert = this.alertCtrl.create({

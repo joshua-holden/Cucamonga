@@ -12,6 +12,7 @@ import { Posting } from '../../classes';
 import { AccountPage } from '../account/account';
 import { AlertController } from 'ionic-angular';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 
 /**
@@ -33,7 +34,7 @@ export class EditListingPage {
   private account: Observable<{}>;
   public images = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularfireDbProvider, public formbuilder: FormBuilder, private toastCtrl: ToastController, public afa: AngularFireAuth, public imagePicker: ImagePicker, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularfireDbProvider, public formbuilder: FormBuilder, private toastCtrl: ToastController, public afa: AngularFireAuth, public imagePicker: ImagePicker, public alertCtrl: AlertController, private camera: Camera) {
   this.posting = this.formbuilder.group({
       title: ['', Validators.required], 
       address: ['', Validators.required],
@@ -48,6 +49,7 @@ export class EditListingPage {
       this.getData();
   }
 
+/*
 getPictures() {
   let options = {
     maximumImagesCount: 5,
@@ -59,6 +61,28 @@ getPictures() {
     }
   }, (err) => {this.presentAlert(); });
 }
+*/
+
+getPictures() {
+        const options: CameraOptions = {
+            quality: 70,
+            destinationType: this.camera.DestinationType.DATA_URL,
+            sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+            encodingType: this.camera.EncodingType.JPEG,
+            saveToPhotoAlbum: false,
+            allowEdit: true,
+            targetWidth: 300,
+            targetHeight: 300,
+        };
+        this.camera.getPicture(options).then((results) => {
+            for (var i = 0; i < results.length; i++) {
+              this.images.push("data:image/jpeg;base64," + results[i]);
+      }
+        }).catch(err => {
+            this.presentAlert();
+            console.log(err);
+        });
+    }
 
 presentAlert() {
   let alert = this.alertCtrl.create({
