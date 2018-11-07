@@ -70,7 +70,7 @@ getPictures() {
             sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
             encodingType: this.camera.EncodingType.JPEG,
             saveToPhotoAlbum: false,
-            allowEdit: true,
+            allowEdit: false,
             targetWidth: 300,
             targetHeight: 300,
         };
@@ -112,6 +112,7 @@ presentAlert() {
         this.images = images;
         this.amenities = amenities;
       }
+    this.images = images;
     this.posts.push(post);
   }
 
