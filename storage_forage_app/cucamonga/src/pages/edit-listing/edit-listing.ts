@@ -74,10 +74,10 @@ getPictures() {
             targetWidth: 300,
             targetHeight: 300,
         };
-        this.camera.getPicture(options).then((results) => {
-            for (var i = 0; i < results.length; i++) {
-              this.images.push("data:image/jpeg;base64," + results[i]);
-      }
+        this.camera.getPicture(options).then((imageData) => {
+            
+              this.images.push("data:image/jpeg;base64," + imageData);
+      
         }).catch(err => {
             this.presentAlert();
             console.log(err);
