@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireObject } from '@angular/fire/database';
@@ -14,13 +14,6 @@ import { AlertController } from 'ionic-angular';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
-
-/**
- * Generated class for the EditListingPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -48,20 +41,6 @@ export class EditListingPage {
   ngOnInit() {
       this.getData();
   }
-
-/*
-getPictures() {
-  let options = {
-    maximumImagesCount: 5,
-    outputType: 1,
-  };
-  this.imagePicker.getPictures(options).then((results) => {
-    for (var i = 0; i < results.length; i++) {
-        this.images.push("data:image/jpeg;base64," + results[i]);
-    }
-  }, (err) => {this.presentAlert(); });
-}
-*/
 
 getPictures() {
         const options: CameraOptions = {

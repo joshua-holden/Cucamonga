@@ -13,21 +13,19 @@ import { HTTP } from '@ionic-native/http';
 import { Base64 } from '@ionic-native/base64';
 
 import { MyApp } from './app.component';
-import { SignupPage } from '../pages/signup/signup';
-import { LoginPage } from '../pages/login/login';
-import { BrowsetabPage } from '../pages/browsetab/browsetab';
-import { BrowsePage } from '../pages/browse/browse';
-import { PostSpacePage } from '../pages/post-space/post-space';
-import { MySpacesPage } from '../pages/my-spaces/my-spaces';
-import { MessagesPage } from '../pages/messages/messages';
-import { AccountPage } from '../pages/account/account';
-import { ListingPage } from '../pages/listing/listing';
-import { PopoverPage } from '../pages/popover/popover';
-import { AccountEditPage } from '../pages/account-edit/account-edit';
-import { EditListingPage } from '../pages/edit-listing/edit-listing';
+import { SignupPageModule } from '../pages/signup/signup.module';
+import { LoginPageModule } from '../pages/login/login.module';
+import { BrowsetabPageModule } from '../pages/browsetab/browsetab.module';
+import { BrowsePageModule } from '../pages/browse/browse.module';
+import { PostSpacePageModule } from '../pages/post-space/post-space.module';
+import { MessagesPageModule } from '../pages/messages/messages.module';
+import { AccountPageModule } from '../pages/account/account.module';
+import { ListingPageModule } from '../pages/listing/listing.module';
+import { PopoverPageModule } from '../pages/popover/popover.module';
+import { AccountEditPageModule } from '../pages/account-edit/account-edit.module';
+import { EditListingPageModule } from '../pages/edit-listing/edit-listing.module';
 import { PricingModal } from '../pages/pricing-modal/pricing-modal';
 
-import { NgCalendarModule } from 'ionic2-calendar';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -46,7 +44,6 @@ const firebaseAuth = {
     messagingSenderId: "563818531897"
 };*/
 
-
 const firebaseAuth = {
     apiKey: "AIzaSyDZ-ZP4OOTaS02n4b2vNP5wJARnFqCGxsk",
     authDomain: "cucamonga-a35c9.firebaseapp.com",
@@ -56,49 +53,32 @@ const firebaseAuth = {
     messagingSenderId: "454666002927"
 };
 
-
 @NgModule({
   declarations: [
     MyApp,
-    SignupPage,
-    LoginPage,
-    BrowsetabPage,
-    BrowsePage,
-    PostSpacePage,
-    MySpacesPage,
-    MessagesPage,
-    AccountPage, 
-    ListingPage,
-    PopoverPage,
-    AccountEditPage,
-    EditListingPage,
-    PricingModal,
   ],
   imports: [
-    NgCalendarModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseAuth),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFireStorageModule,
+    AccountPageModule,
+    AccountEditPageModule,
+    BrowsePageModule,
+    BrowsetabPageModule,
+    EditListingPageModule,
+    ListingPageModule,
+    LoginPageModule,
+    MessagesPageModule,
+    PopoverPageModule,
+    PostSpacePageModule,
+    SignupPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    SignupPage,
-    LoginPage,
-    BrowsetabPage,
-    BrowsePage,
-    PostSpacePage,
-    MySpacesPage,
-    MessagesPage,
-    AccountPage,
-    ListingPage,
-    PopoverPage,
-    AccountEditPage,
-    EditListingPage,
-    PricingModal,
   ],
   providers: [
     StatusBar,

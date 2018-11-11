@@ -2,8 +2,7 @@
 import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireObject } from '@angular/fire/database';
-import { AngularFireList } from '@angular/fire/database';
+import { AngularFireObject, AngularFireList } from '@angular/fire/database';
 import { Account } from '../../classes';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
 import { Observable } from "rxjs";
@@ -66,9 +65,6 @@ export class ListingPage {
   }
 
   createReservation(start, end, days) {
-    //this.account = this.afa.auth.currentUser;
-    //let start = data.eventData.startTime.toString();
-    //let end = data.eventData.endTime.toString();
     var p = Number((this.posts[0].price.dailyAmount));
     days = days*-1;
     var tp = p*days;
@@ -81,10 +77,6 @@ export class ListingPage {
       totalPrice: tp
     }
     this.presentConfirm(start, days, tp, res);
-    /*let key = this.afdb.addReservation(res);
-    res.reservationID = key;
-    this.afdb.updateReservation(res);*/
-    
   }
 
   addEvent() {

@@ -12,7 +12,6 @@ import { Account } from '../../classes';
 import { Observable } from "rxjs";
 import { ToastController } from 'ionic-angular';
 import { AccountPage } from '../account/account';
-import { PricingModal } from '../pricing-modal/pricing-modal';
 import { AlertController } from 'ionic-angular';
 import { Pricing, getPriceString } from '../../classes';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -60,20 +59,6 @@ export class PostSpacePage {
     });
     toast.present();
   }
-/*
-  getPictures() {
-    let options = {
-      maximumImagesCount: 5,
-      outputType: 1
-    };
-    this.images = [];
-    this.imagePicker.getPictures(options).then((results) => {
-      for (var i = 0; i < results.length; i++) {
-          this.images.push("data:image/jpeg;base64," + results[i]);
-      }
-    }, (err) => {this.presentAlert(); });
-  }
-*/
 
   getPictures() {
         const options: CameraOptions = {
@@ -86,10 +71,8 @@ export class PostSpacePage {
             targetWidth: 300,
             targetHeight: 300,
         };
-        this.camera.getPicture(options).then((imageData) => {
-            
-              this.images.push("data:image/jpeg;base64," + imageData);
-      
+        this.camera.getPicture(options).then((imageData) => {          
+              this.images.push("data:image/jpeg;base64," + imageData);    
         }).catch(err => {
             this.presentAlert();
             console.log(err);
@@ -134,7 +117,7 @@ export class PostSpacePage {
   }
 
   priceModal() {
-      let priceModal = this.modalCtrl.create(PricingModal);
+      let priceModal = this.modalCtrl.create('PricingModal');
       priceModal.onDidDismiss(price => {
           if (price) {
               this.pricing = price;
