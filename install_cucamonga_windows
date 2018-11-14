@@ -1,0 +1,2 @@
+cinst -y nodejs.install 
+npm install -g ionic cordova
