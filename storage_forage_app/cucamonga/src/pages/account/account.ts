@@ -23,6 +23,10 @@ export class AccountPage {
     private posts: Posting[] = [];
     private reservations = [];
 
+    /**
+     * Constructor for account.
+     * @constructor
+     */
     constructor(public navCtrl: NavController,
         public popoverCtrl: PopoverController,
         public afa: AngularFireAuth,
