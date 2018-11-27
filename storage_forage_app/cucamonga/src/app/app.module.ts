@@ -24,7 +24,6 @@ import { ListingPageModule } from '../pages/listing/listing.module';
 import { PopoverPageModule } from '../pages/popover/popover.module';
 import { AccountEditPageModule } from '../pages/account-edit/account-edit.module';
 import { EditListingPageModule } from '../pages/edit-listing/edit-listing.module';
-import { PricingModal } from '../pages/pricing-modal/pricing-modal';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';

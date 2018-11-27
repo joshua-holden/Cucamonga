@@ -23,8 +23,13 @@ Sprint | Estimated Velocity | Actual Velocity
 3      | 9                  | 11
 4      | TBD                | TBD
 
-### Link to Linter Reports
-http://cs.boisestate.edu/~bdit/GitHubAutoGrader/CS471S18ScrumLinterReports/CS471-S18-HCBTW_1Qv5g3OUThOWT8ljulDCLRYoTo1B19ZBsXSrkp4A/
+## Setup Instructions:
 
-### Link to Ionic 3 youtube tutorials
-https://www.youtube.com/channel/UCJUmE61LxhbhudzUugHL2wQ
+To set up the Storage Forage app on a windows machine. Find the install_cucamonga_windows.bat
+file inside of the storage_forage_app/cucamonga directory. Right click on the file and run it
+as an administrator. This will download chocolatey, install Node.js, and then install all of
+the project's dependencies.
+
+To set up the Storage Forace app on a Mac machine. Find the install_cucamonga_mac file inside
+of the storage_forage_app/cucamonga directory.
+

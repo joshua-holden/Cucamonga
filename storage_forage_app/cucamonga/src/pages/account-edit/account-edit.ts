@@ -3,7 +3,6 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
-import { Observable } from "rxjs";
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Account } from '../../classes';
 import moment from 'moment';

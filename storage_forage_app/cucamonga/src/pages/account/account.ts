@@ -1,9 +1,8 @@
 ﻿import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireObject, AngularFireList } from '@angular/fire/database';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
-import { Account, Posting, Reservation, getPriceString } from '../../classes';
+import { Posting, getPriceString } from '../../classes';
 import { AccountEditPage } from '../account-edit/account-edit';
 import { EditListingPage } from '../edit-listing/edit-listing';
 import { ListingPage } from '../listing/listing';
