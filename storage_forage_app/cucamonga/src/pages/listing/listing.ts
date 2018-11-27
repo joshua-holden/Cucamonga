@@ -10,10 +10,7 @@
 
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
-import { Calendar } from '@ionic-native/calendar';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireObject, AngularFireList } from '@angular/fire/database';
-import { Account } from '../../classes';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
 import { Observable } from "rxjs";
 import * as moment from 'moment';
@@ -158,9 +155,7 @@ export class ListingPage {
   onEventSelected(event) {
     let start = moment(event.startTime).format('L');
     let end = moment(event.endTime).format('L');
-    
-
-
+  
     let alert = this.alertCtrl.create({
       title: '' + event.title,
       subTitle: 'From: ' + start + '<br>To: ' + end,
