@@ -36,6 +36,10 @@ export interface Pricing {
     isMonthOnly: boolean;
 }
 
+/**
+ * Generates a string which includes a pricings daily and/or monthly price.
+ * @param pricing
+ */
 export function getPriceString(pricing: Pricing) {
     let priceString = "";
     if (!pricing.isMonthOnly) priceString += (pricing.dailyAmount + "/day, ");

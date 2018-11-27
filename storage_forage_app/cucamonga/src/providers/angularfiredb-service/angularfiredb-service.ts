@@ -6,9 +6,11 @@ import { Observable } from "rxjs";
 @Injectable()
 export class AngularfireDbProvider {
 
-    constructor(public afdb: AngularFireDatabase) {
-
-    }
+    /**
+     * Class to handle all of the database logic.
+     * @param afdb
+     */
+    constructor(public afdb: AngularFireDatabase) { }
 
     public getAllAccounts(): AngularFireList<{}> {
         return this.afdb.list('/accounts/');
@@ -37,16 +39,11 @@ export class AngularfireDbProvider {
     }
 
     public deletePost(post) {
-        console.log(post.postID);
         this.afdb.object(`/posts/` + post.postID).remove();
     }
 
     public updatePost(post) {
         this.afdb.object(`/posts/` + post.postID).update(post);
-    }
-
-    public getAllPosts(): AngularFireList<Posting> {
-        return this.afdb.list('/posts/');
     }
 
     public getPost(postId: any): Observable<{}> {
@@ -56,6 +53,10 @@ export class AngularfireDbProvider {
     public getPostTitle(postId: any): Observable<{}> {
         console.log(`/posts/${postId}/title/`);
         return this.afdb.object(`/posts/${postId}/title/`).valueChanges();
+    }
+
+    public getAllPosts(): AngularFireList<Posting> {
+        return this.afdb.list('/posts/');
     }
 
     public getAllReservations(): AngularFireList<Reservation> {
