@@ -1,5 +1,5 @@
 ﻿import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
@@ -20,8 +20,10 @@ export class AccountEditPage {
     private selected: string;
     private accountChanged: boolean = false;
 
+    /**
+     * @constructor
+     */
     constructor(public navCtrl: NavController,
-        public navParams: NavParams,
         public formbuilder: FormBuilder,
         public afa: AngularFireAuth,
         private camera: Camera,
@@ -41,6 +43,11 @@ export class AccountEditPage {
         });
     }
 
+    /**
+     * Checks if two passwords match for validator.
+     * @param passwordKey
+     * @param confirmPasswordKey
+     */
     matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
         return (group: FormGroup): { [key: string]: any } => {
             let password = group.controls[passwordKey];
@@ -54,6 +61,10 @@ export class AccountEditPage {
         }
     }
 
+    /**
+     * Checks the birthdate is at least 18 years ago for the form controller.
+     * @param birthday
+     */
     validateAge(birthday: string) {
         return (group: FormGroup): { [key: string]: any } => {
             let bdate = group.controls[birthday];
@@ -66,6 +77,9 @@ export class AccountEditPage {
         }
     }
 
+    /**
+     * Retrieves pictures from the user's mobile device.
+     */
     getPictures() {
         const options: CameraOptions = {
             quality: 70,
@@ -123,8 +137,12 @@ export class AccountEditPage {
 
     setPassword() {
         this.selected = '';
+        //TODO
     }
 
+    /**
+     * pushes all of the changes to the account to the database.
+     */
     submitChanges() {
         if (this.accountChanged)
             this.afa.authState.subscribe(auth => {

@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\providers",
+    "\\src\\providers\\angularfiredb-service"
   ],
-  "SelectedNode": "\\src",
+  "SelectedNode": "\\src\\providers\\angularfiredb-service\\angularfiredb-service.ts",
   "PreviewInSolutionExplorer": false
 }

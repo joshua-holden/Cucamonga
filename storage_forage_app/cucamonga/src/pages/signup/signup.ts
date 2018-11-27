@@ -1,11 +1,10 @@
 ﻿import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { BrowsetabPage } from '../browsetab/browsetab';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Account } from '../../classes';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
-import { FirestoreProvider } from '../../providers/firestore-service/firestore-service';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import moment from 'moment';
 
@@ -23,11 +22,12 @@ export class SignupPage {
 
   @ViewChild('bdate') bdate;
 
+    /**
+     * @constructor
+     */
   constructor(private fireAuth: AngularFireAuth,
       public dbProvider: AngularfireDbProvider,
-      public storeProvider: FirestoreProvider,
       public navCtrl: NavController,
-      public navParams: NavParams,
       public formbuilder: FormBuilder,
       private camera: Camera,
       public alrtCtrl: AlertController) {
@@ -41,6 +41,11 @@ export class SignupPage {
         }, {validator: this.matchingPasswords('password', 'passwordconfirm')}); 
   }
 
+    /**
+     * Checks if two passwords match and sets the password match form control.
+     * @param passwordKey
+     * @param confirmPasswordKey
+     */
   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {     
       return (group: FormGroup): {[key: string]: any} => {
         let password = group.controls[passwordKey];
@@ -54,6 +59,10 @@ export class SignupPage {
       }
   }
 
+    /**
+     * Checks the birthdate is at least 18 years ago for the form controller.
+     * @param birthday
+     */
   validateAge(birthday: string) {
       return (group: FormGroup): { [key: string]: any } => {
           let bdate = group.controls[birthday];
@@ -66,10 +75,9 @@ export class SignupPage {
       }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
-  }
-  
+    /**
+     *Submits the form data to create a new account in the database.
+     */
   submitForm() {
       if (this.signup.valid) {
           this.fireAuth.auth.createUserWithEmailAndPassword(this.signup.value.email, this.signup.value.password)
@@ -98,7 +106,9 @@ export class SignupPage {
           this.submitAttempt = true;
       }
   }
-
+    /**
+     * Retrieves pictures from the user's mobile device.
+     */
   getPictures() {
       const options: CameraOptions = {
           quality: 70,

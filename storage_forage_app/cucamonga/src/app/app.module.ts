@@ -29,10 +29,8 @@ import { PricingModal } from '../pages/pricing-modal/pricing-modal';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AngularfireDbProvider } from '../providers/angularfiredb-service/angularfiredb-service';
-import { FirestoreProvider } from '../providers/firestore-service/firestore-service';
 
 const firebaseAuth = {
     apiKey: "AIzaSyAC-fP9eI-sMrcIywaWtvEnzQKetNCa5tg",
@@ -53,7 +51,6 @@ const firebaseAuth = {
     AngularFireModule.initializeApp(firebaseAuth),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AngularFireStorageModule,
     AccountPageModule,
     AccountEditPageModule,
     BrowsePageModule,
@@ -82,7 +79,6 @@ const firebaseAuth = {
     HTTP,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
       AngularfireDbProvider,
-      FirestoreProvider,
   ]
 })
 export class AppModule {}
