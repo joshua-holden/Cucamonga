@@ -1,4 +1,14 @@
-﻿import { Component } from '@angular/core';
+﻿/**
+* Post space page
+* 
+* Create a listing for other users to view and reserve
+*
+* @author  Joshua Holden
+* @version 1.0
+* @since   2018-11-28
+*/
+
+import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
 import { PopoverPage } from '../popover/popover';
@@ -31,6 +41,9 @@ export class PostSpacePage {
   private pricing: Pricing;
   private priceString: string = this.pricing ? getPriceString(this.pricing) : "";
 
+  /**
+    * @constructor
+    */
   constructor(public navCtrl: NavController,
       public navParams: NavParams,
       public imagePicker: ImagePicker,
@@ -51,6 +64,12 @@ export class PostSpacePage {
           });   
   }
 
+  /**
+   * Present message to user that listing was created
+   *
+   * @param Nothing
+   * @return Nothing
+   */
   presentToast() {
     let toast = this.toastCtrl.create({
       message: 'Post Created',
@@ -60,6 +79,13 @@ export class PostSpacePage {
     toast.present();
   }
 
+  /**
+   * Get photos from camera roll/gallery using Ionic 
+   * Camera compnent
+   * https://ionicframework.com/docs/native/camera/
+   * @param Nothing
+   * @return Nothing
+   */
   getPictures() {
         const options: CameraOptions = {
             quality: 70,
@@ -79,7 +105,13 @@ export class PostSpacePage {
         });
     }
 
-
+  /**
+  * Present alert on browser version indicating that  
+  * uploading photos is only possible on mobile version.
+  *
+  * @param Nothing
+  * @return Nothing
+  */
   presentAlert() {
     let alert = this.alertCtrl.create({
       title: 'Sorry',
@@ -89,6 +121,12 @@ export class PostSpacePage {
     alert.present();
   }
 
+  /**
+  * Creates a new listing with user input and adds it to database
+  *
+  * @param Nothing
+  * @return Nothing
+  */
   createPost(){
     let account = this.afa.auth.currentUser;
     let post: Posting = {

@@ -1,4 +1,14 @@
-﻿import { Component } from '@angular/core';
+﻿/**
+* Edit Listing Page
+* 
+* Page to edit a user's listing
+*
+* @author  Joshua Holden
+* @version 1.0
+* @since   2018-11-28
+*/
+
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireObject } from '@angular/fire/database';
@@ -20,13 +30,19 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   selector: 'page-edit-listing',
   templateUrl: 'edit-listing.html',
 })
+
+
 export class EditListingPage {
 
   private posting : FormGroup;
   public posts = [];
   private account: Observable<{}>;
+
   public images = [];
 
+  /**
+    * @constructor
+    */
   constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularfireDbProvider, public formbuilder: FormBuilder, private toastCtrl: ToastController, public afa: AngularFireAuth, public imagePicker: ImagePicker, public alertCtrl: AlertController, private camera: Camera) {
   this.posting = this.formbuilder.group({
       title: ['', Validators.required], 
@@ -42,6 +58,13 @@ export class EditListingPage {
       this.getData();
   }
 
+/**
+  * Get photos from camera roll/gallery using Ionic 
+  * Camera compnent
+  * https://ionicframework.com/docs/native/camera/
+  * @param Nothing
+  * @return Nothing
+  */
 getPictures() {
         const options: CameraOptions = {
             quality: 70,
@@ -63,6 +86,13 @@ getPictures() {
         });
     }
 
+/**
+  * Present alert on browser version indicating that  
+  * uploading photos is only possible on mobile version.
+  * https://ionicframework.com/docs/native/camera/
+  * @param Nothing
+  * @return Nothing
+  */
 presentAlert() {
   let alert = this.alertCtrl.create({
     title: 'Sorry',
@@ -72,6 +102,12 @@ presentAlert() {
   alert.present();
 }
 
+/**
+  * Get data about listing from previous page.
+  * 
+  * @param Nothing
+  * @return Nothing
+  */
   getData(){
     let postID = this.navParams.get('postID');
     let title = this.navParams.get('title');
@@ -95,6 +131,12 @@ presentAlert() {
     this.posts.push(post);
   }
 
+  /**
+  * Update and submit the changes to the database.
+  * 
+  * @param Nothing
+  * @return Nothing
+  */
   updatePost(){
   let account = this.afa.auth.currentUser;
   let posta = this.posts[0];
@@ -114,6 +156,12 @@ presentAlert() {
   this.navCtrl.setRoot(AccountPage);
 }
 
+/**
+  * Delete the selected listing
+  * 
+  * @param Nothing
+  * @return Nothing
+  */
 deletePost(){
   let posta = this.posts[0];
   this.afdb.deletePost(posta);
@@ -121,6 +169,12 @@ deletePost(){
   this.navCtrl.setRoot(AccountPage);
 }
 
+/**
+  * Present a message indicating to the user that the
+  * changes they made were submitted to the database.
+  * @param Nothing
+  * @return Nothing
+  */
 presentUpdateToast() {
   let toast = this.toastCtrl.create({
     message: 'Post Updated',
@@ -130,6 +184,12 @@ presentUpdateToast() {
   toast.present();
   }
 
+/**
+  * Present a message indicating to the user that the
+  * listing was deleted.
+  * @param Nothing
+  * @return Nothing
+  */
   presentDeleteToast() {
   let toast = this.toastCtrl.create({
     message: 'Post Deleted',

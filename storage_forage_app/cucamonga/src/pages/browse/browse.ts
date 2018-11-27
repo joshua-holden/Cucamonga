@@ -1,4 +1,15 @@
-﻿import { Component } from '@angular/core';
+﻿/**
+* Browse Page
+* 
+* Functions for page that allows users to view and browse 
+* all listings posted by users.
+*
+* @author  Joshua Holden
+* @version 1.0
+* @since   2018-11-28
+*/
+
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
 import { PopoverPage } from '../popover/popover';
@@ -7,7 +18,7 @@ import { AngularfireDbProvider } from '../../providers/angularfiredb-service/ang
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { Observable } from "rxjs";
 import { ViewChild } from '@angular/core';
-import { Slides } from 'ionic-angular';
+//import { Slides } from 'ionic-angular';
 import { getPriceString } from '../../classes';
 
 @IonicPage()
@@ -16,11 +27,15 @@ import { getPriceString } from '../../classes';
   templateUrl: 'browse.html',
 })
 export class BrowsePage{ 
-@ViewChild(Slides) slides: Slides;
+//@ViewChild(Slides) slides: Slides;
+
   public items = [];
   public posts: Observable<{}[]>;
   public amenities: Observable<{}[]>;
 
+  /**
+    * @constructor
+    */
   constructor(public navCtrl: NavController,
       public afdb: AngularfireDbProvider,
       public popoverCtrl: PopoverController,
@@ -34,6 +49,7 @@ export class BrowsePage{
       this.posts = this.afdb.getAllPosts().valueChanges();
   }
 
+  
    setItems() {     
      for (var i = 1; i <= 20; i++) {
         var item = new function(){
@@ -45,7 +61,9 @@ export class BrowsePage{
     	this.items.push(item);
      }
    }
+   
 
+   
    filterItems(ev: any) {
     let val = ev.target.value;
 
@@ -60,6 +78,12 @@ export class BrowsePage{
 
   }
 
+  /**
+   * Open listing clicked on by user.
+   * 
+   * @param post  Post locked on user
+   * @return Nothing
+   */
   openListing(post) {
   	this.navCtrl.push(ListingPage, post);
   }

@@ -1,4 +1,14 @@
-﻿import { Component } from '@angular/core';
+﻿/**
+* Listing Page
+* 
+* Page that presents the details about a listing.
+*
+* @author  Joshua Holden
+* @version 1.0
+* @since   2018-11-28
+*/
+
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -32,6 +42,9 @@ export class ListingPage {
   private postAccount: Observable<{}>;
   private reservations = [];
 
+  /**
+    * @constructor
+    */
   constructor(public navCtrl: NavController,
       private modalCtrl: ModalController,
       private alertCtrl: AlertController,
@@ -40,6 +53,12 @@ export class ListingPage {
 
   getPrice = getPriceString;
 
+  /**
+  * Get data about listing from previous page.
+  * 
+  * @param Nothing
+  * @return Nothing
+  */
   getData(){
     let posterID = this.navParams.get('userID');
     this.postAccount = this.afdb.getAccount(posterID);
@@ -64,6 +83,14 @@ export class ListingPage {
     this.getData();
   }
 
+  /**
+   * Get data about listing from previous page.
+   * 
+   * @param start The start date of the reservation
+   * @param end The end date of the reservation
+   * @param days The number of days
+   * @return Nothing
+   */
   createReservation(start, end, days) {
     var p = Number((this.posts[0].price.dailyAmount));
     days = days*-1;
@@ -79,6 +106,13 @@ export class ListingPage {
     this.presentConfirm(start, days, tp, res);
   }
 
+  /**
+   * Adds the reservation to the calendar with days
+   * reserved shaded in.
+   *
+   * @param Nothing
+   * @return Nothing
+   */
   addEvent() {
     let modal = this.modalCtrl.create('EventModalPage', {selectedDay: this.selectedDay});
     modal.present();
@@ -93,7 +127,7 @@ export class ListingPage {
         
         var mstart = moment(start);
         var mend = moment(end);
-        var days = mstart.diff(mend, 'days')-2;
+        var days = mstart.diff(mend, 'days');
 
         var mstarts = moment(start).format('MM/DD/YYYY');
         var mends = moment(end).format('MM/DD/YYYY');
@@ -115,6 +149,12 @@ export class ListingPage {
     this.viewTitle = title;
   }
  
+ /**
+   * 
+   *
+   * @param event
+   * @return Nothing
+   */
   onEventSelected(event) {
     let start = moment(event.startTime).format('L');
     let end = moment(event.endTime).format('L');
@@ -129,7 +169,17 @@ export class ListingPage {
     alert.present();
   }
  
- presentConfirm(start, days, price, res) {
+ /**
+   * Present confirmation for user to cancel or confirm
+   * reservation.
+   *
+   * @param start The start date for the reservation
+   * @param days The number of days for the reservation
+   * @param price The total price of the reservation
+   * @param res The reservation object
+   * @return Nothing
+   */
+  presentConfirm(start, days, price, res) {
   let mes = "Do you want to reserve this listing for " + days + " days " + " starting on " + start + " for $" + price + "?";
   let alert = this.alertCtrl.create({
     title: 'Confirm purchase',
