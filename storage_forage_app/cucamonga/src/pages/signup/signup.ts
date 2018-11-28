@@ -79,7 +79,7 @@ export class SignupPage {
      *Submits the form data to create a new account in the database.
      */
   submitForm() {
-      if (this.signup.valid) {
+      if (this.signup.valid && !this.signup.hasError('validateAge') && this.myPhoto) {
           this.fireAuth.auth.createUserWithEmailAndPassword(this.signup.value.email, this.signup.value.password)
               .then(data => {
                   this.fireAuth.auth.signInWithEmailAndPassword(this.signup.value.email, this.signup.value.password);

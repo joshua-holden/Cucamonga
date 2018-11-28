@@ -53,6 +53,9 @@
 	    </div>
   </form>
   <ion-row style="margin-top: 0px; text-align: center;">
+    <ion-item *ngIf="!myPhoto && submitAttempt">
+      <p>Please choose a profile image.</p>
+    </ion-item>
     <ion-col *ngIf="myPhoto">
       <img style="max-width: 100px; max-height: 100px" src="{{myPhoto}}" />
     </ion-col>
