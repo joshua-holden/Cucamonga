@@ -75,12 +75,13 @@
 }
 
 .hidemobile{
-    display: none;
+
     border: 1px solid #eff0f1; 
     padding: 0px; 
-    margin-left: 20px; 
-    margin-bottom: 20px; 
     margin-top: 20px;
+    padding-left: 0px;
+    margin-left: 0px;
+    overflow: auto;
 }
 
 .hidebrowser{
@@ -101,9 +102,7 @@
 
 }
 
-.hidemobile{
-    display: none;
-}
+
 
 .hidebrowser{
     border: 1px solid #eff0f1; 
