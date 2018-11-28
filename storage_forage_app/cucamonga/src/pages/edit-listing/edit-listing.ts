@@ -11,9 +11,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireObject } from '@angular/fire/database';
-import { AngularFireList } from '@angular/fire/database';
-import { Account } from '../../classes';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
 import { Observable } from "rxjs";
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
@@ -23,7 +20,6 @@ import { AccountPage } from '../account/account';
 import { AlertController } from 'ionic-angular';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-
 
 @IonicPage()
 @Component({
@@ -43,7 +39,15 @@ export class EditListingPage {
   /**
     * @constructor
     */
-  constructor(public navCtrl: NavController, public navParams: NavParams, private afdb: AngularfireDbProvider, public formbuilder: FormBuilder, private toastCtrl: ToastController, public afa: AngularFireAuth, public imagePicker: ImagePicker, public alertCtrl: AlertController, private camera: Camera) {
+  constructor(public navCtrl: NavController,
+      public navParams: NavParams,
+      private afdb: AngularfireDbProvider,
+      public formbuilder: FormBuilder,
+      private toastCtrl: ToastController,
+      public afa: AngularFireAuth,
+      public imagePicker: ImagePicker,
+      public alertCtrl: AlertController,
+      private camera: Camera) {
   this.posting = this.formbuilder.group({
       title: ['', Validators.required], 
       address: ['', Validators.required],
@@ -76,10 +80,8 @@ getPictures() {
             targetWidth: 300,
             targetHeight: 300,
         };
-        this.camera.getPicture(options).then((imageData) => {
-            
-              this.images.push("data:image/jpeg;base64," + imageData);
-      
+        this.camera.getPicture(options).then((imageData) => {          
+              this.images.push("data:image/jpeg;base64," + imageData);    
         }).catch(err => {
             this.presentAlert();
             console.log(err);

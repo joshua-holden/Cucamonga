@@ -15,10 +15,7 @@ import { PopoverController } from 'ionic-angular';
 import { PopoverPage } from '../popover/popover';
 import { ListingPage } from '../listing/listing';
 import { AngularfireDbProvider } from '../../providers/angularfiredb-service/angularfiredb-service';
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { Observable } from "rxjs";
-import { ViewChild } from '@angular/core';
-//import { Slides } from 'ionic-angular';
 import { getPriceString } from '../../classes';
 
 @IonicPage()
@@ -27,7 +24,6 @@ import { getPriceString } from '../../classes';
   templateUrl: 'browse.html',
 })
 export class BrowsePage{ 
-//@ViewChild(Slides) slides: Slides;
 
   public items = [];
   public posts: Observable<{}[]>;
@@ -49,7 +45,6 @@ export class BrowsePage{
       this.posts = this.afdb.getAllPosts().valueChanges();
   }
 
-  
    setItems() {     
      for (var i = 1; i <= 20; i++) {
         var item = new function(){
@@ -61,9 +56,7 @@ export class BrowsePage{
     	this.items.push(item);
      }
    }
-   
-
-   
+     
    filterItems(ev: any) {
     let val = ev.target.value;
 
