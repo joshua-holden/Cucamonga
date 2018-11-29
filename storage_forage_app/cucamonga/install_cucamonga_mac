@@ -1,12 +1,12 @@
 #!/bin/bash
+echo "########## Installing Node.js ##########"
+echo ""
 sudo curl "https://nodejs.org/dist/latest-dubnium/node-${VERSION:-$(wget -qO- https://nodejs.org/dist/latest-dubnium/ | sed -nE 's|.*>node-(.*)\.pkg</a>.*|\1|p')}.pkg" > "$HOME/Downloads/node-latest.pkg" && sudo installer -store -pkg "$HOME/Downloads/node-latest.pkg" -target "/"
 echo ""
 echo "########## Installing Cordova and Ionic Framework ##########"
 sudo npm install -g ionic cordova
 echo ""
 echo "########## Finished Installing Cordova and Ionic Framework ##########"
-echo ""
-cd ./Cucamonga/storage_forage_app/cucamonga
 echo ""
 echo "########## Installing Ionic App Scripts ##########"
 echo ""
