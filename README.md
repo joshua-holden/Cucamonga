@@ -21,7 +21,8 @@ as an administrator. This will download chocolatey, install Node.js, and then in
 the project's dependencies.
 
 To set up the Storage Forace app on a Mac machine: Find the install_cucamonga_mac file inside
-of the storage_forage_app/cucamonga directory.
+of the storage_forage_app/cucamonga directory. The Node.js package is downloaded and installed using curl
+so no aditional package manager is needed.
 
 ## Build For Android Instructions:
 
