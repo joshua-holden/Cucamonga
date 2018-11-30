@@ -14,12 +14,16 @@ Hinman          | Jorah           | jorahsh              | Product Owner
 Holden          | Joshua          | joshua-holden        | Scrum Master
 
 ## Setup Instructions:
+# WINDOWS
+To set up the Storage Forage app on a windows machine: First find the install_chocolatey.bat file inside
+the storage_forage_app/cucamonga directory. Right click on the file and run it as an administrator. This 
+will download chocolatey.
 
-To set up the Storage Forage app on a windows machine: Find the install_cucamonga_windows.bat
-file inside of the storage_forage_app/cucamonga directory. Right click on the file and run it
-as an administrator. This will download chocolatey, install Node.js, and then install all of
-the project's dependencies.
+Next, find the install_cucamonga_windows.bat file inside of the storage_forage_app/cucamonga directory. 
+Double click to run this file. This file should not run as administrator. This will install Node.js, and 
+then install all of the project's dependencies.
 
+# MAC
 To set up the Storage Forace app on a Mac machine: Find the install_cucamonga_mac file inside
 of the storage_forage_app/cucamonga directory. The Node.js package is downloaded and installed using curl
 so no aditional package manager is needed.

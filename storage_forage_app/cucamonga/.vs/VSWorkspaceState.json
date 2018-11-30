@@ -4,8 +4,7 @@
     "\\src",
     "\\src\\pages",
     "\\src\\pages\\account-edit",
-    "\\src\\pages\\signup",
-    "\\src\\providers\\angularfiredb-service"
+    "\\src\\pages\\signup"
   ],
   "SelectedNode": "\\src\\pages\\account-edit\\account-edit.ts",
   "PreviewInSolutionExplorer": false
