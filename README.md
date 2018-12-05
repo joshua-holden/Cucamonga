@@ -26,7 +26,7 @@ then install all of the project's dependencies.
 # MAC
 To set up the Storage Forace app on a Mac machine: Find the install_cucamonga_mac file inside
 of the storage_forage_app/cucamonga directory. The Node.js package is downloaded and installed using curl
-so no aditional package manager is needed.
+so no aditional package manager is needed. The app will launch at the end of the instllation script.
 
 ## Build For Android Instructions:
 
