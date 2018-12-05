@@ -28,6 +28,11 @@ To set up the Storage Forace app on a Mac machine: Find the install_cucamonga_ma
 of the storage_forage_app/cucamonga directory. The Node.js package is downloaded and installed using curl
 so no aditional package manager is needed. The app will launch at the end of the instllation script.
 
+To build and run an iOS simulatior for the app, make sure Xcode is installed, then run the following command in Terminal:
+
+  $ ionic cordova emulate ios -- --buildFlag="-UseModernBuildSystem=0"
+
+
 ## Build For Android Instructions:
 
 To build the app for release on an Android device: run the publish_storage_forage file. About halfway
