@@ -30,6 +30,7 @@ so no aditional package manager is needed. The app will launch at the end of the
 
 To build and run an iOS simulatior for the app, make sure Xcode is installed, then run the following command in Terminal:
 
+  $ ionic cordova build ios
   $ ionic cordova emulate ios -- --buildFlag="-UseModernBuildSystem=0"
 
 
